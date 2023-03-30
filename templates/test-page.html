@@ -1,0 +1,65 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/test-page-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>Тест</title>
+</head>
+<body>
+    <header>
+       <div class="header-container">
+            <nav class="main-nav">
+                <div class="main-nav-list">
+                    <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+                    <div class="nav-cont">
+                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+                        <div class="main-nav-list-item"><a href="{% url 'signs' %}"><img src="{% static 'img/sign-logo.svg' %}" alt="логотип знака" height="30" width="30"> Знаки</a></div>
+                        <div class="main-nav-list-item"><a href="{% url 'test' %}"><img src="{% static 'img/test-logo.svg' %}" alt="логотип теста" height="30" width="30"> Тест</a></div>
+                        <div class="main-nav-list-item"><a href="{% url 'exam' %}"><img src="{% static 'img/exam-logo.svg' %}" alt="логотип экзамена" height="30" width="30"> Экзамен</a></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="start-test">
+                <span class="question-number">0/120</span>
+                <h1 class="name-page">Тест</h1>
+                <p class="test-info">Тест по знакам без учета времени, после ответа на вопрос вы можете сразу посмотреть результат ответа, а также то как выглядит знак в реальной жизни. Всего ... вопросов, критерии оценки: неправильный хоть 1 из пунктов => 0 баллов, всё правильно => 1. Желаем удачи!</p>
+                <div class="button-wrapper">
+                    <div class="start-test-button">Начать</div>
+                </div>
+            </div>
+            <div class="test-card-question">
+                <span class="question-number test-number">1/120</span>
+                <div class="question-container">
+                    <img src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="250" height="250">
+                    <div class="description-and-answer">
+                        <p class="text-question">Тут должен быть вопрос, но его пока нет</p>
+                            <select name="answers-list" class="answers-list" id="answers-list">
+                                <option value="">1 ответ</option>
+                                <option value="">2 ответ</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="buttons-wrapper">
+                    <div class="button-back">Назад</div>
+                    <div class="button-answer">Ответить</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container"></div>
+    </footer>
+<script src="{% static 'js/test-page.js' %}"></script>
+</body>
+</html>
