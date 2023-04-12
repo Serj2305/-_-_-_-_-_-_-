@@ -13,16 +13,14 @@
     <title>Знаки</title>
 </head>
 <body>
-    <header>
+        <header>
         <div class="header-container">
             <nav class="main-nav">
                 <div class="main-nav-list">
                     <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
                     <div class="nav-cont">
                         <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class="main-nav-list-item"><a href="{% url 'signs' %}"><img src="{% static 'img/sign-logo.svg' %}" alt="логотип знака" height="30" width="30"> Знаки</a></div>
-                        <div class="main-nav-list-item"><a href="{% url 'test' %}"><img src="{% static 'img/test-logo.svg' %}" alt="логотип теста" height="30" width="30"> Тест</a></div>
-                        <div class="main-nav-list-item"><a href="{% url 'exam' %}"><img src="{% static 'img/exam-logo.svg' %}" alt="логотип экзамена" height="30" width="30"> Экзамен</a></div>
+                        <div class ="main-nav-list-item"><a href="#"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                     </div>
                 </div>
             </nav>
@@ -32,7 +30,21 @@
         <div class="main-container">
             <div class="name-container">
                 <h1 class="name-page">Топографические условные знаки</h1>
-                <select title="фильтр знаков" name="signs-filter" id="signs-filter" class="signs-filter">
+                <div class="signs-filter"><span>Категории</span> <img src="{% static 'img/sign-filter.svg' %}" alt="стрелочка" width="25" height="25"></div>
+                <div class="filter-list hidden">
+                    <ul>
+                        <li class="filter-list-item all-signs">Все знаки</li>
+                        <li class="filter-list-item geodetic-points">Геодезические пункты</li>
+                        <li class="filter-list-item localities">Населенные пункты</li>
+                        <li class="filter-list-item objects">Промышленные, сельскохозяйственные и социально-культурные объекты</li>
+                        <li class="filter-list-item road-network">Дорожная сеть</li>
+                        <li class="filter-list-item structures">Гидрография и гидротехнические сооружения</li>
+                        <li class="filter-list-item vegetation-cover-and-soils">Растительный покров и грунты</li>
+                        <li class="filter-list-item borders">Границы</li>
+                        <li class="filter-list-item list-of-abbreviations">Перечень условных сокращений</li>
+                    </ul>
+                </div>
+               <!-- <select title="фильтр знаков" name="signs-filter" id="signs-filter" class="signs-filter">
                     <option class="signs-filter-item" value="all-signs">Все знаки</option>
                     <option value="geodetic-points">Геодезические пункты</option>
                     <option value="localities">Населенные пункты</option>
@@ -42,7 +54,7 @@
                     <option value="vegetation-cover-and-soils">Растительный покров и грунты</option>
                     <option value="borders">Границы</option>
                     <option value="list-of-abbreviations">Перечень условных сокращений</option>
-                </select>
+                </select> -->
             </div>
             <div class="signs-container">
 

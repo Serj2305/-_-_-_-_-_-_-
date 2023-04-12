@@ -17,7 +17,7 @@ body{
     margin-bottom: 80px;
 }
 .main-nav{
-    padding-right: 11%;
+    padding-right: 3%;
     padding-left: 5%;
 }
 .main-nav-list{
@@ -29,21 +29,22 @@ body{
 }
 .main-nav-list .nav-cont{
     display: flex;
-    width: 55%;
-    justify-content: space-between;
+    gap: 30px;
     margin: 0;
     padding:0;
     list-style-type: none;
 }
 .main-nav-list-item{
-    padding: 5px 0 5px;
+    padding-top: 5px;
 }
 .main-nav-list-item a{
     text-decoration: none;
     color: #FFFFFF;
     font-size: 26px;
 }
-
+.main-nav-list-item img{
+    margin-top: 5px;
+}
 .main-nav-list-item a:hover {
     opacity: 0.7;
 }
@@ -61,7 +62,8 @@ body{
     margin-bottom: 50px;
 }
 .signs-filter{
-    display: block;
+    display: flex;
+    justify-content: space-between;
     font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 700;
@@ -76,6 +78,49 @@ border-radius: 22px;
     outline: 0;
     width: 20%;
     color: #FFFFFF;
+}
+
+.signs-filter span{
+    width: 80%;
+}
+
+.filter-list{
+    position: absolute;
+    margin-top: 60px;
+    width: 40%;
+    opacity: 1;
+    transition: opacity 1s, visibility 0s;
+}
+
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0s 1s;
+}
+.signs-filter img{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.filter-list ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.filter-list-item{
+    padding: 0 5px 0 ;
+    background: #FFFFFF;
+    border: 1px ;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+}
+.filter-list-item:hover{
+    background-color: aliceblue;
+}
+.filter-list-item:first-child{
+    border-radius: 6px 6px 0px 0px;
+}
+.filter-list-item:last-child{
+    border-radius: 0px 0px 6px 6px;
 }
 .signs-filter:hover{
     opacity: 0.7;

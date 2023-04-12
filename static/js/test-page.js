@@ -11,31 +11,31 @@ const QUESTIONS = {
     1:{
         number: '1/120',
         picture:'/static/img/Rectangle%205.svg',
-        textQuestion: 'Тут должен быть вопрос, но его пока нет',
+        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
         answersList: ['ответ 1','ответ 2','ответ 3'],
     },
     2:{
         number: '2/120',
         picture:'/static/img/Rectangle%205.svg',
-        textQuestion: 'Тут должен быть вопрос, но его пока нет',
+        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3', 'вопрос 4', 'вопрос 5'],
         answersList: ['ответ 1','ответ 23','ответ 31'],
     },
     3:{
         number: '3/120',
         picture:'/static/img/Rectangle%205.svg',
-        textQuestion: 'Тут должен быть вопрос, но его пока нет',
+        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
         answersList: ['ответ 1','ответ 2','ответ 3'],
     },
     4:{
         number: '4/120',
         picture:'/static/img/Rectangle%205.svg',
-        textQuestion: 'Тут должен быть вопрос, но его пока нет',
+        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
         answersList: ['ответ 1','ответ 2','ответ 3'],
     },
     5:{
         number: '5/120',
         picture:'/static/img/Rectangle%205.svg',
-        textQuestion: 'Тут должен быть вопрос, но его пока нет',
+        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
         answersList: ['ответ 1','ответ 2','ответ 3'],
     },
 }
@@ -87,14 +87,21 @@ startTestButton.addEventListener('click', () => {
     testCardQuestion.id = '1';
     testCardQuestion.querySelector('img').src = QUESTIONS["1"].picture;
     testCardQuestion.querySelector('.test-number').textContent = QUESTIONS["1"].number;
-    testCardQuestion.querySelector('.text-question').textContent = QUESTIONS["1"].textQuestion;
     const fragment = document.createDocumentFragment();
-    QUESTIONS["1"].answersList.forEach((answer) => {
-        const elem = document.createElement('option');
-        elem.textContent = answer;
-        fragment.appendChild(elem);
+    QUESTIONS["1"].textQuestions.forEach((question) => {
+        const elem = document.createElement('p');
+        elem.classList.add('text-question')
+        elem.textContent = question;
+        const inputAnswer = document.createElement('input');
+        inputAnswer.placeholder = 'Введите ответ';
+        const container = document.createElement('div');
+        container.classList.add('question-answer-container');
+        container.appendChild(elem);
+        container.appendChild(inputAnswer);
+        fragment.appendChild(container)
+
     });
-    testCardQuestion.querySelector('.answers-list').appendChild(fragment)
+    testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     testCardQuestion.classList.add('front');
 });
 
@@ -115,24 +122,68 @@ buttonResume.addEventListener('click', () => {
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
-    testCardQuestion.querySelector('.text-question').textContent = QUESTIONS[cardId].textQuestion;
     const fragment = document.createDocumentFragment();
-    QUESTIONS[cardId].answersList.forEach((answer) => {
-        const elem = document.createElement('option');
-        elem.textContent = answer;
-        fragment.appendChild(elem);
+    QUESTIONS[cardId].textQuestions.forEach((question) => {
+        const elem = document.createElement('p');
+        elem.classList.add('text-question')
+        elem.textContent = question;
+        const inputAnswer = document.createElement('input');
+        inputAnswer.placeholder = 'Введите ответ';
+        const container = document.createElement('div');
+        container.classList.add('question-answer-container');
+        container.appendChild(elem);
+        container.appendChild(inputAnswer);
+        fragment.appendChild(container)
     });
-    testCardQuestion.querySelector('.answers-list').innerHTML = '';
-    testCardQuestion.querySelector('.answers-list').appendChild(fragment)
+    testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
+    testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     testCardQuestion.classList.add('front');
 });
 
 buttonBackCard.addEventListener('click', () => {
     testCardQuestion.classList.remove('front');
+    let cardId = `${Number(testCardQuestion.id) - 1}`;
+    testCardQuestion.id = cardId;
+    testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
+    testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
+    const fragment = document.createDocumentFragment();
+    QUESTIONS[cardId].textQuestions.forEach((question) => {
+        const elem = document.createElement('p');
+        elem.classList.add('text-question')
+        elem.textContent = question;
+        const inputAnswer = document.createElement('input');
+        inputAnswer.placeholder = 'Введите ответ';
+        const container = document.createElement('div');
+        container.classList.add('question-answer-container');
+        container.appendChild(elem);
+        container.appendChild(inputAnswer);
+        fragment.appendChild(container)
+    });
+    testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
+    testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     setTimeout(()=>testCardQuestion.classList.add('front'),300);
 });
 
 buttonBackAnswer.addEventListener('click', () => {
     testCardAnswer.classList.remove('front');
+    let cardId = `${Number(testCardQuestion.id) - 1}`;
+    testCardQuestion.id = cardId;
+    testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
+    testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
+    const fragment = document.createDocumentFragment();
+    QUESTIONS[cardId].textQuestions.forEach((question) => {
+        const elem = document.createElement('p');
+        elem.classList.add('text-question')
+        elem.textContent = question;
+        const inputAnswer = document.createElement('input');
+        inputAnswer.placeholder = 'Введите ответ';
+        const container = document.createElement('div');
+        container.classList.add('question-answer-container');
+        container.appendChild(elem);
+        container.appendChild(inputAnswer);
+        fragment.appendChild(container)
+    });
+    testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
+    testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     testCardQuestion.classList.add('front');
 })
