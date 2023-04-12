@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from app1.views import index_page, project_page, signs_page, test_page, exam_page
 
@@ -26,3 +28,7 @@ urlpatterns = [
     path('test-page/', test_page, name='test'),
     path('exam-page/', exam_page, name='exam')
 ]
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
