@@ -16,9 +16,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
+                ('description', models.CharField(max_length=50)),
                 ('category', models.CharField(max_length=50)),
-                ('objectOnTheMap', models.ImageField(upload_to='images/')),
-                ('objectInThePhoto', models.ImageField(upload_to='images/')),
+                ('photo', models.ImageField(upload_to='images/')),
             ],
         ),
     ]
