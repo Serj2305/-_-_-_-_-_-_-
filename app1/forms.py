@@ -5,4 +5,4 @@ from .models import *
 class SignForm(forms.ModelForm):
     class Meta:
         model = Sign
-        fields = ['name', 'category', 'objectOnTheMap', 'objectInThePhoto']
+        fields = ['name', 'description', 'category', 'photo']
