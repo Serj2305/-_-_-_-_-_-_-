@@ -17,7 +17,7 @@ body{
     margin-bottom: 80px;
 }
 .main-nav{
-    padding-right: 11%;
+    padding-right: 3%;
     padding-left: 5%;
 }
 .main-nav-list{
@@ -29,21 +29,22 @@ body{
 }
 .main-nav-list .nav-cont{
     display: flex;
-    width: 55%;
-    justify-content: space-between;
+    gap: 30px;
     margin: 0;
     padding:0;
     list-style-type: none;
 }
 .main-nav-list-item{
-    padding: 5px 0 5px;
+    padding-top: 5px;
 }
 .main-nav-list-item a{
     text-decoration: none;
     color: #FFFFFF;
     font-size: 26px;
 }
-
+.main-nav-list-item img{
+    margin-top: 5px;
+}
 .main-nav-list-item a:hover {
     opacity: 0.7;
 }
@@ -51,7 +52,7 @@ body{
 .main-container{
     margin-bottom: 60px;
 }
-.start-test, .test-card-question{
+.start-test, .test-card-question, .test-card-answer{
     margin: 0 15% 50px;
     padding: 20px 0 20px;
     background: #FFFFFF;
@@ -59,10 +60,35 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.2
 border-radius: 50px;
 overflow: hidden;
     backface-visibility: hidden;
-    transition: transform .6s linear;
+    transition: transform 0.65s linear;
+}
+
+.start-test{
+    position: absolute;
 }
 .start-test-active{
     transform: perspective(900px) rotateY(-180deg);
+}
+.test-card-question{
+    transform: rotateY(-180deg);
+    position: absolute;
+    right: 0;
+    left: 0;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.test-card-answer{
+    transform: rotateY(-180deg);
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.back{
+    transform: perspective(900px) rotateY(-180deg);
+}
+.front{
+    transform: perspective(900px) rotateY(360deg);
 }
 .question-number{
     display: flex;
@@ -100,14 +126,14 @@ overflow: hidden;
     width: 30%;
     margin-bottom: 80px;
 }
-.start-test-button:hover{
+.start-test-button:hover, .button-back:hover, .button-answer:hover, .button-resume:hover, .button-back:hover{
     opacity: 0.7;
 }
 
 .test-number{
     margin-bottom: 30px;
 }
-.question-container{
+.question-container, .answer-container{
     display: flex;
     gap: 30px;
     padding: 0 25px 0;
@@ -117,28 +143,32 @@ overflow: hidden;
 .description-and-answer{
     display: inline-block;
     padding: 0;
+
+}
+.test-card-question .description-and-answer{
+    width: 40%;
+}
+
+.answer-container .description-and-answer{
+    width: 100%;
 }
 .text-question{
-    font-size: 24px;
+    font-size: 16px;
     line-height: 30px;
     padding: 0;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
-.answers-list{
-    display: block;
-    font-family: 'Comfortaa';
-    font-style: normal;
-    font-weight: 700;
-    height: 40px;
-    font-size: 20px;
-    width: 50%;
-    padding: 5px 10px 5px;
-    margin: 0;
-    border: 0;
-    background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+
+
+
+.question-answer-container input{
+    margin-bottom: 10px;
+    width: 100%;
+    background: #F6F6F6;
+border: 1px solid #464646;
 border-radius: 22px;
+    padding: 0 5px 0;
 }
 
 .buttons-wrapper{
@@ -154,7 +184,7 @@ border-radius: 22px;
     width: 20%;
     margin-bottom: 30px;
 }
-.button-answer{
+.button-answer, .button-resume{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     padding:1px 0 1px;
@@ -163,6 +193,35 @@ border-radius: 22px;
     margin-bottom: 30px;
     background: #9FCB9F;
     color: #FFFFFF;
+}
+.pictures-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.result{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 22px;
+    padding:5px 0 5px;
+    text-align: center;
+    line-height: 30px;
+    width: 40%;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #9FCB9F;
+    color: #FFFFFF;
+}
+.name-sign{
+    text-align: center;
+    font-size: 24px;
+    line-height: 20px;
+    margin-bottom: 15px;
+}
+.description-sign{
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
 }
 /*стилизуем подвал*/
 .footer-container{

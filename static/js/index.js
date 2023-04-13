@@ -1,3 +1,7 @@
+const filterButton = document.querySelector('.signs-filter');
+const filterList = document.querySelector('.filter-list');
+const filterListItems = document.querySelectorAll('.filter-list-item');
+
 const SIGNS = {
     sign1:{
         name: 'Name1',
@@ -50,5 +54,23 @@ function appendSign(Signs) {
     });
     signsContainer.appendChild(fragment);
 }
+
+filterButton.addEventListener('click', () => {
+    if(filterList.classList.contains('hidden'))
+        {
+            filterList.classList.remove('hidden');
+        }
+    else {
+        filterList.classList.add('hidden');
+    }
+});
+
+
+filterListItems.forEach((item) => {
+   item.addEventListener('click', () => {
+      filterButton.querySelector('span').textContent = item.textContent;
+      filterList.classList.add('hidden');
+   });
+});
 
 appendSign(SIGNS);

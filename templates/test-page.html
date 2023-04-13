@@ -14,15 +14,13 @@
 </head>
 <body>
     <header>
-       <div class="header-container">
+        <div class="header-container">
             <nav class="main-nav">
                 <div class="main-nav-list">
                     <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
                     <div class="nav-cont">
                         <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class="main-nav-list-item"><a href="{% url 'signs' %}"><img src="{% static 'img/sign-logo.svg' %}" alt="логотип знака" height="30" width="30"> Знаки</a></div>
-                        <div class="main-nav-list-item"><a href="{% url 'test' %}"><img src="{% static 'img/test-logo.svg' %}" alt="логотип теста" height="30" width="30"> Тест</a></div>
-                        <div class="main-nav-list-item"><a href="{% url 'exam' %}"><img src="{% static 'img/exam-logo.svg' %}" alt="логотип экзамена" height="30" width="30"> Экзамен</a></div>
+                        <div class ="main-nav-list-item"><a href="#"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                     </div>
                 </div>
             </nav>
@@ -43,16 +41,30 @@
                 <div class="question-container">
                     <img src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="250" height="250">
                     <div class="description-and-answer">
-                        <p class="text-question">Тут должен быть вопрос, но его пока нет</p>
-                            <select name="answers-list" class="answers-list" id="answers-list">
-                                <option value="">1 ответ</option>
-                                <option value="">2 ответ</option>
-                            </select>
+
                     </div>
                 </div>
                 <div class="buttons-wrapper">
-                    <div class="button-back">Назад</div>
+                    <div class="button-back back-card">Назад</div>
                     <div class="button-answer">Ответить</div>
+                </div>
+            </div>
+            <div class="test-card-answer">
+                <span class="question-number test-number">1/120</span>
+                <div class="answer-container">
+                    <div class="pictures-container">
+                        <img class="picture-sign" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="150" height="150">
+                        <img class="picture-world" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="150" height="150">
+                    </div>
+                    <div class="description-and-answer">
+                        <div class="result">Верно</div>
+                        <p class="name-sign">Тут должно быть название</p>
+                        <p class="description-sign">тут должны быть описание и характеристика знака</p>
+                    </div>
+                </div>
+                <div class="buttons-wrapper">
+                    <div class="button-back back-answer">Назад</div>
+                    <div class="button-resume">Продолжить</div>
                 </div>
             </div>
         </div>
