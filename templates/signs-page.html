@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/signs-page-style.css' %}">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>Знаки</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <nav class="main-nav">
+                <div class="main-nav-list">
+                    <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+                    <div class="nav-cont">
+                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+                        <div class="main-nav-list-item"><a href="{% url 'signs' %}"><img src="{% static 'img/sign-logo.svg' %}" alt="логотип знака" height="30" width="30"> Знаки</a></div>
+                        <div class="main-nav-list-item"><a href="{% url 'test' %}"><img src="{% static 'img/test-logo.svg' %}" alt="логотип теста" height="30" width="30"> Тест</a></div>
+                        <div class="main-nav-list-item"><a href="{% url 'exam' %}"><img src="{% static 'img/exam-logo.svg' %}" alt="логотип экзамена" height="30" width="30"> Экзамен</a></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="name-container">
+                <h1 class="name-page">Топографические условные знаки</h1>
+                <select title="фильтр знаков" name="signs-filter" id="signs-filter" class="signs-filter">
+                    <option class="signs-filter-item" value="all-signs">Все знаки</option>
+                    <option value="geodetic-points">Геодезические пункты</option>
+                    <option value="localities">Населенные пункты</option>
+                    <option value="objects">Промышленные, сельскохозяйственные и социально-культурные объекты</option>
+                    <option value="road-network">Дорожная сеть</option>
+                    <option value="structures">Гидрография и гидротехнические сооружения</option>
+                    <option value="vegetation-cover-and-soils">Растительный покров и грунты</option>
+                    <option value="borders">Границы</option>
+                    <option value="list-of-abbreviations">Перечень условных сокращений</option>
+                </select>
+            </div>
+            <div class="signs-container">
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container"></div>
+    </footer>
+    <template id="sign">
+        <div class="sign-container">
+                    <img class="img-sign" src="" alt="знак">
+                    <div class="description">
+                        <h2 class="name-sign"></h2>
+                        <p class="description-sign"></p>
+                    </div>
+                </div>
+    </template>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

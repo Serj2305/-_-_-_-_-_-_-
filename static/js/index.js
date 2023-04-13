@@ -1,0 +1,54 @@
+const SIGNS = {
+    sign1:{
+        name: 'Name1',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    },
+    sign2:{
+        name: 'Name2',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    },
+    sign3:{
+        name: 'Name3',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    },
+    sign4:{
+        name: 'Name4',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    },
+    sign5:{
+        name: 'Name5',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    },
+    sign6:{
+        name: 'Name6',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    },
+    sign7:{
+        name: 'Name7',
+        description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
+        picture: '/static/img/Rectangle%205.svg'
+    }
+}
+
+const signsContainer = document.querySelector('.signs-container');
+const signTemplate = document.querySelector('#sign').content;
+
+function appendSign(Signs) {
+    const fragment = document.createDocumentFragment();
+    Object.entries(Signs).forEach(function(sign) {
+        const currentSign = signTemplate.cloneNode(true);
+        currentSign.querySelector('.img-sign').src = sign[1].picture;
+        currentSign.querySelector('.description-sign').textContent = sign[1].description;
+        currentSign.querySelector('.name-sign').textContent = sign[1].name;
+        fragment.appendChild(currentSign)
+    });
+    signsContainer.appendChild(fragment);
+}
+
+appendSign(SIGNS);
