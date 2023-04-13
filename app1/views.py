@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from app1.forms import SignForm
+from django.http import JsonResponse
+from readDB import read_sqlite_table
 
 
 def index_page(request):
@@ -22,3 +23,8 @@ def test_page(request):
 
 def exam_page(request):
     return render(request, 'exam-page.html')
+
+
+# отправляет словарь
+def send(request):
+    return JsonResponse(read_sqlite_table())
