@@ -18,7 +18,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from app1.views import index_page, project_page, signs_page, test_page, exam_page
+
+from app1.views import index_page, project_page, signs_page, test_page, exam_page, send
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +27,7 @@ urlpatterns = [
     path('project-page/', project_page, name='project'),
     path('signs-page/', signs_page, name='signs'),
     path('test-page/', test_page, name='test'),
-    path('exam-page/', exam_page, name='exam')
+    path('exam-page/', exam_page, name='exam'),
 ]
 
 if settings.DEBUG:
