@@ -10,10 +10,9 @@ def read_sqlite_table():
     sqlite_select_query = """SELECT * from app1_sign"""
     cursor.execute(sqlite_select_query)
     records = cursor.fetchall()
-    print("Всего строк:", len(records))
 
     for row in records:
         id += 1
         data_from_database[f'{id}'] = {'name': row[1], 'description': row[2], 'category': row[3],
-                                       'picture': row[4]}
+                                       'picture': "/" + row[4]}
     return data_from_database
