@@ -4,9 +4,9 @@ const filterListItems = document.querySelectorAll('.filter-list-item');
 
 const SIGNS = {
     sign1:{
-        name: 'Name1',
+        name: 'Nam1',
         description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
-        picture: '/static/img/Rectangle%205.svg'
+        picture: '/media/images/тетст.jpg'
     },
     sign2:{
         name: 'Name2',
@@ -75,15 +75,15 @@ filterListItems.forEach((item) => {
    });
 });
 
-//fetch('send')
-  //  .then((response) => {
-    //  if(response.ok) {
-      //  return response.json();
-      //}
-      //throw new Error(`${response.status} ${response.statusText}`);
-  //}).then((data) => {
-    //appendSign(data)
-  //}).catch(function (error) {
-   //   alert(error)
-  //});
+fetch('send')
+    .then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+  }).then((data) => {
+    appendSign(data)
+  }).catch(function (error) {
+      alert(error)
+  });
 appendSign(SIGNS);
