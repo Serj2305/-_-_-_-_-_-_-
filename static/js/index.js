@@ -75,15 +75,14 @@ filterListItems.forEach((item) => {
    });
 });
 
-//fetch('send')
-  //  .then((response) => {
-    //  if(response.ok) {
-      //  return response.json();
-      //}
-      //throw new Error(`${response.status} ${response.statusText}`);
-  //}).then((data) => {
-    //appendSign(data)
-  //}).catch(function (error) {
-   //   alert(error)
-  //});
-appendSign(SIGNS);
+fetch('send')
+    .then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+  }).then((data) => {
+    appendSign(data)
+  }).catch(function (error) {
+      alert(error)
+  });
