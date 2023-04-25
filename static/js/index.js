@@ -4,9 +4,9 @@ const filterListItems = document.querySelectorAll('.filter-list-item');
 
 const SIGNS = {
     sign1:{
-        name: 'Nam1',
+        name: 'Name1',
         description: 'аоаооаоаоаоаоа аоаоаоаоаоао аоаоаоаоа аоаоаооаао аоаоаоаооа оааооаоа пум пум пум аоаоаоаоа аоаоаоаа аоо ао ао оа оао аооаоаоао аоао оа',
-        picture: '/media/images/тетст.jpg'
+        picture: '/static/img/Rectangle%205.svg'
     },
     sign2:{
         name: 'Name2',
@@ -52,6 +52,7 @@ function appendSign(Signs) {
         currentSign.querySelector('.img-sign').src = sign[1].picture;
         currentSign.querySelector('.description-sign').textContent = sign[1].description;
         currentSign.querySelector('.name-sign').textContent = sign[1].name;
+        currentSign.querySelector('.sign-container').dataset.category = sign[1].category;
         fragment.appendChild(currentSign)
     });
     signsContainer.appendChild(fragment);
@@ -67,14 +68,6 @@ filterButton.addEventListener('click', () => {
     }
 });
 
-
-filterListItems.forEach((item) => {
-   item.addEventListener('click', () => {
-      filterButton.querySelector('span').textContent = item.textContent;
-      filterList.classList.add('hidden');
-   });
-});
-
 fetch('send')
     .then((response) => {
       if(response.ok) {
@@ -83,7 +76,23 @@ fetch('send')
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
     appendSign(data)
-  }).catch(function (error) {
+  }).then(() => {
+      const cards = document.querySelectorAll('.sign-container');
+    filterListItems.forEach((item) => {
+       item.addEventListener('click', () => {
+          filterButton.querySelector('span').textContent = item.textContent;
+          filterList.classList.add('hidden');
+          for (let card of cards) {
+                console.log(item);
+                if (card.dataset.category !== item.dataset.category && item.dataset.category !== 'all-signs') {
+                    card.classList.add('hidden-card');
+                } else {
+                    card.classList.remove('hidden-card');
+                }
+            }
+       });
+    });
+}).catch(function (error) {
       alert(error)
   });
-appendSign(SIGNS);
+

@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-
+from app1 import views
 from app1.views import index_page, project_page, signs_page, test_page, exam_page, send
 
 urlpatterns = [
@@ -28,7 +28,7 @@ urlpatterns = [
     path('signs-page/', signs_page, name='signs'),
     path('test-page/', test_page, name='test'),
     path('exam-page/', exam_page, name='exam'),
-    path('signs-page/send', send, name='send')
+    path('signs-page/send', views.send, name='send')
 ]
 
 if settings.DEBUG:
