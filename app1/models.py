@@ -10,3 +10,11 @@ class Sign(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.category}, {self.category}, {self.photo}"
+
+
+class Test(models.Model):
+    question = models.CharField(max_length=500)
+    answer = models.CharField(max_length=500)
+
+    def __str__(self):
+        return f"{self.question}, {self.answer}"
