@@ -1,8 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/project-page-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>О нас</title>
 </head>
 <body>
     <header>
@@ -18,5 +26,33 @@
             </nav>
         </div>
     </header>
+    <main>
+            <div class="main-container">
+                <h1 class="name-page">О нас</h1>
+                <div class="main-content">
+                    <p>Наш сайт ориентирован на студентов ВУЦ,
+                        обучающихся по дисциплине “Военная топография”
+                        и нуждающихся в онлайн сервисе для подготовки к экзаменам,
+                        также сайт будет полезен студентам вузов,
+                        изучающим модуль "Основы военной подготовки”.</p>
+
+                    <p>Топографические знаки применяются для изображения объектов местности и их характеристик.
+                        Они нужны для более детального изучения и оценки местности,
+                        точного ориентирования, уверенного выполнения измерений и расчетов.
+                        Поэтому важно предоставить студентам качественный онлайн сервис для удобного изучения топографических знаков.
+                        Такие сервисы уже существуют, но имеют ряд минусов, такие как:
+                        неполное представление имеющихся условных топографических знаков и отсутствии возможности для описания характеристик представленных знаков,
+                        именно эти проблемы мы хотели решить, разрабатывая наш сайт.</p>
+
+                    <p>Участники команды:<br>
+                        <a class="member-team" href="https://vk.com/paketik_klea">Карболин Сергей Александрович<br></a>
+                        <a class="member-team" href="https://vk.com/id578135077">Крылов Никита Андреевич<br></a>
+                        <a class="member-team" href="https://vk.com/id449426614">Стратюк Лада Александровна</a></p>
+                </div>
+            </div>
+    </main>
+    <footer>
+        <div class="footer-container"></div>
+    </footer>
 </body>
 </html>

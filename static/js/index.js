@@ -1,6 +1,7 @@
 const filterButton = document.querySelector('.signs-filter');
 const filterList = document.querySelector('.filter-list');
 const filterListItems = document.querySelectorAll('.filter-list-item');
+const buttonShouMore = document.querySelector('.button-shou-more')
 
 const SIGNS = {
     sign1:{
@@ -50,12 +51,31 @@ function appendSign(Signs) {
     Object.entries(Signs).forEach(function(sign) {
         const currentSign = signTemplate.cloneNode(true);
         currentSign.querySelector('.img-sign').src = sign[1].picture;
-        currentSign.querySelector('.description-sign').textContent = sign[1].description;
+        //currentSign.querySelector('.description-sign').textContent = sign[1].description;
         currentSign.querySelector('.name-sign').textContent = sign[1].name;
         currentSign.querySelector('.sign-container').dataset.category = sign[1].category;
         fragment.appendChild(currentSign)
     });
     signsContainer.appendChild(fragment);
+    const card = document.querySelectorAll('.sign-container');
+    let maxCard = 10;
+    function showMore(maxCard) {
+      for (let i = 0; i < card.length; i++) {
+        if (i < maxCard) {
+          card[i].style.display = 'flex';
+          if (maxCard === card.length || maxCard > card.length) {
+              buttonShouMore.style.display = 'none';
+          }
+        } else  {
+            break;
+        }
+      }
+    }
+    showMore(maxCard);
+    buttonShouMore.onclick = function() {
+      maxCard += 10;
+      showMore(maxCard);
+    }
 }
 
 filterButton.addEventListener('click', () => {

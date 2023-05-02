@@ -12,31 +12,31 @@ const QUESTIONS = {
         number: '1/120',
         picture:'/static/img/Rectangle%205.svg',
         textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['ответ 1','ответ 2','ответ 3'],
+        answersList: ['1','2','3'],
     },
     2:{
         number: '2/120',
         picture:'/static/img/Rectangle%205.svg',
         textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3', 'вопрос 4', 'вопрос 5'],
-        answersList: ['ответ 1','ответ 23','ответ 31'],
+        answersList: ['1','2','3','4','5'],
     },
     3:{
         number: '3/120',
         picture:'/static/img/Rectangle%205.svg',
         textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['ответ 1','ответ 2','ответ 3'],
+        answersList: ['1','2','3'],
     },
     4:{
         number: '4/120',
         picture:'/static/img/Rectangle%205.svg',
         textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['ответ 1','ответ 2','ответ 3'],
+        answersList: ['1','2','3'],
     },
     5:{
         number: '5/120',
         picture:'/static/img/Rectangle%205.svg',
         textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['ответ 1','ответ 2','ответ 3'],
+        answersList: ['1','2','3'],
     },
 }
 
@@ -82,7 +82,8 @@ const ANSWERS = {
         descriptionSign: 'а тут должно быть описание или характеристика знака'
     }
 }
-startTestButton.addEventListener('click', () => {
+
+function startTest() {
     startTestCard.classList.add('back');
     testCardQuestion.id = '1';
     testCardQuestion.querySelector('img').src = QUESTIONS["1"].picture;
@@ -103,20 +104,40 @@ startTestButton.addEventListener('click', () => {
     });
     testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     testCardQuestion.classList.add('front');
-});
+};
 
-buttonAnswer.addEventListener('click', () => {
+startTestButton.addEventListener('click', startTest);
+
+function shouAnswer() {
+    const answers = testCardQuestion.querySelectorAll('input');
+    let flag = true;
+    let cardId = testCardQuestion.id;
+    const result = testCardAnswer.querySelector('.result')
+    const trueAnswers = QUESTIONS[cardId].answersList;
+    answers.forEach((answer, index) => {
+        if(answer.value !== trueAnswers[index]) {
+            flag = false;
+        }
+    });
+    if (flag === true) {
+        result.textContent = 'Верно';
+        result.style.background = '#9FCB9F';
+    }
+    else {
+        result.textContent = 'Неверно';
+        result.style.background = '#CB9F9F';
+    }
     testCardQuestion.classList.remove('front');
     testCardAnswer.querySelector('.test-number').textContent = ANSWERS[`${testCardQuestion.id}`].number;
     testCardAnswer.querySelector('.picture-sign').src = ANSWERS[`${testCardQuestion.id}`].pictureSign;
     testCardAnswer.querySelector('.picture-world').src = ANSWERS[`${testCardQuestion.id}`].pictureWorld;
-    testCardAnswer.querySelector('.result').textContent = ANSWERS[`${testCardQuestion.id}`].result;
     testCardAnswer.querySelector('.name-sign').textContent = ANSWERS[`${testCardQuestion.id}`].nameSign;
     testCardAnswer.querySelector('.description-sign').textContent = ANSWERS[`${testCardQuestion.id}`].descriptionSign;
     testCardAnswer.classList.add('front');
-});
+};
+buttonAnswer.addEventListener('click', shouAnswer);
 
-buttonResume.addEventListener('click', () => {
+function shouNextQuestion() {
     testCardAnswer.classList.remove('front');
     let cardId = `${Number(testCardQuestion.id) + 1}`;
     testCardQuestion.id = cardId;
@@ -138,9 +159,10 @@ buttonResume.addEventListener('click', () => {
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
     testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     testCardQuestion.classList.add('front');
-});
+};
+buttonResume.addEventListener('click', shouNextQuestion);
 
-buttonBackCard.addEventListener('click', () => {
+function showPreviousQuestion() {
     testCardQuestion.classList.remove('front');
     let cardId = `${Number(testCardQuestion.id) - 1}`;
     testCardQuestion.id = cardId;
@@ -162,10 +184,11 @@ buttonBackCard.addEventListener('click', () => {
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
     testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     setTimeout(()=>testCardQuestion.classList.add('front'),300);
-});
+};
+buttonBackCard.addEventListener('click', showPreviousQuestion);
 
-buttonBackAnswer.addEventListener('click', () => {
-    testCardAnswer.classList.remove('front');
+function shouPreviousAnswer() {
+     testCardAnswer.classList.remove('front');
     let cardId = `${Number(testCardQuestion.id) - 1}`;
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
@@ -186,4 +209,7 @@ buttonBackAnswer.addEventListener('click', () => {
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
     testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
     testCardQuestion.classList.add('front');
-})
+};
+
+buttonBackAnswer.addEventListener('click', shouPreviousAnswer)
+

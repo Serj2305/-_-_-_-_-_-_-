@@ -61,7 +61,7 @@ body{
     padding: 0;
     margin-bottom: 50px;
 }
-.signs-filter{
+.signs-filter, .button-shou-more{
     display: flex;
     justify-content: space-between;
     font-family: 'Comfortaa';
@@ -82,6 +82,17 @@ border-radius: 22px;
 
 .signs-filter span{
     width: 80%;
+}
+
+.button-wrapper{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.button-shou-more{
+    justify-content: center;
+    margin: auto;
 }
 
 .filter-list{
@@ -122,8 +133,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.2
 .filter-list-item:last-child{
     border-radius: 0px 0px 6px 6px;
 }
-.signs-filter:hover{
+.signs-filter:hover, .button-shou-more:hover{
     opacity: 0.7;
+    cursor: pointer;
 }
 
 .signs-container{
@@ -137,31 +149,48 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.2
     display: flex;
     column-gap: 2%;
     margin-bottom: 20px;
-    min-height: 210px;
+    height: 260px;
     border: 1px ;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
+    -webkit-transition: all 1s ease;
+          transition: all 1s ease;
+    display: none;
 }
+
+
+.sign-container:hover{
+    -webkit-transform: rotate(5deg); /* Градусы поворота можно изменить по необходимости */
+          transform: rotate(5deg); /* Градусы поворота можно изменить по необходимости */
+    cursor: pointer;
+}
+
 .sign-container{
     align-items: center;
 }
 .sign-container img{
     margin: 7px;
+    max-height: 230px;
 }
 .description{
+    width: 50%;
     display: inline-block;
     padding: 0;
     margin: 7px;
+}
+
+.img-container{
+    width: 50%;
 }
 .name-sign{
     padding: 0;
     margin: 0;
     margin-bottom: 10px;
     line-height: 20px;
-    font-size: 24px;
+    font-size: 20px;
 }
 .description-sign{
-    font-size: 18px;
+    font-size: 16px;
     padding: 0;
     margin: 0;
     text-align: justify;
