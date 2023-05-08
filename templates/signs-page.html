@@ -69,7 +69,7 @@
         <div class="footer-container"></div>
     </footer>
     <template id="sign">
-        <div class="sign-container">
+        <div class="sign-container hidden-card">
             <div class="img-container">
                 <img class="img-sign" src="" alt="знак" width="250">
             </div>
@@ -79,6 +79,21 @@
             </div>
         </div>
     </template>
+    <div class="popup hidden">
+        <div class="popup-body">
+            <div class="popup-content">
+                <img class="popup-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25" width="25">
+                <div class="popup-img-container">
+                    <div><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака" class="picture-sign" ></div>
+                    <div><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака в реальной жизни" class="world-sign" ></div>
+                </div>
+                <div class="popup-text-container">
+                    <div><h2 class="popup-name-sign">Тут должно быть название</h2>
+                    <p class="popup-description-sign">А тут описание</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{% static 'js/index.js' %}"></script>
 
 </body>
