@@ -32,16 +32,16 @@
                 <h1 class="name-page">Топографические условные знаки</h1>
                 <div class="signs-filter"><span>Категории</span> <img src="{% static 'img/sign-filter.svg' %}" alt="стрелочка" width="25" height="25"></div>
                 <div class="filter-list hidden">
-                    <ul>
-                        <li class="filter-list-item all-signs">Все знаки</li>
-                        <li class="filter-list-item geodetic-points">Геодезические пункты</li>
-                        <li class="filter-list-item localities">Населенные пункты</li>
-                        <li class="filter-list-item objects">Промышленные, сельскохозяйственные и социально-культурные объекты</li>
-                        <li class="filter-list-item road-network">Дорожная сеть</li>
-                        <li class="filter-list-item structures">Гидрография и гидротехнические сооружения</li>
-                        <li class="filter-list-item vegetation-cover-and-soils">Растительный покров и грунты</li>
-                        <li class="filter-list-item borders">Границы</li>
-                        <li class="filter-list-item list-of-abbreviations">Перечень условных сокращений</li>
+                    <ul class="filters">
+                        <li class="filter-list-item all-signs" data-category="all-signs">Все знаки</li>
+                        <li class="filter-list-item geodetic-points" data-category="geodetic-points">Геодезические пункты</li>
+                        <li class="filter-list-item localities" data-category="localities">Населенные пункты</li>
+                        <li class="filter-list-item objects" data-category="objects">Промышленные, сельскохозяйственные и социально-культурные объекты</li>
+                        <li class="filter-list-item road-network" data-category="road-network">Дорожная сеть</li>
+                        <li class="filter-list-item structures" data-category="structures">Гидрография и гидротехнические сооружения</li>
+                        <li class="filter-list-item vegetation-cover-and-soils" data-category="vegetation-cover-and-soils">Растительный покров и грунты</li>
+                        <li class="filter-list-item borders" data-category="borders">Границы</li>
+                        <li class="filter-list-item list-of-abbreviations" data-category="list-of-abbreviations">Перечень условных сокращений</li>
                     </ul>
                 </div>
                <!-- <select title="фильтр знаков" name="signs-filter" id="signs-filter" class="signs-filter">
@@ -59,20 +59,42 @@
             <div class="signs-container">
 
             </div>
+            <div class="button-wrapper">
+                <div class="button-shou-more">Показать больше</div>
+            </div>
+
         </div>
     </main>
     <footer>
         <div class="footer-container"></div>
     </footer>
     <template id="sign">
-        <div class="sign-container">
-                    <img class="img-sign" src="" alt="знак">
-                    <div class="description">
-                        <h2 class="name-sign"></h2>
-                        <p class="description-sign"></p>
-                    </div>
-                </div>
+        <div class="sign-container hidden-card">
+            <div class="img-container">
+                <img class="img-sign" src="" alt="знак" width="250">
+            </div>
+            <div class="description">
+                <h2 class="name-sign"></h2>
+                <p class="description-sign"></p>
+            </div>
+        </div>
     </template>
+    <div class="popup hidden">
+        <div class="popup-body">
+            <div class="popup-content">
+                <img class="popup-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25" width="25">
+                <div class="popup-img-container">
+                    <div><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака" class="picture-sign" ></div>
+                    <div><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака в реальной жизни" class="world-sign" ></div>
+                </div>
+                <div class="popup-text-container">
+                    <div><h2 class="popup-name-sign">Тут должно быть название</h2>
+                    <p class="popup-description-sign">А тут описание</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{% static 'js/index.js' %}"></script>
+
 </body>
 </html>
