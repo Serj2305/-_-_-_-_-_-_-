@@ -15,7 +15,6 @@ fetch('sendTest')
       }
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
-      console.log(data);
       QUESTIONS = data;
   }).catch(function (error) {
       alert(error)
@@ -127,6 +126,7 @@ function shouAnswer() {
     let cardId = testCardQuestion.id;
     const result = testCardAnswer.querySelector('.result')
     const trueAnswers = QUESTIONS[cardId].answersList;
+    console.log(QUESTIONS[cardId]);
     answers.forEach((answer, index) => {
         if(answer.value !== trueAnswers[index]) {
             flag = false;

@@ -29,7 +29,7 @@ def read_sqlite_table(table):
         for row in records:
             id += 1
             data_from_database[f'{id}'] = {'number': id, 'picture': "/media/" + row[3], 'textQuestions': textQuestions,
-                                           'answerList': answersList}
+                                           'answersList': answersList}
         return data_from_database
 
     else:
