@@ -24,8 +24,8 @@ def read_sqlite_table(table):
         answersList = []
         id = 0
         for row in records:
-            textQuestions.append(row[1].replace(' ', '').split(","))
-            answersList.append(row[2].replace(' ', '').split(","))
+            textQuestions = row[1].split(",")
+            answersList = row[2].split(",")
         for row in records:
             id += 1
             data_from_database[f'{id}'] = {'number': id, 'picture': "/media/" + row[3], 'textQuestions': textQuestions,
