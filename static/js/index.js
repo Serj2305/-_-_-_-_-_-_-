@@ -117,7 +117,7 @@ fetch('send')
       }
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
-    appendSign(data)
+    appendSign(data);
     const signsArray = [];
     Object.entries(data).forEach(function(sign) {
         signsArray.push(sign[1])
