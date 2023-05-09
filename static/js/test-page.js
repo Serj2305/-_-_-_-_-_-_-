@@ -5,40 +5,53 @@ const buttonAnswer = document.querySelector('.button-answer');
 const testCardAnswer = document.querySelector('.test-card-answer');
 const buttonResume = document.querySelector('.button-resume');
 const buttonBackAnswer = document.querySelector('.back-answer');
-const buttonBackCard = document.querySelector('.back-card')
+const buttonBackCard = document.querySelector('.back-card');
 
-const QUESTIONS = {
-    1:{
-        number: '1/120',
-        picture:'/static/img/Rectangle%205.svg',
-        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['1','2','3'],
-    },
-    2:{
-        number: '2/120',
-        picture:'/static/img/Rectangle%205.svg',
-        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3', 'вопрос 4', 'вопрос 5'],
-        answersList: ['1','2','3','4','5'],
-    },
-    3:{
-        number: '3/120',
-        picture:'/static/img/Rectangle%205.svg',
-        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['1','2','3'],
-    },
-    4:{
-        number: '4/120',
-        picture:'/static/img/Rectangle%205.svg',
-        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['1','2','3'],
-    },
-    5:{
-        number: '5/120',
-        picture:'/static/img/Rectangle%205.svg',
-        textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
-        answersList: ['1','2','3'],
-    },
-}
+let QUESTIONS = {};
+fetch('sendTest')
+    .then((response) => {
+      if(response.ok) {
+        return  response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+  }).then((data) => {
+      console.log(data);
+      QUESTIONS = data;
+  }).catch(function (error) {
+      alert(error)
+  });
+//const QUESTIONS = {
+  //  1:{
+    //    number: '1/120',
+      //  picture:'/static/img/Rectangle%205.svg',
+        //textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
+        //answersList: ['1','2','3'],
+    //},
+    //2:{
+      //  number: '2/120',
+        //picture:'/static/img/Rectangle%205.svg',
+        //textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3', 'вопрос 4', 'вопрос 5'],
+        //answersList: ['1','2','3','4','5'],
+    //},
+    //3:{
+      //  number: '3/120',
+        //picture:'/static/img/Rectangle%205.svg',
+        //textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
+        //answersList: ['1','2','3'],
+    //},
+    //4:{
+      //  number: '4/120',
+        //picture:'/static/img/Rectangle%205.svg',
+        //textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
+        //answersList: ['1','2','3'],
+    //},
+    //5:{
+      //  number: '5/120',
+       // picture:'/static/img/Rectangle%205.svg',
+        //textQuestions: ['Вопрос 1', 'Вопрос 2', 'Вопрос 3'],
+        //answersList: ['1','2','3'],
+    //},
+//}
 
 const ANSWERS = {
     1:{
