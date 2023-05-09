@@ -25,6 +25,12 @@ def exam_page(request):
     return render(request, 'exam-page.html')
 
 
-# отправляет словарь
+# отправляет словарь для списка знаков
 def send(request):
-    return JsonResponse(read_sqlite_table())
+    return JsonResponse(read_sqlite_table("app1_sign"))
+
+
+# отправляет словарь для теста
+def sendTest(request):
+    return JsonResponse(read_sqlite_table("app1_test"))
+
