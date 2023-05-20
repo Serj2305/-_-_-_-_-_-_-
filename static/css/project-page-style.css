@@ -55,8 +55,7 @@ body{
 }
 
 .main-content{
-    width: 70%;
-    margin-left: 5%;
+    padding: 0 55px 0;
 }
 
 .name-page{
@@ -64,15 +63,49 @@ body{
     margin-bottom: 30px;
 }
 
-p{
+.project-description{
     margin-bottom: 15px;
+    text-align: center;
 }
 
-.member-team{
+.members-team, .curators-project{
+    font-weight: 400;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.member-team-card-container, .curator-project-card-container{
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+}
+.member-team-card, .curator-project-card{
+    text-align: center;
+}
+
+.member-team-card p, .curator-project-card p{
+    margin: 0 auto 5px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 25px;
+    width: 70%;
+}
+
+.member-team-role{
+    opacity: 0.7;
+}
+.member-team-img, .curator-project-img{
+    border-radius: 80px;
+    margin-bottom: 5px;
+}
+
+.member-team, .curator-project{
     color:#464646;
 }
 
-.member-team:hover{
+.member-team:hover, .curator-project:hover{
     color:black;
 }
 

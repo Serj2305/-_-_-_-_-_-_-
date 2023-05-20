@@ -125,11 +125,15 @@ function shouAnswer() {
     let flag = true;
     let cardId = testCardQuestion.id;
     const result = testCardAnswer.querySelector('.result')
+    const incorrectAnswers = testCardAnswer.querySelector('.incorrect-answers')
     const trueAnswers = QUESTIONS[cardId].answersList;
-    console.log(QUESTIONS[cardId]);
     answers.forEach((answer, index) => {
         if(answer.value !== trueAnswers[index]) {
             flag = false;
+            const incorrectQuestion = answer.parentElement.querySelector('p').textContent;
+            const incorrectAnswer = document.createElement('p');
+            incorrectAnswer.textContent = `Неверный ответ: ${incorrectQuestion} --> ${answer.value} ( правильный ответ:${trueAnswers[index]})`;
+            incorrectAnswers.appendChild(incorrectAnswer);
         }
     });
     if (flag === true) {

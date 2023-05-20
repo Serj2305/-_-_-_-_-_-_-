@@ -200,6 +200,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.2
 .hidden-card{
     display: none;
 }
+.hidden-card-filter{
+    display: none;
+}
 
 /*стилизуем подвал*/
 .footer-container{
@@ -227,7 +230,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.2
     display: flex;
     gap: 20px;
     width: 600px;
-    height: 350px;
+    min-height: 200px;
     padding: 30px 30px 10px;
     position: relative;
     background: #FFFFFF;
@@ -239,15 +242,17 @@ border-radius: 40px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    justify-content: center;
 }
 .popup-text-container{
     display: flex;
     flex-direction: column;
     gap:10px;
+    justify-content: center;
 }
 
 .popup-text-container div{
-    margin-top: 40px;
+    margin-top: 20px;
 
 }
 .popup-name-sign{

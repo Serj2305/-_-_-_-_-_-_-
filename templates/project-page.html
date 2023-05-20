@@ -30,13 +30,13 @@
             <div class="main-container">
                 <h1 class="name-page">О нас</h1>
                 <div class="main-content">
-                    <p>Наш сайт ориентирован на студентов ВУЦ,
+                    <p class="project-description">Наш сайт ориентирован на студентов ВУЦ,
                         обучающихся по дисциплине “Военная топография”
                         и нуждающихся в онлайн сервисе для подготовки к экзаменам,
                         также сайт будет полезен студентам вузов,
                         изучающим модуль "Основы военной подготовки”.</p>
 
-                    <p>Топографические знаки применяются для изображения объектов местности и их характеристик.
+                    <p class="project-description">Топографические знаки применяются для изображения объектов местности и их характеристик.
                         Они нужны для более детального изучения и оценки местности,
                         точного ориентирования, уверенного выполнения измерений и расчетов.
                         Поэтому важно предоставить студентам качественный онлайн сервис для удобного изучения топографических знаков.
@@ -44,11 +44,36 @@
                         неполное представление имеющихся условных топографических знаков и отсутствии возможности для описания характеристик представленных знаков,
                         именно эти проблемы мы хотели решить, разрабатывая наш сайт.</p>
 
-                    <p>Участники команды:<br>
-                        <a class="member-team" href="https://vk.com/paketik_klea">Карболин Сергей Александрович<br></a>
-                        <a class="member-team" href="https://vk.com/id578135077">Крылов Никита Андреевич<br></a>
-                        <a class="member-team" href="https://vk.com/id449426614">Стратюк Лада Александровна</a></p>
-                </div>
+                    <h2 class="members-team">Участники команды</h2>
+                        <div class="member-team-card-container">
+                            <div class="member-team-card">
+                                <img class="member-team-img" src="{% static 'img/member-1.jpg' %}" alt="фотография участника">
+                                <p class="member-team-name"><a class="member-team" href="https://vk.com/paketik_klea">Карболин Сергей Александрович</a></p>
+                                <p class="member-team-role">Тимлид Frontend-разработчик</p>
+                            </div>
+                            <div class="member-team-card">
+                                <img class="member-team-img" src="{% static 'img/member-2.jpg' %}" alt="фотография участника">
+                                <p class="member-team-name"><a class="member-team" href="https://vk.com/id578135077">Крылов Никита Андреевич</a></p>
+                                <p class="member-team-role">Backend-разработчик</p>
+                            </div>
+                            <div class="member-team-card">
+                                <img class="member-team-img" src="{% static 'img/member-3.jpg' %}" alt="фотография участника">
+                                <p class="member-team-name"><a class="member-team" href="https://vk.com/id449426614">Стратюк Лада Александровна</a></p>
+                                <p class="member-team-role">Дизайнер</p>
+                            </div>
+                        </div>
+                    <h2 class="curators-project">Кураторы проекта</h2>
+                    <div class="curator-project-card-container">
+                            <div class="curator-project-card">
+                                <img class="curator-project-img" src="{% static 'img/curator-1.jpg' %}" alt="фотография участника">
+                                <p class="curator-project-name"><a class="curator-project" href="o.y.shepelev@urfu.ru">Шепелев Олег Юрьевич</a></p>
+                            </div>
+                            <div class="curator-project-card">
+                                <img class="curator-project-img" src="{% static 'img/curator-2.jpg' %}" alt="фотография участника">
+                                <p class="curator-project-name"><a class="curator-project" href="https://vk.com/kulancheev">Куланчеев Евгений Анатольевич</a></p>
+                            </div>
+                    </div>
+            </div>
             </div>
     </main>
     <footer>

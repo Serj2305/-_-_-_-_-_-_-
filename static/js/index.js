@@ -50,8 +50,9 @@ const pictureSign = document.querySelector('.picture-sign');
 const worldSign = document.querySelector('.world-sign');
 const popupNameSign = document.querySelector('.popup-name-sign');
 const popupDescriptionSign = document.querySelector('.popup-description-sign');
+const worldSignContainer = document.querySelector('.world-picture-container')
 
-
+let MAXCARD = 10;
 function appendSign(Signs) {
     const fragment = document.createDocumentFragment();
     Object.entries(Signs).forEach(function(sign) {
@@ -64,27 +65,36 @@ function appendSign(Signs) {
 
     });
     signsContainer.appendChild(fragment);
+
+
+
+    showMore(MAXCARD);
+    buttonShouMore.onclick = function() {
+        MAXCARD += 10;
+        showMore(MAXCARD);
+    }
+}
+function showMore(maxCard) {
+    let currentRenderCard = 0;
     const card = document.querySelectorAll('.sign-container');
-    let maxCard = 10;
-    function showMore(maxCard) {
         for (let i = 0; i < card.length; i++) {
-            if (i < maxCard) {
+            if (currentRenderCard < maxCard) {
                 card[i].classList.remove('hidden-card');
+              if(!card[i].classList.contains('hidden-card-filter')) {
+                  currentRenderCard+=1;
+              }
               if (maxCard === card.length || maxCard > card.length) {
                   buttonShouMore.style.display = 'none';
               }
-            } else  {
-                break;
+              else {
+                  buttonShouMore.style.display = 'flex';
+              }
+            }
+            else  {
+                card[i].classList.add('hidden-card');
             }
           }
         }
-    showMore(maxCard);
-    buttonShouMore.onclick = function() {
-        maxCard += 10;
-        showMore(maxCard);
-    }
-}
-
 
 
 filterButton.addEventListener('click', () => {
@@ -129,9 +139,16 @@ fetch('send')
       cards.forEach((card,index) => {
           card.onclick = () => {
               pictureSign.src = data[index].picture;
-              worldSign.src = '/static/img/Rectangle%205.svg';
               popupNameSign.textContent = data[index].name;
+              if(data[index].pictureWorld === '/media/') {
+                  worldSignContainer.style.display = 'none';
+              }
+              else{
+                  worldSignContainer.style.display = 'block';
+                  worldSign.src = data[index].pictureWorld;
+              }
               popupDescriptionSign.textContent = data[index].description;
+
               popup.classList.remove('hidden');
           }
       })
@@ -141,11 +158,13 @@ fetch('send')
           filterList.classList.add('hidden');
           for (let card of cards) {
                 if (card.dataset.category !== item.dataset.category && item.dataset.category !== 'all-signs') {
-                    card.classList.add('hidden-card');
+                    card.classList.add('hidden-card-filter');
                 } else {
-                    card.classList.remove('hidden-card');
+                    card.classList.remove('hidden-card-filter');
                 }
             }
+          MAXCARD=10;
+          showMore(MAXCARD);
        });
     });
 }).catch(function (error) {
