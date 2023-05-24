@@ -15,7 +15,7 @@ def read_sqlite_table(table):
         for row in records:
             id += 1
             data_from_database[f'{id}'] = {'name': row[1], 'description': row[2], 'category': row[3],
-                                           'picture': "/media/" + row[4], 'pictureWorld': "/media/" + row[5]}
+                                           'picture': "/images/" + row[4], 'pictureWorld': "/images/" + row[5]}
         return data_from_database
 
     if table == "app1_test":
@@ -28,7 +28,7 @@ def read_sqlite_table(table):
             answersList = row[2].split(",")
         for row in records:
             id += 1
-            data_from_database[f'{id}'] = {'number': id, 'picture': "/media/" + row[3], 'textQuestions': textQuestions,
+            data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[3], 'textQuestions': textQuestions,
                                            'answersList': answersList}
         return data_from_database
 

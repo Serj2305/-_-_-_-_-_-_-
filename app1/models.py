@@ -7,11 +7,11 @@ class Sign(models.Model):
         verbose_name_plural = 'Добавить знак'
 
     name = models.CharField(max_length=500, verbose_name='Название знака')
-    description = models.CharField(max_length=500, verbose_name='Описание знака', blank=True)
+    description = models.CharField(max_length=500, verbose_name='Описание знака')
     category = models.CharField(max_length=500, verbose_name='Категория знака')
 
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение знака')
-    realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
+    realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта')
 
     def __str__(self):
         return f"{self.name}, {self.description}, {self.category}, {self.photo}, {self.realObjectPhoto}"
@@ -27,5 +27,9 @@ class Test(models.Model):
 
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение')
 
+    name = models.CharField(max_length=500, verbose_name='Название знака', blank=True)
+    description = models.CharField(max_length=500, verbose_name='Описание знака', blank=True)
+    realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
+
     def __str__(self):
-        return f"{self.question}, {self.answer}, {self.photo}"
+        return f"{self.question}, {self.answer}, {self.photo}, {self.name}, {self.description}, {self.realObjectPhoto}"
