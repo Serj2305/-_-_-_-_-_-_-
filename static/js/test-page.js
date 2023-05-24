@@ -98,8 +98,11 @@ const ANSWERS = {
 function startTest() {
     startTestCard.classList.add('back');
     testCardQuestion.id = '1';
+    buttonBackCard.style.display = 'none';
+    buttonBackAnswer.style.display = 'none';
     testCardQuestion.querySelector('img').src = QUESTIONS["1"].picture;
-    testCardQuestion.querySelector('.test-number').textContent = QUESTIONS["1"].number;
+    console.log(QUESTIONS)
+    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS["1"].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS["1"].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
@@ -121,35 +124,39 @@ function startTest() {
 startTestButton.addEventListener('click', startTest);
 
 function shouAnswer() {
+    testCardQuestion.classList.remove('front');
+    testCardAnswer.querySelector('.description-and-answer').innerHTML = ''
     const answers = testCardQuestion.querySelectorAll('input');
-    let flag = true;
     let cardId = testCardQuestion.id;
-    const result = testCardAnswer.querySelector('.result')
-    const incorrectAnswers = testCardAnswer.querySelector('.incorrect-answers')
-    const trueAnswers = QUESTIONS[cardId].answersList;
-    answers.forEach((answer, index) => {
-        if(answer.value !== trueAnswers[index]) {
-            flag = false;
-            const incorrectQuestion = answer.parentElement.querySelector('p').textContent;
-            const incorrectAnswer = document.createElement('p');
-            incorrectAnswer.textContent = `Неверный ответ: ${incorrectQuestion} --> ${answer.value} ( правильный ответ:${trueAnswers[index]})`;
-            incorrectAnswers.appendChild(incorrectAnswer);
-        }
-    });
-    if (flag === true) {
-        result.textContent = 'Верно';
-        result.style.background = '#9FCB9F';
+    if(cardId === '1'){
+        buttonBackAnswer.style.display = 'none';
     }
     else {
-        result.textContent = 'Неверно';
-        result.style.background = '#CB9F9F';
+        buttonBackAnswer.style.display = 'block';
     }
-    testCardQuestion.classList.remove('front');
+    const trueAnswers = QUESTIONS[cardId].answersList;
+    answers.forEach((answer, index) => {
+        const result = document.createElement('span');
+        result.classList.add('result');
+        answer.readOnly = true;
+        answer.parentElement.appendChild(result);
+        if(answer.value !== trueAnswers[index]) {
+            answer.style.background = '#F4D0D0';
+            answer.style.border = '#E18686';
+            result.textContent = `${answer.value} - неверно, верный ответ - ${trueAnswers[index]}`;
+        }
+        else {
+            answer.style.background = '#E1F0E1';
+            answer.style.border = '#9FCB9F';
+            result.textContent = `верный ответ - ${answer.value}`;
+        }
+        testCardAnswer.querySelector('.description-and-answer').appendChild(answer.parentElement);
+    });
+
+
     testCardAnswer.querySelector('.test-number').textContent = ANSWERS[`${testCardQuestion.id}`].number;
     testCardAnswer.querySelector('.picture-sign').src = ANSWERS[`${testCardQuestion.id}`].pictureSign;
     testCardAnswer.querySelector('.picture-world').src = ANSWERS[`${testCardQuestion.id}`].pictureWorld;
-    testCardAnswer.querySelector('.name-sign').textContent = ANSWERS[`${testCardQuestion.id}`].nameSign;
-    testCardAnswer.querySelector('.description-sign').textContent = ANSWERS[`${testCardQuestion.id}`].descriptionSign;
     testCardAnswer.classList.add('front');
 };
 buttonAnswer.addEventListener('click', shouAnswer);
@@ -158,6 +165,12 @@ function shouNextQuestion() {
     testCardAnswer.classList.remove('front');
     let cardId = `${Number(testCardQuestion.id) + 1}`;
     testCardQuestion.id = cardId;
+    if(cardId === '1'){
+        buttonBackCard.style.display = 'none';
+    }
+    else {
+        buttonBackCard.style.display = 'block';
+    }
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
     const fragment = document.createDocumentFragment();
@@ -181,7 +194,15 @@ buttonResume.addEventListener('click', shouNextQuestion);
 
 function showPreviousQuestion() {
     testCardQuestion.classList.remove('front');
-    let cardId = `${Number(testCardQuestion.id) - 1}`;
+    setTimeout(()=>{
+        testCardQuestion.classList.add('front');
+        let cardId = `${Number(testCardQuestion.id) - 1}`;
+    if(cardId === '1'){
+        buttonBackCard.style.display = 'none';
+    }
+    else {
+        buttonBackCard.style.display = 'block';
+    }
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
@@ -200,13 +221,19 @@ function showPreviousQuestion() {
     });
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
     testCardQuestion.querySelector('.description-and-answer').appendChild(fragment)
-    setTimeout(()=>testCardQuestion.classList.add('front'),300);
+        },300);
 };
 buttonBackCard.addEventListener('click', showPreviousQuestion);
 
 function shouPreviousAnswer() {
      testCardAnswer.classList.remove('front');
     let cardId = `${Number(testCardQuestion.id) - 1}`;
+    if(cardId === '1'){
+        buttonBackCard.style.display = 'none';
+    }
+    else {
+        buttonBackCard.style.display = 'block';
+    }
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
