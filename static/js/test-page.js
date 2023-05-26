@@ -16,6 +16,7 @@ fetch('sendTest')
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
       QUESTIONS = data;
+      console.log(QUESTIONS)
   }).catch(function (error) {
       alert(error)
   });
@@ -134,6 +135,7 @@ function shouAnswer() {
     else {
         buttonBackAnswer.style.display = 'block';
     }
+
     const trueAnswers = QUESTIONS[cardId].answersList;
     answers.forEach((answer, index) => {
         const result = document.createElement('span');
@@ -171,8 +173,15 @@ function shouNextQuestion() {
     else {
         buttonBackCard.style.display = 'block';
     }
+    if(cardId === `${Object.keys(QUESTIONS).length}`) {
+        buttonResume.style.display = 'none';
+    }
+    else {
+        buttonResume.style.display = 'block'
+    }
+
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-    testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
+    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[cardId].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
@@ -197,13 +206,13 @@ function showPreviousQuestion() {
     setTimeout(()=>{
         testCardQuestion.classList.add('front');
         let cardId = `${Number(testCardQuestion.id) - 1}`;
-    if(cardId === '1'){
+    testCardQuestion.id = cardId;
+     if(cardId === '1'){
         buttonBackCard.style.display = 'none';
     }
     else {
         buttonBackCard.style.display = 'block';
     }
-    testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
     const fragment = document.createDocumentFragment();

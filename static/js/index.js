@@ -140,7 +140,7 @@ fetch('send')
           card.onclick = () => {
               pictureSign.src = data[index].picture;
               popupNameSign.textContent = data[index].name;
-              if(data[index].pictureWorld === '/media/') {
+              if(data[index].pictureWorld === '/images/') {
                   worldSignContainer.style.display = 'none';
               }
               else{

@@ -7,11 +7,11 @@ class Sign(models.Model):
         verbose_name_plural = 'Добавить знак'
 
     name = models.CharField(max_length=500, verbose_name='Название знака')
-    description = models.CharField(max_length=500, verbose_name='Описание знака')
+    description = models.CharField(max_length=500, verbose_name='Описание знака', blank=True)
     category = models.CharField(max_length=500, verbose_name='Категория знака')
 
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение знака')
-    realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта')
+    realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
 
     def __str__(self):
         return f"{self.name}, {self.description}, {self.category}, {self.photo}, {self.realObjectPhoto}"
