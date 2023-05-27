@@ -7,6 +7,7 @@ const buttonResume = document.querySelector('.button-resume');
 const buttonBackAnswer = document.querySelector('.back-answer');
 const buttonBackCard = document.querySelector('.back-card');
 
+
 let QUESTIONS = {};
 fetch('sendTest')
     .then((response) => {
@@ -16,7 +17,7 @@ fetch('sendTest')
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
       QUESTIONS = data;
-      console.log(QUESTIONS)
+      document.querySelector('.start-test .question-number').textContent = testCardQuestion.querySelector('.test-number').textContent = `0/${Object.keys(QUESTIONS).length}`;
   }).catch(function (error) {
       alert(error)
   });
@@ -93,6 +94,30 @@ const ANSWERS = {
         result: 'Верно',
         nameSign: 'тут должно быть название знаков',
         descriptionSign: 'а тут должно быть описание или характеристика знака'
+    },
+    6:{
+        number: '5/120',
+        pictureSign: '/static/img/Rectangle%205.svg',
+        pictureWorld: '/static/img/Rectangle%205.svg',
+        result: 'Верно',
+        nameSign: 'тут должно быть название знаков',
+        descriptionSign: 'а тут должно быть описание или характеристика знака'
+    },
+    7:{
+        number: '5/120',
+        pictureSign: '/static/img/Rectangle%205.svg',
+        pictureWorld: '/static/img/Rectangle%205.svg',
+        result: 'Верно',
+        nameSign: 'тут должно быть название знаков',
+        descriptionSign: 'а тут должно быть описание или характеристика знака'
+    },
+    8:{
+        number: '5/120',
+        pictureSign: '/static/img/Rectangle%205.svg',
+        pictureWorld: '/static/img/Rectangle%205.svg',
+        result: 'Верно',
+        nameSign: 'тут должно быть название знаков',
+        descriptionSign: 'а тут должно быть описание или характеристика знака'
     }
 }
 
@@ -145,7 +170,7 @@ function shouAnswer() {
         if(answer.value !== trueAnswers[index]) {
             answer.style.background = '#F4D0D0';
             answer.style.border = '#E18686';
-            result.textContent = `${answer.value} - неверно, верный ответ - ${trueAnswers[index]}`;
+            result.textContent = `верный ответ - ${trueAnswers[index]}`;
         }
         else {
             answer.style.background = '#E1F0E1';
@@ -156,7 +181,7 @@ function shouAnswer() {
     });
 
 
-    testCardAnswer.querySelector('.test-number').textContent = ANSWERS[`${testCardQuestion.id}`].number;
+    testCardAnswer.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
     testCardAnswer.querySelector('.picture-sign').src = ANSWERS[`${testCardQuestion.id}`].pictureSign;
     testCardAnswer.querySelector('.picture-world').src = ANSWERS[`${testCardQuestion.id}`].pictureWorld;
     testCardAnswer.classList.add('front');
@@ -214,7 +239,7 @@ function showPreviousQuestion() {
         buttonBackCard.style.display = 'block';
     }
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-    testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
+    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
@@ -245,7 +270,7 @@ function shouPreviousAnswer() {
     }
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-    testCardQuestion.querySelector('.test-number').textContent = QUESTIONS[cardId].number;
+    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
