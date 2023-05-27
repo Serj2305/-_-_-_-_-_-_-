@@ -24,12 +24,12 @@ def read_sqlite_table(table):
         answersList = []
         id = 0
         for row in records:
-            textQuestions = row[1].split(",")
-            answersList = row[2].split(",")
+            textQuestions.append(row[1].split(","))
+            answersList.append(row[2].split(","))
         for row in records:
             id += 1
-            data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[3], 'textQuestions': textQuestions,
-                                           'answersList': answersList}
+            data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[3], 'textQuestions': textQuestions[id - 1],
+                                           'answersList': answersList[id - 1]}
         return data_from_database
 
     else:
