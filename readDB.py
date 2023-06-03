@@ -26,10 +26,17 @@ def read_sqlite_table(table):
         for row in records:
             textQuestions.append(row[1].split(","))
             answersList.append(row[2].split(","))
+        for i in range(len(textQuestions)):
+            for n in range(len(textQuestions[i])):
+                textQuestions[i][n] = ' '.join(textQuestions[i][n].strip().split()).title()
+        for i in range(len(answersList)):
+            for n in range(len(answersList[i])):
+                answersList[i][n] = ' '.join(answersList[i][n].strip().split())
         for row in records:
             id += 1
             data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[3], 'textQuestions': textQuestions[id - 1],
                                            'answersList': answersList[id - 1]}
+        print(data_from_database)
         return data_from_database
 
     else:
