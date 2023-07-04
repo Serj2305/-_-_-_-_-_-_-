@@ -24,12 +24,8 @@ class Test(models.Model):
 
     question = models.CharField(max_length=500, verbose_name='Вопросы (вводить через запятую)')
     answer = models.CharField(max_length=500, verbose_name='Ответы (вводить через запятую)')
-
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение')
-
-    name = models.CharField(max_length=500, verbose_name='Название знака', blank=True)
-    description = models.CharField(max_length=500, verbose_name='Описание знака', blank=True)
     realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
 
     def __str__(self):
-        return f"{self.question}, {self.answer}, {self.photo}, {self.name}, {self.description}, {self.realObjectPhoto}"
+        return f"{self.question}, {self.answer}, {self.photo}, {self.realObjectPhoto}"

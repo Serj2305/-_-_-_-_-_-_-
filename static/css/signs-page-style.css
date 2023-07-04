@@ -160,8 +160,7 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.2
 
 
 .sign-container:hover{
-    -webkit-transform: rotate(5deg); /* Градусы поворота можно изменить по необходимости */
-          transform: rotate(5deg); /* Градусы поворота можно изменить по необходимости */
+    transform: scale(0.95);
     cursor: pointer;
 }
 
@@ -205,12 +204,13 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.2
 }
 
 /*стилизуем подвал*/
+/*1 попап*/
 .footer-container{
     padding: 30px;
     background-color: #F5F5F5;;
 }
 
-/*стилизуем попап*/
+/*стилизуем попапы*/
 .popup{
     position:fixed;
     width: 100%;
@@ -245,15 +245,15 @@ border-radius: 40px;
     justify-content: center;
 }
 .popup-text-container{
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-    justify-content: center;
+
 }
 
-.popup-text-container div{
-    margin-top: 20px;
-
+.popup-text-container-content{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
 }
 .popup-name-sign{
     margin: 0px 0 20px;
@@ -262,8 +262,16 @@ border-radius: 40px;
 }
 
 .popup-description-sign{
-    margin:0;
+    margin:0px 0 20px;;
     font-size: 18px;
+    line-height: 25px;
+}
+.question{
+    margin: 0;
+    line-height: 25px;
+}
+.answer{
+    margin: 0;
     line-height: 25px;
 }
 
@@ -286,4 +294,52 @@ border-radius: 40px;
     max-height: 150px;
     max-width: 150px;
     vertical-align: middle;
+
+}
+
+.popup-img-container img:hover {
+    cursor: pointer;
+    scale: 1.1;
+    transition: 1s;
+}
+
+/*2 попап*/
+
+.popup-enlarged-img{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    transition: opacity 1s, visibility 0s;
+}
+.popup-enlarged-img-body{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-enlarged-img-content{
+    display: flex;
+    padding: 30px 30px 10px;
+    position: relative;
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+border-radius: 40px;
+}
+
+.popup-enlarged-img-content .popup-img-enlarged-img{
+    margin-top: 10px;
+    height: 400px;
+    max-width: 700px;
+}
+.popup-img-button-close{
+    position: absolute;
+    right: 4%;
+    top: 1%;
+}
+.popup-img-button-close:hover{
+    opacity: 0.7;
+    cursor: pointer;
 }

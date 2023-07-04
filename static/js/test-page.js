@@ -127,7 +127,6 @@ function startTest() {
     buttonBackCard.style.display = 'none';
     buttonBackAnswer.style.display = 'none';
     testCardQuestion.querySelector('img').src = QUESTIONS["1"].picture;
-    console.log(QUESTIONS)
     testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS["1"].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS["1"].textQuestions.forEach((question) => {
@@ -182,8 +181,14 @@ function shouAnswer() {
 
 
     testCardAnswer.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
-    testCardAnswer.querySelector('.picture-sign').src = ANSWERS[`${testCardQuestion.id}`].pictureSign;
-    testCardAnswer.querySelector('.picture-world').src = ANSWERS[`${testCardQuestion.id}`].pictureWorld;
+    testCardAnswer.querySelector('.picture-sign').src = QUESTIONS[`${testCardQuestion.id}`].picture;
+    if(QUESTIONS[`${testCardQuestion.id}`].pictureWorld === '/images/') {
+        testCardAnswer.querySelector('.picture-world-container').style.display = 'none';
+    }
+    else {
+        testCardAnswer.querySelector('.picture-world-container').style.display = 'flex';
+        testCardAnswer.querySelector('.picture-world').src = QUESTIONS[`${testCardQuestion.id}`].pictureWorld;
+    }
     testCardAnswer.classList.add('front');
 };
 buttonAnswer.addEventListener('click', shouAnswer);
@@ -238,6 +243,12 @@ function showPreviousQuestion() {
     else {
         buttonBackCard.style.display = 'block';
     }
+    if(cardId === `${Object.keys(QUESTIONS).length}`) {
+        buttonResume.style.display = 'none';
+    }
+    else {
+        buttonResume.style.display = 'block'
+    }
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
@@ -267,6 +278,12 @@ function shouPreviousAnswer() {
     }
     else {
         buttonBackCard.style.display = 'block';
+    }
+    if(cardId === `${Object.keys(QUESTIONS).length}`) {
+        buttonResume.style.display = 'none';
+    }
+    else {
+        buttonResume.style.display = 'block'
     }
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;

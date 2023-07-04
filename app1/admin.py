@@ -16,10 +16,9 @@ class TestRegister(admin.ModelAdmin):
         }),
         ("Общее", {
             'fields': ('photo',),
-            'description': "Данные поля используются в обеих карточках"
         }),
         ("Сторона карточки с ответами", {
-            'fields': ('name', 'description', 'realObjectPhoto'),
+            'fields': ('realObjectPhoto',),
         }),
     )
 

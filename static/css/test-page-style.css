@@ -159,6 +159,18 @@ overflow: hidden;
     margin: 0;
     margin-bottom: 2px;
 }
+.question-picture-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+}
+.question-picture{
+    min-width: 200px;
+    max-width: 250px;
+    max-height: 250px;
+}
 
 
 
@@ -201,6 +213,7 @@ border-radius: 22px;
 .pictures-container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
 }
 .result{
@@ -209,16 +222,22 @@ border-radius: 22px;
     color: #818181;
     float: right;
 }
-.name-sign{
-    text-align: center;
-    font-size: 24px;
-    line-height: 20px;
-    margin-bottom: 15px;
+.picture-container{
+    width: 150px;
+    height: 150px;
+    display: flex;
 }
-.description-sign{
-    text-align: center;
-    line-height: 20px;
-    font-size: 20px;
+.picture-sign{
+    min-width: 100px;
+    max-height: 150px;
+    max-width: 150px;
+    margin: auto auto;
+}
+.picture-world{
+    min-width: 100px;
+    max-height: 150px;
+    max-width: 150px;
+    margin: auto auto;
 }
 /*стилизуем подвал*/
 .footer-container{

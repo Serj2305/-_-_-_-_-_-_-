@@ -3,8 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/index-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,13 +35,13 @@
                 при этом основные знаки для топографических карт разных стран не имеют между собой особых различий.
             </p>
             <div class="cards">
-                <div class="card"><a href="{% url 'signs' %}">Смотреть</a></div>
                 <div class="card"><a href="{% url 'test' %}">Учить</a></div>
+                <div class="card"><a href="{% url 'signs' %}">Смотреть</a></div>
                 <div class="card"><a href="{% url 'exam' %}">Экзамен</a></div>
             </div>
             <div class="cards-description">
-                <p class="card-description">На данной странице вы можете ознакомиться со знаками, разделёнными по категориям</p>
                 <p class="card-description">А здесь можете пройти тренировочный тест по знакам без учета времени</p>
+                <p class="card-description">На данной странице вы можете ознакомиться со знаками, разделёнными по категориям</p>
                 <p class="card-description">Максимально приближенный к реальному режим прохождения теста по знакам с учётом времени</p>
             </div>
         </div>

@@ -3,7 +3,9 @@ const filterList = document.querySelector('.filter-list');
 const filterListItems = document.querySelectorAll('.filter-list-item');
 const buttonShouMore = document.querySelector('.button-shou-more')
 const popup = document.querySelector('.popup');
+const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
 const popupButtonClose = document.querySelector('.popup-button-close');
+const popupImgButtonClose = document.querySelector('.popup-img-button-close');
 const SIGNS = {
     sign1:{
         name: 'Name1',
@@ -54,17 +56,15 @@ const worldSignContainer = document.querySelector('.world-picture-container')
 
 let MAXCARD = 10;
 function appendSign(Signs) {
-    const fragment = document.createDocumentFragment();
     Object.entries(Signs).forEach(function(sign) {
         const currentSign = signTemplate.cloneNode(true);
         currentSign.querySelector('.img-sign').src = sign[1].picture;
         //currentSign.querySelector('.description-sign').textContent = sign[1].description;
         currentSign.querySelector('.name-sign').textContent = sign[1].name;
         currentSign.querySelector('.sign-container').dataset.category = sign[1].category;
-        fragment.appendChild(currentSign);
+        signsContainer.appendChild(currentSign);
 
     });
-    signsContainer.appendChild(fragment);
 
 
 
@@ -118,6 +118,9 @@ const openPopup = (sign) => {
 popupButtonClose.onclick = function () {
     popup.classList.add('hidden');
 }
+popupImgButtonClose.onclick = function () {
+    popupEnlargedImg.classList.add('hidden');
+}
 
 
 fetch('send')
@@ -139,6 +142,10 @@ fetch('send')
       cards.forEach((card,index) => {
           card.onclick = () => {
               pictureSign.src = data[index].picture;
+              pictureSign.addEventListener('click', () => {
+                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = data[index].picture;
+                      popupEnlargedImg.classList.remove('hidden');
+                  });
               popupNameSign.textContent = data[index].name;
               if(data[index].pictureWorld === '/images/') {
                   worldSignContainer.style.display = 'none';
@@ -146,6 +153,10 @@ fetch('send')
               else{
                   worldSignContainer.style.display = 'block';
                   worldSign.src = data[index].pictureWorld;
+                  worldSign.addEventListener('click', () => {
+                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = data[index].pictureWorld;
+                      popupEnlargedImg.classList.remove('hidden');
+                  });
               }
               popupDescriptionSign.textContent = data[index].description;
 

@@ -11,4 +11,4 @@ class SignForm(forms.ModelForm):
 class TestForm(forms.ModelForm):
     class Meta:
         model = Sign
-        fields = ['question', 'answer', 'photo', 'name', 'description', 'realObjectPhoto']
+        fields = ['question', 'answer', 'photo', 'realObjectPhoto']
