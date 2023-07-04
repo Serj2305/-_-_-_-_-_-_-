@@ -29,7 +29,8 @@ urlpatterns = [
     path('test-page/', test_page, name='test'),
     path('exam-page/', exam_page, name='exam'),
     path('signs-page/send', views.send, name='send'),
-    path('test-page/sendTest', views.sendTest, name='sendTest')
+    path('test-page/sendTest', views.sendTest, name='sendTest'),
+    path('registr/', views.registr),
 ]
 
 if settings.DEBUG:
