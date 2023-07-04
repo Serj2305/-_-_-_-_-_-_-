@@ -64,26 +64,6 @@ def registr(request):
         return render(request, 'registr.html', data)
 
 
-# def sign_in(request):
-#     if request.method == 'GET':
-#         form = AuthenticationForm()
-#         return render(request, 'login.html', {'form': form})
-#
-#     elif request.method == 'POST':
-#         form = AuthenticationForm(request.POST)
-#
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#             user = authenticate(request, username=username, password=password)
-#             if user:
-#                 messages.success(request, f'Hi {username.title()}, welcome back!')
-#                 return render(request, 'login.html', {'form': form})
-#
-#         else:
-#             messages.error(request, f'Invalid username or password')
-#             return render(request, 'login.html', {'form': form})
-
 def sign_in(request):
     form = AuthenticationForm()
     if request.method == "POST":
