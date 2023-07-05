@@ -1,6 +1,7 @@
 const filterButton = document.querySelector('.signs-filter');
 const filterList = document.querySelector('.filter-list');
-const filterListItems = document.querySelectorAll('.filter-list-item');
+const filtersUl = document.querySelector('.filters')
+const descriptionCategory = document.querySelector('.description-category')
 const buttonShouMore = document.querySelector('.button-shou-more')
 const popup = document.querySelector('.popup');
 const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
@@ -122,6 +123,77 @@ popupImgButtonClose.onclick = function () {
     popupEnlargedImg.classList.add('hidden');
 }
 
+const FILTERS = {
+    1:{
+        name: 'Все знаки',
+        description: '2',
+        category: 'all-signs',
+    },
+    2:{
+        name: 'Геодезические пункты',
+        description: '4444214326234234',
+        category: 'geodetic-points',
+    },
+    3:{
+        name: 'Населенные пункты',
+        description: '',
+        category: 'localities',
+    },
+    4:{
+        name: 'Промышленные, сельскохозяйственные и социально-культурные объекты',
+        description: '11111',
+        category: 'objects',
+    },
+    5:{
+        name: 'Дорожная сеть',
+        description: '123321',
+        category: 'road-network',
+    },
+    6:{
+        name: 'Гидрография и гидротехнические сооружения',
+        description: '123321',
+        category: 'structures',
+    },
+    7:{
+        name: 'Растительный покров и грунты',
+        description: '123321',
+        category: 'vegetation-cover-and-soils',
+    },
+    8:{
+        name: 'Границы',
+        description: '123321',
+        category: 'borders',
+    },
+    9:{
+        name: 'Перечень условных сокращений',
+        description: '123321',
+        category: 'list-of-abbreviations',
+    },
+};
+
+function appendFilters () {
+    Object.entries(FILTERS).forEach(function (filter) {
+        const filterItem = document.createElement('li');
+        filterItem.classList.add(filter[1].category);
+        filterItem.classList.add('filter-list-item');
+        filterItem.textContent = filter[1].name;
+        filterItem.dataset.category = filter[1].category;
+        filterItem.dataset.description = filter[1].description;
+        filtersUl.appendChild(filterItem);
+    });
+};
+appendFilters()
+    //fetch('send')
+    //.then((response) => {
+      //if(response.ok) {
+        //return response.json();
+      //}
+      //throw new Error(`${response.status} ${response.statusText}`);
+  //}).then((data) => {
+    //  const FILTERS = data;
+    //appendFilters(FILTERS);
+//});
+
 
 fetch('send')
     .then((response) => {
@@ -163,9 +235,17 @@ fetch('send')
               popup.classList.remove('hidden');
           }
       })
-    filterListItems.forEach((item) => {
+    filtersUl.childNodes.forEach((item) => {
        item.addEventListener('click', () => {
           filterButton.querySelector('span').textContent = item.textContent;
+          if(item.dataset.description === '') {
+              descriptionCategory.style.display = 'none';
+          }
+          else {
+              descriptionCategory.style.display = 'block';
+              descriptionCategory.textContent = item.dataset.description;
+          }
+
           filterList.classList.add('hidden');
           for (let card of cards) {
                 if (card.dataset.category !== item.dataset.category && item.dataset.category !== 'all-signs') {

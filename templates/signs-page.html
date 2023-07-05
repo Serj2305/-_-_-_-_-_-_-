@@ -20,7 +20,7 @@
                     <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
                     <div class="nav-cont">
                         <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="#"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
+                        <div class ="main-nav-list-item"><a href="{% url 'login' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                     </div>
                 </div>
             </nav>
@@ -33,7 +33,7 @@
                 <div class="signs-filter"><span>Категории</span> <img src="{% static 'img/sign-filter.svg' %}" alt="стрелочка" width="25" height="25"></div>
                 <div class="filter-list hidden">
                     <ul class="filters">
-                        <li class="filter-list-item all-signs" data-category="all-signs">Все знаки</li>
+                       <!--  <li class="filter-list-item all-signs" data-category="all-signs">Все знаки</li>
                         <li class="filter-list-item geodetic-points" data-category="geodetic-points">Геодезические пункты</li>
                         <li class="filter-list-item localities" data-category="localities">Населенные пункты</li>
                         <li class="filter-list-item objects" data-category="objects">Промышленные, сельскохозяйственные и социально-культурные объекты</li>
@@ -41,7 +41,7 @@
                         <li class="filter-list-item structures" data-category="structures">Гидрография и гидротехнические сооружения</li>
                         <li class="filter-list-item vegetation-cover-and-soils" data-category="vegetation-cover-and-soils">Растительный покров и грунты</li>
                         <li class="filter-list-item borders" data-category="borders">Границы</li>
-                        <li class="filter-list-item list-of-abbreviations" data-category="list-of-abbreviations">Перечень условных сокращений</li>
+                        <li class="filter-list-item list-of-abbreviations" data-category="list-of-abbreviations">Перечень условных сокращений</li> -->
                     </ul>
                 </div>
                <!-- <select title="фильтр знаков" name="signs-filter" id="signs-filter" class="signs-filter">
@@ -56,6 +56,7 @@
                     <option value="list-of-abbreviations">Перечень условных сокращений</option>
                 </select> -->
             </div>
+            <p class="description-category"></p>
             <div class="signs-container">
 
             </div>

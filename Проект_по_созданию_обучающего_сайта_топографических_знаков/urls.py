@@ -30,8 +30,8 @@ urlpatterns = [
     path('exam-page/', exam_page, name='exam'),
     path('signs-page/send', views.send, name='send'),
     path('test-page/sendTest', views.sendTest, name='sendTest'),
-    path('registr/', views.registr),
-    path('login/', views.sign_in),
+    path('registr/', views.registr, name='registr'),
+    path('login/', views.sign_in, name='login'),
 ]
 
 if settings.DEBUG:
