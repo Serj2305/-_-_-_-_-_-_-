@@ -1,8 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.messages import get_messages
 from django.shortcuts import render
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.http import JsonResponse
 from readDB import read_sqlite_table
 
