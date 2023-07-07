@@ -1,7 +1,7 @@
 import sqlite3
 
 
-def read_sqlite_table(table):
+def read_sqlite_table(table, list=False):
     sqlite_connection = sqlite3.connect('db.sqlite3')
     cursor = sqlite_connection.cursor()
 
@@ -28,9 +28,30 @@ def read_sqlite_table(table):
             answersList.append(row[2].split(","))
         for row in records:
             id += 1
-            data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[3], 'textQuestions': textQuestions[id - 1],
+            data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[3],
+                                           'textQuestions': textQuestions[id - 1],
                                            'answersList': answersList[id - 1], 'pictureWorld': "/images/" + row[4]}
         return data_from_database
+
+    if table == "app1_category" and list == False:
+        data_from_database = {}
+        id = 0
+        for row in records:
+            id += 1
+            data_from_database[f'{id}'] = {'name': row[3], 'description': row[2], 'category': row[1]}
+        return data_from_database
+
+    elif table == "app1_category" and list == True:
+        data_from_database = []
+        categories = [[1, 'no category']]
+        id = 1
+        for row in records:
+            id += 1
+            data_from_database.append(id)
+            data_from_database.append(row[1])
+            categories.append(data_from_database)
+            data_from_database = []
+        return categories
 
     else:
         print("Недопустимая таблица")
