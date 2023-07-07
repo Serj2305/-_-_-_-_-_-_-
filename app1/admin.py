@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from app1.models import Sign, Test
+from app1.models import Sign, Test, Category
 
 
 @admin.register(Sign)
@@ -21,6 +21,11 @@ class TestRegister(admin.ModelAdmin):
             'fields': ('realObjectPhoto',),
         }),
     )
+
+
+@admin.register(Category)
+class CategoryRegister(admin.ModelAdmin):
+    pass
 
 
 admin.site.site_header = 'Топографические (картографические) условные знаки'
