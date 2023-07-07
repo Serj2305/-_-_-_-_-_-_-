@@ -75,3 +75,7 @@ def sign_in(request):
                 messages.info(request, 'Вы успешно зашли в аккаунт')
                 return render(request, 'login.html', {'form': form})
     return render(request, 'login.html', {'form': form})
+
+
+def send_categories(request):
+    return JsonResponse(read_sqlite_table('app1_category'))
