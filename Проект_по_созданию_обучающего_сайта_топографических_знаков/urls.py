@@ -23,7 +23,7 @@ from app1.views import index_page, project_page, signs_page, test_page, exam_pag
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page, name='index'),
+    path('', views.registr, name='index'),
     path('project-page/', project_page, name='project'),
     path('signs-page/', signs_page, name='signs'),
     path('test-page/', test_page, name='test'),
