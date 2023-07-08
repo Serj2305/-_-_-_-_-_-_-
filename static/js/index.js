@@ -171,8 +171,8 @@ const FILTERS = {
     },
 };
 
-function appendFilters () {
-    Object.entries(FILTERS).forEach(function (filter) {
+function appendFilters (filters) {
+    Object.entries(filters).forEach(function (filter) {
         const filterItem = document.createElement('li');
         filterItem.classList.add(filter[1].category);
         filterItem.classList.add('filter-list-item');
@@ -182,17 +182,18 @@ function appendFilters () {
         filtersUl.appendChild(filterItem);
     });
 };
-appendFilters()
-    //fetch('send')
-    //.then((response) => {
-      //if(response.ok) {
-        //return response.json();
-      //}
-      //throw new Error(`${response.status} ${response.statusText}`);
-  //}).then((data) => {
-    //  const FILTERS = data;
-    //appendFilters(FILTERS);
-//});
+fetch('send_categories')
+    .then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+  }).then((data) => {
+      const filt = data;
+    appendFilters(filt);
+}).catch(function (error) {
+      alert(error)
+  });
 
 
 fetch('send')

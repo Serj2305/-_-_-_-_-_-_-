@@ -14,8 +14,8 @@ def read_sqlite_table(table, list=False):
         id = 0
         for row in records:
             id += 1
-            data_from_database[f'{id}'] = {'name': row[1], 'description': row[2], 'category': row[3],
-                                           'picture': "/images/" + row[4], 'pictureWorld': "/images/" + row[5]}
+            data_from_database[f'{id}'] = {'name': row[1], 'description': row[2], 'category': row[5],
+                                           'picture': "/images/" + row[3], 'pictureWorld': "/images/" + row[4]}
         return data_from_database
 
     if table == "app1_test":
@@ -38,16 +38,16 @@ def read_sqlite_table(table, list=False):
         id = 0
         for row in records:
             id += 1
-            data_from_database[f'{id}'] = {'name': row[3], 'description': row[2], 'category': row[1]}
+            data_from_database[f'{id}'] = {'name': row[1], 'description': row[2], 'category': row[3]}
         return data_from_database
 
     elif table == "app1_category" and list == True:
         data_from_database = []
-        categories = [[1, 'no category']]
+        categories = [['1', 'no category']]
         id = 1
         for row in records:
             id += 1
-            data_from_database.append(id)
+            data_from_database.append(str(id))
             data_from_database.append(row[1])
             categories.append(data_from_database)
             data_from_database = []

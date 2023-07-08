@@ -32,6 +32,7 @@ urlpatterns = [
     path('test-page/sendTest', views.sendTest, name='sendTest'),
     path('registr/', views.registr, name='registr'),
     path('login/', views.sign_in, name='login'),
+    path('signs-page/send_categories', views.send_categories, name='categories'),
 ]
 
 if settings.DEBUG:
