@@ -48,7 +48,7 @@ def registr(request):
             # Сохраняем пользователя
             form.save()
             # Передача надписи, если прошло всё успешно
-            response = redirect('login/')
+            response = redirect('/login/')
             return response
         elif not form.is_valid():
             data['form'] = form
@@ -69,7 +69,8 @@ def sign_in(request):
             form.clean()
             user = form.get_user()
             if user is not None:
-                return index_page(request)
+                response = redirect('/index/')
+                return response
     return render(request, 'login.html', {'form': form})
 
 

@@ -23,14 +23,14 @@ from app1.views import index_page, project_page, signs_page, test_page, exam_pag
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.registr, name='index'),
+    path('', views.registr, name='registr'),
     path('project-page/', project_page, name='project'),
     path('signs-page/', signs_page, name='signs'),
     path('test-page/', test_page, name='test'),
     path('exam-page/', exam_page, name='exam'),
     path('signs-page/send', views.send, name='send'),
     path('test-page/sendTest', views.sendTest, name='sendTest'),
-    path('registr/', views.registr, name='registr'),
+    path('index/', views.index_page, name='index'),
     path('login/', views.sign_in, name='login'),
     path('signs-page/send_categories', views.send_categories, name='categories'),
 ]
