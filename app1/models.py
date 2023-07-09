@@ -5,7 +5,6 @@ from readDB import read_sqlite_table
 
 class Sign(models.Model):
     categories = tuple(read_sqlite_table('app1_category', list=True))
-    print(read_sqlite_table('app1_category'))
 
     class Meta:
         verbose_name = "знак"
