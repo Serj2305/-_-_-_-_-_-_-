@@ -1,7 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render
-from django.contrib import messages
-from django.contrib.auth import login
+from django.shortcuts import redirect
 from django.http import JsonResponse
 from readDB import read_sqlite_table
 
@@ -48,10 +47,9 @@ def registr(request):
         if form.is_valid():
             # Сохраняем пользователя
             form.save()
-            # Передача формы к рендару
-            data['form'] = form
             # Передача надписи, если прошло всё успешно
-            return render(request, 'registr.html', data)
+            response = redirect('/login/')
+            return response
         elif not form.is_valid():
             data['form'] = form
             return render(request, 'registr.html', data)
@@ -71,9 +69,8 @@ def sign_in(request):
             form.clean()
             user = form.get_user()
             if user is not None:
-                login(request, user)
-                messages.info(request, 'Вы успешно зашли в аккаунт')
-                return render(request, 'login.html', {'form': form})
+                response = redirect('/index/')
+                return response
     return render(request, 'login.html', {'form': form})
 
 
