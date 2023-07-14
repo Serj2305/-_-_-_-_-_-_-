@@ -12,7 +12,7 @@ class Sign(models.Model):
 
     name = models.CharField(max_length=500, verbose_name='Название знака')
     description = models.CharField(max_length=500, verbose_name='Описание знака', blank=True)
-    category = models.CharField(max_length=1, choices=categories, verbose_name="Категория")
+    category = models.CharField(max_length=500, choices=categories, verbose_name="Категория")
 
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение знака')
     realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
