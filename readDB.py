@@ -43,12 +43,10 @@ def read_sqlite_table(table, list=False):
 
     elif table == "app1_category" and list == True:
         data_from_database = []
-        categories = [['1', 'no category']]
-        id = 1
+        categories = [['no category', 'no category']]
         for row in records:
-            id += 1
-            data_from_database.append(str(id))
-            data_from_database.append(row[1])
+            data_from_database.append(row[3])
+            data_from_database.append(row[3])
             categories.append(data_from_database)
             data_from_database = []
         return categories
