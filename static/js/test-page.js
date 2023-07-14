@@ -6,7 +6,8 @@ const testCardAnswer = document.querySelector('.test-card-answer');
 const buttonResume = document.querySelector('.button-resume');
 const buttonBackAnswer = document.querySelector('.back-answer');
 const buttonBackCard = document.querySelector('.back-card');
-
+const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
+const popupImgButtonClose = document.querySelector('.popup-img-button-close');
 
 let QUESTIONS = {};
 fetch('sendTest')
@@ -120,13 +121,21 @@ const ANSWERS = {
         descriptionSign: 'а тут должно быть описание или характеристика знака'
     }
 }
+popupImgButtonClose.onclick = function () {
+    popupEnlargedImg.classList.add('hidden');
+}
 
 function startTest() {
     startTestCard.classList.add('back');
     testCardQuestion.id = '1';
     buttonBackCard.style.display = 'none';
     buttonBackAnswer.style.display = 'none';
-    testCardQuestion.querySelector('img').src = QUESTIONS["1"].picture;
+    const questionImg = testCardQuestion.querySelector('img');
+    questionImg.src = QUESTIONS["1"].picture;
+    questionImg.addEventListener('click', () => {
+                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = questionImg.src;
+                      popupEnlargedImg.classList.remove('hidden');
+                  });
     testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS["1"].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS["1"].textQuestions.forEach((question) => {
@@ -181,13 +190,23 @@ function shouAnswer() {
 
 
     testCardAnswer.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
-    testCardAnswer.querySelector('.picture-sign').src = QUESTIONS[`${testCardQuestion.id}`].picture;
+    const imgAnswer = testCardAnswer.querySelector('.picture-sign');
+    imgAnswer.src = QUESTIONS[`${testCardQuestion.id}`].picture;
+    imgAnswer.addEventListener('click', () => {
+                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = imgAnswer.src;
+                      popupEnlargedImg.classList.remove('hidden');
+                  });
     if(QUESTIONS[`${testCardQuestion.id}`].pictureWorld === '/images/') {
         testCardAnswer.querySelector('.picture-world-container').style.display = 'none';
     }
     else {
         testCardAnswer.querySelector('.picture-world-container').style.display = 'flex';
-        testCardAnswer.querySelector('.picture-world').src = QUESTIONS[`${testCardQuestion.id}`].pictureWorld;
+        const imgWorldAnswer = testCardAnswer.querySelector('.picture-world');
+        imgWorldAnswer.src = QUESTIONS[`${testCardQuestion.id}`].pictureWorld;
+        imgWorldAnswer.addEventListener('click', () => {
+                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = imgWorldAnswer.src;
+                      popupEnlargedImg.classList.remove('hidden');
+                  });
     }
     testCardAnswer.classList.add('front');
 };
@@ -210,7 +229,12 @@ function shouNextQuestion() {
         buttonResume.style.display = 'block'
     }
 
-    testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
+    const questionImg = testCardQuestion.querySelector('img');
+    questionImg.src = QUESTIONS[cardId].picture;
+    questionImg.addEventListener('click', () => {
+                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = questionImg.src;
+                      popupEnlargedImg.classList.remove('hidden');
+                  });
     testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[cardId].number}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {

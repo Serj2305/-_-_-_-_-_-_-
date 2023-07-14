@@ -24,6 +24,8 @@ def test_page(request):
 def exam_page(request):
     return render(request, 'exam-page.html')
 
+def account_page(request):
+    return render(request, 'personal-account-page.html')
 
 # отправляет словарь для списка знаков
 def send(request):

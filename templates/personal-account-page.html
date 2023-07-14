@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/personal-account-page-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>Личный кабинет</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <nav class="main-nav">
+                <div class="main-nav-list">
+                    <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+                    <div class="nav-cont">
+                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+                        <div class ="main-nav-list-item"><a href="{% url 'login' %}">Выход</a></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="personal-information">
+                <div class="photo-and-name">
+                    <div class="img-container"><img src="{% static 'img/personal-img.png' %}" alt="ваш аватар"></div><span class="name-account">Фамилия Имя Отчество</span>
+                </div>
+
+                <p class="study-group"><b>Группа:</b> Ваша группа</p>
+                <p class="email"><b>Электронная почта:</b> Ваша почта</p>
+            </div>
+            <div class="result-exam-information">
+                <p class="name-table">Результаты экзаменов:</p>
+                <div class="result-list-container">
+                    <ul class="result-list">
+                        <li class="result-list-item item-heading">
+                            <div class="number-exam">№</div>
+                            <div class="start-time">Начало</div>
+                            <div class="time-exam">Время(мин)</div>
+                            <div class="assessment">Оценка</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container"></div>
+    </footer>
+</body>
+</html>
