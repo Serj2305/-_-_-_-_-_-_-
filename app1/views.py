@@ -45,19 +45,25 @@ def registr(request):
     if request.method == 'POST':
         # Создаём форму
         form = UserCreationForm(request.POST)
+        x = form.fields['username']
+        x.label = "Почта"
+        x.help_text = "Почта должна быть выдана организацией УрФУ"
         # Валидация данных из формы
-        if form.is_valid():
+        if form.is_valid() and '@urfu' in form['username'].value():
             # Сохраняем пользователя
             form.save()
             # Передача надписи, если прошло всё успешно
             response = redirect('/login/')
             return response
-        elif not form.is_valid():
+        else:
             data['form'] = form
             return render(request, 'registr.html', data)
     else:
         # Создаём форму
         form = UserCreationForm()
+        x = form.fields['username']
+        x.label = "Почта"
+        x.help_text = "Почта должна быть выдана организацией УрФУ"
         # Передаём форму для рендеринга
         data['form'] = form
         return render(request, 'registr.html', data)
