@@ -23,10 +23,14 @@ class TestRegister(admin.ModelAdmin):
         }),
     )
 
+    list_display = ("question", "answer", "photo_image", "realObjectPhoto_image")
+    search_fields = ("question", "answer",)
+
 
 @admin.register(Category)
 class CategoryRegister(admin.ModelAdmin):
-    pass
+    list_display = ("name", "description", "category")
+    search_fields = ("name",)
 
 
 admin.site.site_header = 'Топографические (картографические) условные знаки'
