@@ -5,7 +5,8 @@ from app1.models import Sign, Test, Category
 
 @admin.register(Sign)
 class SignRegister(admin.ModelAdmin):
-    pass
+    list_display = ("name", "description", "category", "photo_image", "realObjectPhoto_image")
+    search_fields = ("name", )
 
 
 @admin.register(Test)
