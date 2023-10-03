@@ -30,11 +30,21 @@
         <div class="main-container">
             <div class="personal-information">
                 <div class="photo-and-name">
-                    <div class="img-container"><img src="{% static 'img/personal-img.png' %}" alt="ваш аватар"></div><span class="name-account">Фамилия Имя Отчество</span>
+                    <label class="label-avatar" for="fileAvatar">
+                        <div class="img-container">
+                            <img class = 'avatar' src="{% static 'img/personal-img.png' %}" alt="ваш аватар">
+                        </div>
+                    </label>
+                    <span class="name-account">Фамилия Имя Отчество</span>
                 </div>
-
-                <p class="study-group"><b>Группа:</b> Ваша группа</p>
+                <input class="input-avatar" type="file" id="" />
+                <p class="study-group"><b>Группа: </b><i class = 'group'>Ваша группа</i></p>
                 <p class="email"><b>Электронная почта:</b> Ваша почта</p>
+                <div class="buttons-container">
+                    <div class="button-edit ">Редактировать</div>
+                    <div class="button-save hidden-button">Сохранить</div>
+                    <div class="button-back hidden-button">Отмена</div>
+                </div>
             </div>
             <div class="result-exam-information">
                 <p class="name-table">Результаты экзаменов:</p>
@@ -54,5 +64,6 @@
     <footer>
         <div class="footer-container"></div>
     </footer>
+    <script src="{% static 'js/personal-account-page.js' %}"></script>
 </body>
 </html>
