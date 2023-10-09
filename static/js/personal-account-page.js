@@ -5,6 +5,8 @@ const inputAvatar = document.querySelector('.input-avatar');
 editButton.addEventListener('click', edit_data);
 saveButton.addEventListener('click', save_data);
 
+let currentAvatar;
+
 
 inputAvatar.onchange = function(event) {
     var target = event.target;
@@ -24,6 +26,7 @@ inputAvatar.onchange = function(event) {
         document.querySelector('.avatar').src = fileReader.result;
     }
     fileReader.readAsDataURL(target.files[0]);
+    currentAvatar = target.files[0];
 }
  
 function edit_data() {
@@ -79,4 +82,43 @@ function save_data() {
     editGroup1.innerHTML = textGroup1.value;
     document.querySelector('.avatar').classList.remove('edit');
     backButton.removeEventListener('click', back_data)
+    const formData = new FormData();
+    const dataAccount = {
+        name: textName1.value,
+        group: textGroup1.value,
+        avatar: currentAvatar
+    };
+    Object.entries(dataAccount).forEach(element => {
+        formData.append(element[0], element[1])
+    });
+    fetch('#', {
+        method: 'POST',
+        body: formData,
+    }).then((response) => {
+        if(!response.ok) {
+            return response.statusText
+        }
+    }).catch((error)=>{
+        alert(error);
+    })
 }
+
+function fillAccount(account) {
+    document.querySelector('avatar').src = account.avatar;
+    document.querySelector('name-account').textContent = account.name;
+    document.querySelector('group').textContent = account.group;
+}
+
+fetch('#') 
+    .then((response) => {
+        if(response.ok) {
+            return response.json();
+        }
+        throw new Error(`${response.status} ${response.statusText}`);
+    })
+    .then((data) => {
+        fillAccount(data);
+    })
+    .catch(function (error) {
+        alert(error)
+    });
