@@ -1,7 +1,12 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+import readDB
+from app1.models import AdditionalInfoUser
 from readDB import read_sqlite_table
 
 
@@ -24,8 +29,10 @@ def test_page(request):
 def exam_page(request):
     return render(request, 'exam-page.html')
 
+
 def account_page(request):
     return render(request, 'personal-account-page.html')
+
 
 # отправляет словарь для списка знаков
 def send(request):
@@ -45,19 +52,25 @@ def registr(request):
     if request.method == 'POST':
         # Создаём форму
         form = UserCreationForm(request.POST)
+        x = form.fields['username']
+        x.label = "Почта"
+        x.help_text = "Почта должна быть выдана организацией УрФУ"
         # Валидация данных из формы
-        if form.is_valid():
+        if form.is_valid() and '@urfu' in form['username'].value():
             # Сохраняем пользователя
             form.save()
             # Передача надписи, если прошло всё успешно
             response = redirect('/login/')
             return response
-        elif not form.is_valid():
+        else:
             data['form'] = form
             return render(request, 'registr.html', data)
     else:
         # Создаём форму
         form = UserCreationForm()
+        x = form.fields['username']
+        x.label = "Почта"
+        x.help_text = "Почта должна быть выдана организацией УрФУ"
         # Передаём форму для рендеринга
         data['form'] = form
         return render(request, 'registr.html', data)
@@ -65,11 +78,24 @@ def registr(request):
 
 def sign_in(request):
     form = AuthenticationForm()
+    x = form.fields['username']
+    x.label = "Почта"
+    x.help_text = "Почта должна быть выдана организацией УрФУ"
+
     if request.method == "POST":
         form = AuthenticationForm(None, data=request.POST)
         if form.is_valid():
             form.clean()
             user = form.get_user()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password'],
+                                    )
+            login(request, new_user)
+            info, created = AdditionalInfoUser.objects.get_or_create(login=form.cleaned_data['username'])
+            if created:
+                pass
+            else:
+                info.save()
             if user is not None:
                 response = redirect('/index/')
                 return response
@@ -78,3 +104,34 @@ def sign_in(request):
 
 def send_categories(request):
     return JsonResponse(read_sqlite_table('app1_category'))
+
+
+# отправляет данные на сервер
+def send_account_data(request):
+    try:
+        username = None
+        if request.user.is_authenticated:
+            username = request.user.username
+        info = AdditionalInfoUser.objects.get(login=username)
+        data = {'avatar': f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}'}
+    except:
+        data = {'avatar': '-', 'name': '-', 'group': '-'}
+
+    print(data)
+    return JsonResponse(data)
+
+
+# получает данные от сервера
+@csrf_exempt
+def get_account_data(request):
+    username = None
+    if request.user.is_authenticated:
+        username = request.user.username
+        t = AdditionalInfoUser.objects.get(login=username)
+        t.name = request.POST.dict()['name']
+        t.group = request.POST.dict()['group']
+        #t.avatar = request.POST.dict()['avatar']
+        t.save(update_fields=["name", "group"])
+    else:
+        pass
+    return JsonResponse({}, status=204)

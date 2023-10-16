@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from app1 import views
-from app1.views import index_page, project_page, signs_page, test_page, exam_page, send, account_page
+from app1.views import project_page, signs_page, test_page, exam_page, account_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +34,8 @@ urlpatterns = [
     path('index/', views.index_page, name='index'),
     path('login/', views.sign_in, name='login'),
     path('signs-page/send_categories', views.send_categories, name='categories'),
+    path('account-page/send_account_data', views.send_account_data, name='account_send'),
+    path('account-page/get_account_data', views.get_account_data, name='account_get'),
 ]
 
 if settings.DEBUG:

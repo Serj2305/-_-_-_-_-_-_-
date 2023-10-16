@@ -88,16 +88,10 @@ function save_data() {
         group: textGroup1.value,
         avatar: currentAvatar
     };
-    formData.append('name', dataAccount.name)
-    formData.append('group', dataAccount.group)
-    formData.append('avatar', dataAccount.avatar)
-    for (var key of formData.keys()) {
-        console.log(key, formData[key])
-    }
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
-    fetch('#', {
+    Object.entries(dataAccount).forEach(element => {
+        formData.append(element[0], element[1])
+    });
+    fetch('get_account_data', {
         method: 'POST',
         body: formData,
     }).then((response) => {
@@ -110,12 +104,13 @@ function save_data() {
 }
 
 function fillAccount(account) {
-    document.querySelector('avatar').src = account.avatar;
-    document.querySelector('name-account').textContent = account.name;
-    document.querySelector('group').textContent = account.group;
+    console.log(account.name)
+    document.querySelector('.name-account').textContent = account.name;
+    document.querySelector('.group').textContent = account.group;
+    document.querySelector('.avatar').src = account.avatar;
 }
 
-fetch('#') 
+fetch('send_account_data')
     .then((response) => {
         if(response.ok) {
             return response.json();
