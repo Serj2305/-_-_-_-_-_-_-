@@ -88,9 +88,15 @@ function save_data() {
         group: textGroup1.value,
         avatar: currentAvatar
     };
-    Object.entries(dataAccount).forEach(element => {
-        formData.append(element[0], element[1])
-    });
+    formData.append('name', dataAccount.name)
+    formData.append('group', dataAccount.group)
+    formData.append('avatar', dataAccount.avatar)
+    for (var key of formData.keys()) {
+        console.log(key, formData[key])
+    }
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
     fetch('#', {
         method: 'POST',
         body: formData,
