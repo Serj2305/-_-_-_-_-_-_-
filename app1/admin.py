@@ -1,11 +1,11 @@
-from django.contrib import admin
-
 from app1.models import Sign, Test, Category
+from django.contrib import admin
 
 
 @admin.register(Sign)
 class SignRegister(admin.ModelAdmin):
-    pass
+    list_display = ("name", "description", "category", "photo_image", "realObjectPhoto_image")
+    search_fields = ("name", )
 
 
 @admin.register(Test)
@@ -21,11 +21,14 @@ class TestRegister(admin.ModelAdmin):
             'fields': ('realObjectPhoto',),
         }),
     )
+    list_display = ("question", "answer", "photo_image", "realObjectPhoto_image")
+    search_fields = ("question", "answer",)
 
 
 @admin.register(Category)
 class CategoryRegister(admin.ModelAdmin):
-    pass
+    list_display = ("name", "description", "category")
+    search_fields = ("name",)
 
 
 admin.site.site_header = 'Топографические (картографические) условные знаки'

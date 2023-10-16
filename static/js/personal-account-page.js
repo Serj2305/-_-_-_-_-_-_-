@@ -91,7 +91,7 @@ function save_data() {
     Object.entries(dataAccount).forEach(element => {
         formData.append(element[0], element[1])
     });
-    fetch('#', {
+    fetch('get_account_data', {
         method: 'POST',
         body: formData,
     }).then((response) => {
@@ -109,7 +109,7 @@ function fillAccount(account) {
     document.querySelector('group').textContent = account.group;
 }
 
-fetch('#') 
+fetch('send_account_data')
     .then((response) => {
         if(response.ok) {
             return response.json();
