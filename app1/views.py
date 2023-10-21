@@ -5,7 +5,6 @@ from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-import readDB
 from app1.models import AdditionalInfoUser
 from readDB import read_sqlite_table
 
@@ -113,25 +112,24 @@ def send_account_data(request):
         if request.user.is_authenticated:
             username = request.user.username
         info = AdditionalInfoUser.objects.get(login=username)
-        data = {'avatar': f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}'}
+        data = {'avatar': '/static/' + f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}'}
     except:
         data = {'avatar': '-', 'name': '-', 'group': '-'}
 
-    print(data)
     return JsonResponse(data)
 
 
 # получает данные от сервера
 @csrf_exempt
 def get_account_data(request):
-    username = None
     if request.user.is_authenticated:
         username = request.user.username
         t = AdditionalInfoUser.objects.get(login=username)
+
         t.name = request.POST.dict()['name']
         t.group = request.POST.dict()['group']
-        #t.avatar = request.POST.dict()['avatar']
-        t.save(update_fields=["name", "group"])
+        t.avatar = request.FILES['avatar']
+        t.save(update_fields=["name", "group", "avatar"])
     else:
         pass
     return JsonResponse({}, status=204)
