@@ -87,6 +87,6 @@ def __str__(self):
 
 class AdditionalInfoUser(models.Model):
     login = models.CharField(max_length=500, verbose_name='Логин', default="Логин")
-    avatar = models.ImageField(upload_to="img/", verbose_name="Аватарка", default="/static/img/personal-img.png")
+    avatar = models.ImageField(upload_to="img/", verbose_name="Аватарка", default="img/personal-img.png")
     name = models.CharField(max_length=500, verbose_name='ФИО', default="Фамилия Имя Отчество")
     group = models.CharField(max_length=500, verbose_name="Группа", default="Ваша группа")
