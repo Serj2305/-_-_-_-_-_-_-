@@ -65,6 +65,11 @@
         gap:40px;
         line-height: 120px;
     }
+    .name-account{
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+    }
     .img-container{
         display: flex;
         align-items: center;
@@ -133,6 +138,21 @@
     .button-edit:hover, .button-save:hover, .button-back:hover{
         cursor: pointer;
         opacity: 0.7;
+    }
+    input{
+        border:none;
+        outline: none;
+        border-bottom: 2px solid #464646;
+    }
+    input[type="text"]
+    {
+        font-family: 'Comfortaa';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        color:#464646;
+        
     }
     .input-avatar{
         display: none;

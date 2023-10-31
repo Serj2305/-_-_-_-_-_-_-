@@ -104,7 +104,7 @@ function save_data() {
 }
 
 function fillAccount(account) {
-    console.log(account.name)
+    console.log(account)
     document.querySelector('.name-account').textContent = account.name;
     document.querySelector('.group').textContent = account.group;
     document.querySelector('.avatar').src = account.avatar;
