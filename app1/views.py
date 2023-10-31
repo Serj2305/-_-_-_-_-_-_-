@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -9,26 +10,32 @@ from app1.models import AdditionalInfoUser
 from readDB import read_sqlite_table
 
 
+@login_required
 def index_page(request):
     return render(request, 'index.html')
 
 
+@login_required
 def project_page(request):
     return render(request, 'project-page.html')
 
 
+@login_required
 def signs_page(request):
     return render(request, 'signs-page.html')
 
 
+@login_required
 def test_page(request):
     return render(request, 'test-page.html')
 
 
+@login_required
 def exam_page(request):
     return render(request, 'exam-page.html')
 
 
+@login_required
 def account_page(request):
     return render(request, 'personal-account-page.html')
 
@@ -45,37 +52,42 @@ def sendTest(request):
 
 # Функция регистрации
 def registr(request):
-    # Массив для передачи данных шаблонны
-    data = {}
-    # Проверка что есть запрос POST
-    if request.method == 'POST':
-        # Создаём форму
-        form = UserCreationForm(request.POST)
-        x = form.fields['username']
-        x.label = "Почта"
-        x.help_text = "Почта должна быть выдана организацией УрФУ"
-        # Валидация данных из формы
-        if form.is_valid() and '@urfu' in form['username'].value():
-            # Сохраняем пользователя
-            form.save()
-            # Передача надписи, если прошло всё успешно
-            response = redirect('/login/')
-            return response
+    if request.user.is_authenticated:
+            return render(request, 'index.html')
+    else:
+        # Массив для передачи данных шаблонны
+        data = {}
+        # Проверка что есть запрос POST
+        if request.method == 'POST':
+            # Создаём форму
+            form = UserCreationForm(request.POST)
+            x = form.fields['username']
+            x.label = "Почта"
+            x.help_text = "Почта должна быть выдана организацией УрФУ"
+            # Валидация данных из формы
+            if form.is_valid() and '@urfu' in form['username'].value():
+                # Сохраняем пользователя
+                form.save()
+                # Передача надписи, если прошло всё успешно
+                response = redirect('/login/')
+                return response
+            else:
+                data['form'] = form
+                return render(request, 'registr.html', data)
         else:
+            # Создаём форму
+            form = UserCreationForm()
+            x = form.fields['username']
+            x.label = "Почта"
+            x.help_text = "Почта должна быть выдана организацией УрФУ"
+            # Передаём форму для рендеринга
             data['form'] = form
             return render(request, 'registr.html', data)
-    else:
-        # Создаём форму
-        form = UserCreationForm()
-        x = form.fields['username']
-        x.label = "Почта"
-        x.help_text = "Почта должна быть выдана организацией УрФУ"
-        # Передаём форму для рендеринга
-        data['form'] = form
-        return render(request, 'registr.html', data)
 
 
 def sign_in(request):
+    if request.user.is_authenticated:
+        logout(request)
     form = AuthenticationForm()
     x = form.fields['username']
     x.label = "Почта"
