@@ -116,7 +116,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    "C:/Users/4769003/Documents/GitHub/-_-_-_-_-_-_-/static"
+    "C:/Проект_по_созданию_обучающего_сайта_топографических_знаков/static"
 ]
 
 # Default primary key field type
