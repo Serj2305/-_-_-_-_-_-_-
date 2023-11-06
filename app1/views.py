@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from app1.models import AdditionalInfoUser
+from app1.models import AdditionalInfoUser, Sign
 from readDB import read_sqlite_table
 
 
@@ -42,6 +42,7 @@ def account_page(request):
 
 # отправляет словарь для списка знаков
 def send(request):
+    info = Sign.objects.all()
     return JsonResponse(read_sqlite_table("app1_sign"))
 
 
@@ -50,10 +51,17 @@ def sendTest(request):
     return JsonResponse(read_sqlite_table("app1_test"))
 
 
+def sendExam(request):
+    return JsonResponse(read_sqlite_table("app1_exam"))
+
+
+sendExam()
+
+
 # Функция регистрации
 def registr(request):
     if request.user.is_authenticated:
-            return render(request, 'index.html')
+        return render(request, 'index.html')
     else:
         # Массив для передачи данных шаблонны
         data = {}
