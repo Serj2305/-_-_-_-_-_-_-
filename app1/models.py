@@ -45,8 +45,8 @@ class Test(models.Model):
         verbose_name = "новые вопросы и ответы для теста"
         verbose_name_plural = 'Настройка теста'
 
-    question = models.CharField(max_length=500, verbose_name='Вопросы (вводить через запятую)')
-    answer = models.CharField(max_length=500, verbose_name='Ответы (вводить через запятую)')
+    question = models.CharField(max_length=5000, verbose_name='Вопросы (вводить через запятую)')
+    answer = models.CharField(max_length=5000, verbose_name='Ответы (вводить через запятую)')
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение')
     realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
 
@@ -75,7 +75,8 @@ class Exam(models.Model):
         verbose_name = "новые вопросы для экзамена"
         verbose_name_plural = 'Настройка экзамена'
 
-    question = models.CharField(max_length=500, verbose_name='Вопросы (вводить через запятую)')
+    question = models.CharField(max_length=5000, verbose_name='Вопросы (вводить через запятую)')
+    answer = models.CharField(max_length=5000, verbose_name='Ответы (вводить через запятую)')
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение')
     realObjectPhoto = models.ImageField(upload_to='images/', verbose_name='Изображение реального объекта', blank=True)
 
@@ -96,7 +97,7 @@ class Exam(models.Model):
     realObjectPhoto_image.short_description = 'Изображение реального объекта'
 
     def __str__(self):
-        return f"{self.question}, {self.photo}, {self.realObjectPhoto}"
+        return f"{self.question}, {self.answer}, {self.photo}, {self.realObjectPhoto}"
 
 
 class Category(models.Model):
