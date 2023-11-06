@@ -17,7 +17,7 @@ class TestForm(forms.ModelForm):
 class ExamForm(forms.ModelForm):
     class Meta:
         model = Sign
-        fields = ['question', 'photo', 'realObjectPhoto']
+        fields = ['question', 'answer', 'photo', 'realObjectPhoto']
 
 
 class CategoryForm(forms.ModelForm):

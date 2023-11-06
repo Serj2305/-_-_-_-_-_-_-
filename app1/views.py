@@ -54,10 +54,6 @@ def sendTest(request):
 def sendExam(request):
     return JsonResponse(read_sqlite_table("app1_exam"))
 
-
-sendExam()
-
-
 # Функция регистрации
 def registr(request):
     if request.user.is_authenticated:

@@ -28,17 +28,17 @@ class TestRegister(admin.ModelAdmin):
 @admin.register(Exam)
 class ExamRegister(admin.ModelAdmin):
     fieldsets = (
-        ("Сторона карточки с вопросами", {
+        ("Вопросы", {
             'fields': ('question',),
         }),
-        ("Общее", {
-            'fields': ('photo',),
+        ("Ответы", {
+            'fields': ('answer',),
         }),
-        ("Сторона карточки с ответами", {
-            'fields': ('realObjectPhoto',),
+        ("Изображения", {
+            'fields': ('photo', 'realObjectPhoto'),
         }),
     )
-    list_display = ("question", "photo_image", "realObjectPhoto_image")
+    list_display = ("question", "answer", "photo_image", "realObjectPhoto_image")
     search_fields = ("question", "answer",)
 
 

@@ -31,6 +31,7 @@ urlpatterns = [
     path('account-page/', account_page, name='account'),
     path('signs-page/send', views.send, name='send'),
     path('test-page/sendTest', views.sendTest, name='sendTest'),
+    path('exam-page/sendExam', views.sendExam, name='sendExam'),
     path('index/', views.index_page, name='index'),
     path('login/', views.sign_in, name='login'),
     path('signs-page/send_categories', views.send_categories, name='categories'),
