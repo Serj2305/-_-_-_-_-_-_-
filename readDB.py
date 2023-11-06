@@ -33,6 +33,19 @@ def read_sqlite_table(table, list=False):
                                            'answersList': answersList[id - 1], 'pictureWorld': "/images/" + row[4]}
         return data_from_database
 
+    if table == "app1_exam":
+        data_from_database = {}
+        textQuestions = []
+        id = 0
+        for row in records:
+            textQuestions.append(row[1].split(","))
+        for row in records:
+            id += 1
+            data_from_database[f'{id}'] = {'number': id, 'picture': "/images/" + row[2],
+                                           'textQuestions': textQuestions[1 - id],
+                                           'pictureWorld': "/images/" + row[3]}
+        return data_from_database
+
     if table == "app1_category" and list == False:
         data_from_database = {}
         id = 0
