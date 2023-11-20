@@ -61,7 +61,7 @@
         
     }
 
-    .start-test, .test-card-question{
+    .start-test, .test-card-question, .end-test{
         margin: 0 15% 50px;
         padding: 20px 0 20px;
         background: #FFFFFF;
@@ -72,13 +72,14 @@
         transition: transform 0.65s linear;
     }
 
-    .start-test{
+    .start-test, .test-card-question{
         position: absolute;
     }
+
     .start-test-active{
         transform: perspective(900px) rotateY(-180deg);
     }
-    .test-card-question{
+    .test-card-question, .end-test{
         transform: rotateY(-180deg);
         right: 0;
         left: 0;
@@ -115,7 +116,7 @@
         display: flex;
         justify-content: center;
     }
-    .start-test-button{
+    .start-test-button, .again-button{
         color: #FFFFFF;
         font-size: 20px;
         font-style: normal;
@@ -128,7 +129,7 @@
         width: 30%;
         margin-bottom: 80px;
     }
-    .start-test-button:hover, .button-back:hover, .button-answer:hover, .button-resume:hover, .button-back:hover{
+    .start-test-button:hover, .button-back:hover, .button-answer:hover, .button-resume:hover, .button-back:hover, .button-end:hover, .again-button:hover{
         opacity: 0.7;
     }
 
@@ -202,7 +203,7 @@
         width: 20%;
         margin-bottom: 30px;
     }
-    .button-answer, .button-resume{
+    .button-answer, .button-end{
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
         padding:1px 0 1px;
@@ -211,6 +212,10 @@
         margin-bottom: 30px;
         background: #9FCB9F;
         color: #FFFFFF;
+    }
+    .button-end{
+        display: none;
+        background-color: #E7B56B;
     }
     .pictures-container{
         display: flex;
@@ -240,6 +245,26 @@
         max-height: 150px;
         max-width: 150px;
         margin: auto auto;
+    }
+
+    .name-page-end{
+        font-size: 30px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        margin-top: 120px;
+        margin-bottom: 30px;
+    }
+    .test-result{
+        padding: 0 15% 0;
+        text-align: center;
+        margin-bottom: 80px;
+        line-height: 1.2;
+    }
+    .test-time{
+        padding: 0 15% 0;
+        text-align: center;
+        line-height: 1.2;
     }
     /*попап*/
     .hidden{
