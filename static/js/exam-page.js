@@ -304,6 +304,7 @@ function finishTest() {
     localStorage.removeItem('sec');
     localStorage.removeItem('session');
     localStorage.removeItem('cardId');
+    localStorage.removeItem('startTime')
 }
 
 buttonEnd.addEventListener('click', finishTest);
