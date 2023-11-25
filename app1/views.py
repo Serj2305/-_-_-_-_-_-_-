@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from app1.models import AdditionalInfoUser, Sign
+from app1.models import AdditionalInfoUser, Sign, ExamInfo
 from readDB import read_sqlite_table
 
 
@@ -53,6 +53,7 @@ def sendTest(request):
 
 def sendExam(request):
     return JsonResponse(read_sqlite_table("app1_exam"))
+
 
 # Функция регистрации
 def registr(request):
@@ -146,6 +147,24 @@ def get_account_data(request):
         t.group = request.POST.dict()['group']
         t.avatar = request.FILES['avatar']
         t.save(update_fields=["name", "group", "avatar"])
-    else:
-        pass
+    return JsonResponse({}, status=204)
+
+
+@csrf_exempt
+def get_exam_data(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+        
+        print(request.POST.dict())
+
+        t = ExamInfo.objects.create(
+            login=username,
+            res=request.POST.dict()['res'],
+            startTime=request.POST.dict()['startTime'],
+            time=request.POST.dict()['time']
+        )
+
+        if (ExamInfo.objects.filter(login=username).count() > 10):
+            ExamInfo.objects.filter(login=username)[0].delete()
+            t.save(update_fields=["login", "res", "startTime", "time"])
     return JsonResponse({}, status=204)

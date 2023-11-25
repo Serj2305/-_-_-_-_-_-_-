@@ -285,7 +285,7 @@ function finishTest() {
     const minPassed = Math.floor(timePassed / 60)
     const secPassed = timePassed - minPassed * 60;
     time.textContent = `${minPassed} мин ${secPassed} сек`
-    fetch('#', {
+    fetch('get_exam_data', {
         method: 'POST',
         body: JSON.stringify({
             startTime: localStorage.startTime,

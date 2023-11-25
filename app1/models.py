@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
 
-from readDB import read_sqlite_table
-
 
 class Sign(models.Model):
     # categories = tuple(read_sqlite_table('app1_category', list=True))
@@ -122,3 +120,10 @@ class AdditionalInfoUser(models.Model):
     avatar = models.ImageField(upload_to="avatars/", verbose_name="Аватарка", default="img/personal-img.png")
     name = models.CharField(max_length=500, verbose_name='ФИО', default="Фамилия Имя Отчество")
     group = models.CharField(max_length=500, verbose_name="Группа", default="Ваша группа")
+
+
+class ExamInfo(models.Model):
+    login = models.CharField(max_length=500, verbose_name='Логин', default="Логин")
+    res = models.CharField(max_length=500, verbose_name="Результат", default="-")
+    startTime = models.CharField(max_length=500, verbose_name='Время начала экзамена', default="-")
+    time = models.CharField(max_length=500, verbose_name='Время прохождения экзамена', default="-")
