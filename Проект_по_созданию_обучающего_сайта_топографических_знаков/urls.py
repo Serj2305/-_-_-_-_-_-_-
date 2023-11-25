@@ -37,6 +37,7 @@ urlpatterns = [
     path('signs-page/send_categories', views.send_categories, name='categories'),
     path('account-page/send_account_data', views.send_account_data, name='account_send'),
     path('account-page/get_account_data', views.get_account_data, name='account_get'),
+    path('exam-page/get_exam_data', views.get_exam_data, name="exam_get"),
 ]
 
 if settings.DEBUG:
