@@ -110,6 +110,9 @@
         text-align: center;
         border: 1px solid #D2D2D2;
     }
+    .result-list-item .time-exam{
+        width: 30%; 
+    }
     .item-heading{
         background-color: #E7B56B;
         color: #FFFFFF;

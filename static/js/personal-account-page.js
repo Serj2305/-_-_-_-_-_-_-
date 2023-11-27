@@ -2,6 +2,9 @@ const editButton = document.querySelector('.button-edit');
 const saveButton = document.querySelector('.button-save');
 const backButton = document.querySelector('.button-back');
 const inputAvatar = document.querySelector('.input-avatar');
+const resultsContainer = document.querySelector('.result-list');
+const resultTemplate = document.querySelector('#template-exam-result').content;
+
 editButton.addEventListener('click', edit_data);
 saveButton.addEventListener('click', save_data);
 
@@ -104,7 +107,6 @@ function save_data() {
 }
 
 function fillAccount(account) {
-    console.log(account)
     document.querySelector('.name-account').textContent = account.name;
     document.querySelector('.group').textContent = account.group;
     document.querySelector('.avatar').src = account.avatar;
@@ -119,6 +121,80 @@ fetch('send_account_data')
     })
     .then((data) => {
         fillAccount(data);
+    })
+    .catch(function (error) {
+        alert(error)
+    });
+
+
+const RESULTS = {
+    1:{
+        res: '2',
+        startTime: '19:40',
+        time: '0 мин 4 сек',
+    },
+    2:{
+        res: '5',
+        startTime: '19:40',
+        time: '0 мин 4 сек',
+    },
+    3:{
+        res: '6',
+        startTime: '19:40',
+        time: '14 мин 58 сек',
+    },
+    4:{
+        res: '2',
+        startTime: '19:40',
+        time: '0 мин 4 сек',
+    },
+    5:{
+        res: '5',
+        startTime: '19:40',
+        time: '0 мин 4 сек',
+    },
+    6:{
+        res: '6',
+        startTime: '19:40',
+        time: '14 мин 58 сек',
+    },
+    7:{
+        res: '2',
+        startTime: '19:40',
+        time: '0 мин 4 сек',
+    },
+    8:{
+        res: '5',
+        startTime: '19:40',
+        time: '0 мин 4 сек',
+    },
+    9:{
+        res: '6',
+        startTime: '19:40',
+        time: '14 мин 58 сек',
+    }
+}
+
+function fillResults(results) {
+    Object.entries(results).forEach(function(result, index) {
+        const currentResult = resultTemplate.cloneNode(true);
+        currentResult.querySelector('.number-exam').textContent = index+1;
+        currentResult.querySelector('.start-time').textContent = result[1].startTime;
+        currentResult.querySelector('.time-exam').textContent = result[1].time;
+        currentResult.querySelector('.assessment').textContent = result[1].res;
+        resultsContainer.appendChild(currentResult);
+    })
+}
+
+fetch('#')
+    .then((response) => {
+        if(response.ok) {
+            return response.json();
+        }
+        throw new Error(`${response.status} ${response.statusText}`);
+    })
+    .then((data) => {
+        fillResults(data);
     })
     .catch(function (error) {
         alert(error)

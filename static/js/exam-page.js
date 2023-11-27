@@ -136,7 +136,6 @@ function startTest() {
 function createStartTime() {
     let date = new Date();
     localStorage.startTime = `${date.getHours()}:${date.getMinutes()}`
-    console.log(localStorage)
 }
 
 startTestButton.addEventListener('click', startTest);
@@ -308,6 +307,7 @@ function finishTest() {
 }
 
 buttonEnd.addEventListener('click', finishTest);
+buttonAgain.addEventListener('click', createStartTime)
 buttonAgain.addEventListener('click', function() {
     endTestCard.classList.remove('front');
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';

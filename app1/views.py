@@ -156,7 +156,7 @@ def get_account_data(request):
 def get_exam_data(request):
     if request.user.is_authenticated:
         username = request.user.username
-
+        print(request.body)
         t = ExamInfo.objects.create(
             login=username,
             res=json.loads(request.body)['res'],
