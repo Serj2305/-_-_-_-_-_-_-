@@ -57,6 +57,17 @@ def sendExam(request):
     return JsonResponse(read_sqlite_table("app1_exam"))
 
 
+def sendExamData(request):
+    if request.user.is_authenticated:
+        data = {}
+        count = 1
+        for i in ExamInfo.objects.filter(login=request.user).values("res", "startTime", "time"):
+            data[count] = i
+            count += 1
+        return JsonResponse(data)
+
+
+
 # Функция регистрации
 def registr(request):
     if request.user.is_authenticated:
@@ -156,7 +167,6 @@ def get_account_data(request):
 def get_exam_data(request):
     if request.user.is_authenticated:
         username = request.user.username
-        print(request.body)
         t = ExamInfo.objects.create(
             login=username,
             res=json.loads(request.body)['res'],
