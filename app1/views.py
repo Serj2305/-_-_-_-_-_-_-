@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -154,14 +156,12 @@ def get_account_data(request):
 def get_exam_data(request):
     if request.user.is_authenticated:
         username = request.user.username
-        
-        print(request.POST.dict())
 
         t = ExamInfo.objects.create(
             login=username,
-            res=request.POST.dict()['res'],
-            startTime=request.POST.dict()['startTime'],
-            time=request.POST.dict()['time']
+            res=json.loads(request.body)['res'],
+            startTime=json.loads(request.body)['startTime'],
+            time=json.loads(request.body)['time']
         )
 
         if (ExamInfo.objects.filter(login=username).count() > 10):
