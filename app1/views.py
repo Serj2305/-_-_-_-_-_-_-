@@ -7,6 +7,10 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import pathlib
+from pathlib import Path
+
+from fpdf import FPDF
 
 from app1.models import AdditionalInfoUser, Sign, ExamInfo
 from readDB import read_sqlite_table
@@ -65,7 +69,6 @@ def sendExamData(request):
             data[count] = i
             count += 1
         return JsonResponse(data)
-
 
 
 # Функция регистрации
@@ -142,9 +145,9 @@ def send_account_data(request):
         if request.user.is_authenticated:
             username = request.user.username
         info = AdditionalInfoUser.objects.get(login=username)
-        data = {'avatar': '/static/' + f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}'}
+        data = {'avatar': '/static/' + f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}', 'is_superuser': f'{info.is_superuser}'}
     except:
-        data = {'avatar': '-', 'name': '-', 'group': '-'}
+        data = {'avatar': '-', 'name': '-', 'group': '-', 'is_superuser': '-'}
 
     return JsonResponse(data)
 
@@ -159,7 +162,8 @@ def get_account_data(request):
         t.name = request.POST.dict()['name']
         t.group = request.POST.dict()['group']
         t.avatar = request.FILES['avatar']
-        t.save(update_fields=["name", "group", "avatar"])
+        t.is_superuser = request.user.is_superuser
+        t.save(update_fields=["name", "group", "avatar", "is_superuser"])
     return JsonResponse({}, status=204)
 
 
@@ -178,3 +182,36 @@ def get_exam_data(request):
             ExamInfo.objects.filter(login=username)[0].delete()
             t.save(update_fields=["login", "res", "startTime", "time"])
     return JsonResponse({}, status=204)
+
+
+@csrf_exempt
+def print_exam_data():
+    data = [["ФИО/Группа", "Результат", "Время начала", "Заняло"]]
+    for j in AdditionalInfoUser.objects.all().values("login", "name", "group"):
+        for i in ExamInfo.objects.filter(login=j["login"]).values("login", "res", "startTime", "time"):
+            i["login"] = j["name"] + "(" + j["group"] + ")"
+            data.append(i.values())
+        data.append([])
+
+    pdf = FPDF(format='A4')
+    pdf.add_font('DejaVu', '', Path("static", "fonts", 'DejaVuSansCondensed.ttf'), uni=True)
+    pdf.set_font('DejaVu', '', 10)
+    pdf.add_page()
+    pdf.cell(0, 30, txt="Результаты экзамена", ln=1, align="C")
+
+    row_height = pdf.font_size
+
+    for row in data:
+        for item in row:
+            if list(row).index(item) == 0:
+                pdf.cell(pdf.w / 2, row_height * 2,
+                         txt=item, border=1)
+            else:
+                pdf.cell(pdf.w / 8, row_height * 2,
+                         txt=item, border=1)
+        pdf.ln(row_height * 2)
+
+    pdf.output(Path("static", "exam_results", "Ведомость.pdf"))
+
+
+print_exam_data()

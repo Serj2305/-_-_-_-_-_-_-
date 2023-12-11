@@ -120,6 +120,8 @@ class AdditionalInfoUser(models.Model):
     avatar = models.ImageField(upload_to="avatars/", verbose_name="Аватарка", default="img/personal-img.png")
     name = models.CharField(max_length=500, verbose_name='ФИО', default="Фамилия Имя Отчество")
     group = models.CharField(max_length=500, verbose_name="Группа", default="Ваша группа")
+    is_superuser = models.CharField(max_length=500, verbose_name='Суперпользователь', default=False)
+
 
 
 class ExamInfo(models.Model):
