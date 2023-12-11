@@ -43,6 +43,7 @@ def exam_page(request):
 
 @login_required
 def account_page(request):
+    send_exam_data_pdf()
     return render(request, 'personal-account-page.html')
 
 
@@ -188,7 +189,7 @@ def get_exam_data(request):
 
 
 @csrf_exempt
-def print_exam_data():
+def send_exam_data_pdf():
     data = [["ФИО/Группа", "Результат", "Время начала", "Заняло"]]
     for j in AdditionalInfoUser.objects.all().values("login", "name", "group"):
         for i in ExamInfo.objects.filter(login=j["login"]).values("login", "res", "startTime", "time"):
@@ -215,6 +216,3 @@ def print_exam_data():
         pdf.ln(row_height * 2)
 
     pdf.output(Path("static", "exam_results", "Ведомость.pdf"))
-
-
-print_exam_data()
