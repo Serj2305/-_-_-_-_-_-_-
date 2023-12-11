@@ -161,9 +161,12 @@ def get_account_data(request):
 
         t.name = request.POST.dict()['name']
         t.group = request.POST.dict()['group']
-        t.avatar = request.FILES['avatar']
         t.is_superuser = request.user.is_superuser
-        t.save(update_fields=["name", "group", "avatar", "is_superuser"])
+        try:
+            t.avatar = request.FILES['avatar']
+            t.save(update_fields=["name", "group", "avatar", "is_superuser"])
+        except:
+            t.save(update_fields=["name", "group", "is_superuser"])
     return JsonResponse({}, status=204)
 
 
