@@ -1,45 +1,11 @@
-from app1.models import Sign, Test, Category, Exam
+from app1.models import Sign, Category
 from django.contrib import admin
 
 
 @admin.register(Sign)
 class SignRegister(admin.ModelAdmin):
-    list_display = ("name", "description", "category", "photo_image", "realObjectPhoto_image")
+    list_display = ("name", "description", "category", "complexity", "photo_image", "realObjectPhoto_image", 'question1', 'answer1', 'question2', 'answer2', 'question3', 'answer3', 'question4', 'answer4', 'question5', 'answer5')
     search_fields = ("name",)
-
-
-@admin.register(Test)
-class TestRegister(admin.ModelAdmin):
-    fieldsets = (
-        ("Сторона карточки с вопросами", {
-            'fields': ('question', 'answer'),
-        }),
-        ("Общее", {
-            'fields': ('photo',),
-        }),
-        ("Сторона карточки с ответами", {
-            'fields': ('realObjectPhoto',),
-        }),
-    )
-    list_display = ("question", "answer", "photo_image", "realObjectPhoto_image")
-    search_fields = ("question", "answer",)
-
-
-@admin.register(Exam)
-class ExamRegister(admin.ModelAdmin):
-    fieldsets = (
-        ("Вопросы", {
-            'fields': ('question',),
-        }),
-        ("Ответы", {
-            'fields': ('answer',),
-        }),
-        ("Изображения", {
-            'fields': ('photo', 'realObjectPhoto'),
-        }),
-    )
-    list_display = ("question", "answer", "photo_image", "realObjectPhoto_image")
-    search_fields = ("question", "answer",)
 
 
 @admin.register(Category)

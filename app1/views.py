@@ -7,13 +7,13 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import pathlib
 from pathlib import Path
+
+import random
 
 from fpdf import FPDF
 
-from app1.models import AdditionalInfoUser, Sign, ExamInfo
-from readDB import read_sqlite_table
+from app1.models import AdditionalInfoUser, Sign, ExamInfo, Category
 
 
 @login_required
@@ -43,23 +43,166 @@ def exam_page(request):
 
 @login_required
 def account_page(request):
-    send_exam_data_pdf()
+    if request.user.is_superuser:
+        send_exam_data_pdf()
     return render(request, 'personal-account-page.html')
 
 
 # отправляет словарь для списка знаков
 def send(request):
-    info = Sign.objects.all()
-    return JsonResponse(read_sqlite_table("app1_sign"))
+    data = Sign.objects.all().values("name", "description", "category", "photo", "realObjectPhoto")
+    data_from_database = {}
+    id = 0
+    for row in data:
+        id += 1
+        data_from_database[f'{id}'] = {'name': row['name'], 'description': row['description'],
+                                       'category': row['category'],
+                                       'picture': "/images/" + row['photo'],
+                                       'pictureWorld': "/images/" + row['realObjectPhoto']}
+    return JsonResponse(data_from_database)
 
 
 # отправляет словарь для теста
 def sendTest(request):
-    return JsonResponse(read_sqlite_table("app1_test"))
+    data = Sign.objects.all().values("photo", "realObjectPhoto", "question1", "answer1", "question2", "answer2",
+                                     "question3", "answer3", "question4", "answer4", "question5", "answer5")
+    questions = []
+    answers = []
+    textQuestions = []
+    answersList = []
+    for row in data:
+        questions.append(row["question1"])
+        questions.append(row["question2"])
+        questions.append(row["question3"])
+        questions.append(row["question4"])
+        questions.append(row["question5"])
+
+        answers.append(row["answer1"])
+        answers.append(row["answer2"])
+        answers.append(row["answer3"])
+        answers.append(row["answer4"])
+        answers.append(row["answer5"])
+
+        count = 0
+        for i in questions:
+            if i == "":
+                count += 1
+        for i in range(count):
+            questions.remove("")
+        count = 0
+
+        count = 0
+        for i in answers:
+            if i == "":
+                count += 1
+        for i in range(count):
+            answers.remove("")
+        count = 0
+
+        textQuestions.append(questions)
+        answersList.append(answers)
+
+        questions = []
+        answers = []
+
+    data_from_database = {}
+
+    id = 0
+    for row in data:
+        id += 1
+        data_from_database[f'{id}'] = {'number': id, 'picture': "/static/" + row["photo"],
+                                       'textQuestions': textQuestions[id - 1],
+                                       'answersList': answersList[id - 1],
+                                       'pictureWorld': "/static/" + row["realObjectPhoto"]}
+
+    keys = [*data_from_database]
+    random.shuffle(keys)
+    new_data = dict()
+    count = 0
+    for key in keys:
+        count += 1
+        new_data.update({key: data_from_database[key]})
+
+        new_data[count] = new_data[key]
+        del new_data[key]
+
+    for i in range(1, len(new_data)):
+        new_data[i]["number"] = i
+
+    return JsonResponse(new_data)
 
 
 def sendExam(request):
-    return JsonResponse(read_sqlite_table("app1_exam"))
+    data = Sign.objects.all().values("photo", "realObjectPhoto", "category", "complexity", "question1", "answer1",
+                                     "question2", "answer2",
+                                     "question3", "answer3", "question4", "answer4", "question5", "answer5")
+    questions = []
+    answers = []
+    textQuestions = []
+    answersList = []
+    for row in data:
+        questions.append(row["question1"])
+        questions.append(row["question2"])
+        questions.append(row["question3"])
+        questions.append(row["question4"])
+        questions.append(row["question5"])
+
+        answers.append(row["answer1"])
+        answers.append(row["answer2"])
+        answers.append(row["answer3"])
+        answers.append(row["answer4"])
+        answers.append(row["answer5"])
+
+        count = 0
+        for i in questions:
+            if i == "":
+                count += 1
+        for i in range(count):
+            questions.remove("")
+        count = 0
+
+        count = 0
+        for i in answers:
+            if i == "":
+                count += 1
+        for i in range(count):
+            answers.remove("")
+        count = 0
+
+        textQuestions.append(questions)
+        answersList.append(answers)
+
+        questions = []
+        answers = []
+
+    data_from_database = {}
+
+    id = 0
+    for row in data:
+        id += 1
+        data_from_database[f'{id}'] = {'number': id, 'picture': "/static/" + row["photo"],
+                                       'textQuestions': textQuestions[id - 1],
+                                       'answersList': answersList[id - 1],
+                                       'pictureWorld': "/static/" + row["realObjectPhoto"]}
+
+    keys = [*data_from_database]
+    random.shuffle(keys)
+    new_data = dict()
+    count = 0
+    for key in keys:
+        count += 1
+        new_data.update({key: data_from_database[key]})
+
+        new_data[count] = new_data[key]
+        del new_data[key]
+
+        if count == 20:
+            break
+
+    for i in range(1, 21):
+        new_data[i]["number"] = i
+
+    return JsonResponse(new_data)
 
 
 def sendExamData(request):
@@ -136,7 +279,14 @@ def sign_in(request):
 
 
 def send_categories(request):
-    return JsonResponse(read_sqlite_table('app1_category'))
+    data = Category.objects.all().values("name", "description", "category")
+    data_from_database = {}
+    id = 0
+    for row in data:
+        id += 1
+        data_from_database[f'{id}'] = {'name': row['name'], 'description': row['description'],
+                                       'category': row['category']}
+    return JsonResponse(data_from_database)
 
 
 # отправляет данные на сервер
@@ -146,7 +296,8 @@ def send_account_data(request):
         if request.user.is_authenticated:
             username = request.user.username
         info = AdditionalInfoUser.objects.get(login=username)
-        data = {'avatar': '/static/' + f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}', 'is_superuser': f'{info.is_superuser}'}
+        data = {'avatar': '/static/' + f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}',
+                'is_superuser': f'{info.is_superuser}'}
     except:
         data = {'avatar': '-', 'name': '-', 'group': '-', 'is_superuser': '-'}
 
