@@ -20,8 +20,12 @@ if(localStorage.session === 'true') {
     userResposes = JSON.parse(localStorage.userResposes);
     questionsResult = JSON.parse(localStorage.questionsResult);
 }
+else{
+    getDataExam()
+}
 
-fetch('sendExam')
+function getDataExam() {
+    fetch('sendExam')
     .then((response) => {
       if(response.ok) {
         return response.json();
@@ -34,6 +38,7 @@ fetch('sendExam')
   }).catch(function (error) {
       alert(error)
   });
+}
 //const QUESTIONS = {
   //  1:{
     //    number: '1/120',
@@ -313,5 +318,6 @@ buttonAgain.addEventListener('click', function() {
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
     questionsResult.length = 0;
     userResposes.length = 0;
+    getDataExam()
     startTest();
 });

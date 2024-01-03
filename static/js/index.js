@@ -1,8 +1,9 @@
 const filterButton = document.querySelector('.signs-filter');
 const filterList = document.querySelector('.filter-list');
-const filtersUl = document.querySelector('.filters')
-const descriptionCategory = document.querySelector('.description-category')
-const buttonShouMore = document.querySelector('.button-shou-more')
+const filtersUl = document.querySelector('.filters');
+const descriptionCategory = document.querySelector('.description-category');
+const buttonShouMore = document.querySelector('.button-shou-more');
+const buttonDownloadFile = document.querySelector('.button-download-file');
 const popup = document.querySelector('.popup');
 const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
 const popupButtonClose = document.querySelector('.popup-button-close');
@@ -238,23 +239,32 @@ fetch('send')
       })
     filtersUl.childNodes.forEach((item) => {
        item.addEventListener('click', () => {
-          filterButton.querySelector('span').textContent = item.textContent;
-          if(item.dataset.description === '') {
-              descriptionCategory.style.display = 'none';
-          }
-          else {
-              descriptionCategory.style.display = 'block';
-              descriptionCategory.textContent = item.dataset.description;
-          }
+            filterButton.querySelector('span').textContent = item.textContent;
+            if(item.dataset.description === '') {
+                descriptionCategory.style.display = 'none';
+            }
+            else {
+                descriptionCategory.style.display = 'block';
+                descriptionCategory.textContent = item.dataset.description;
+            }
+            if(item.dataset.category === 'abbreviations') {
+                buttonDownloadFile.classList.remove('hidden');
+                buttonShouMore.classList.add('hidden')
+            }
+            else {
+                buttonShouMore.classList.remove('hidden');
+                buttonDownloadFile.classList.add('hidden');
+            }
 
-          filterList.classList.add('hidden');
-          for (let card of cards) {
+            filterList.classList.add('hidden');
+            for (let card of cards) {
                 if (card.dataset.category !== item.dataset.category && item.dataset.category !== 'all-signs') {
                     card.classList.add('hidden-card-filter');
                 } else {
                     card.classList.remove('hidden-card-filter');
                 }
             }
+            
           MAXCARD=10;
           showMore(MAXCARD);
        });

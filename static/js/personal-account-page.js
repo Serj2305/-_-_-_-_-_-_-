@@ -4,6 +4,7 @@ const backButton = document.querySelector('.button-back');
 const inputAvatar = document.querySelector('.input-avatar');
 const resultsContainer = document.querySelector('.result-list');
 const resultTemplate = document.querySelector('#template-exam-result').content;
+const buttonDownload = document.querySelector('.button-download');
 
 editButton.addEventListener('click', edit_data);
 saveButton.addEventListener('click', save_data);
@@ -85,6 +86,7 @@ function save_data() {
     editGroup1.innerHTML = textGroup1.value;
     document.querySelector('.avatar').classList.remove('edit');
     backButton.removeEventListener('click', back_data)
+    console.log(currentAvatar)
     const formData = new FormData();
     const dataAccount = {
         name: textName1.value,
@@ -110,7 +112,12 @@ function fillAccount(account) {
     document.querySelector('.name-account').textContent = account.name;
     document.querySelector('.group').textContent = account.group;
     document.querySelector('.avatar').src = account.avatar;
+    if (account.is_superuser !== 'True') {
+        buttonDownload.remove()
+    }
 }
+
+
 
 fetch('send_account_data')
     .then((response) => {
@@ -126,54 +133,6 @@ fetch('send_account_data')
         alert(error)
     });
 
-
-const RESULTS = {
-    1:{
-        res: '2',
-        startTime: '19:40',
-        time: '0 мин 4 сек',
-    },
-    2:{
-        res: '5',
-        startTime: '19:40',
-        time: '0 мин 4 сек',
-    },
-    3:{
-        res: '6',
-        startTime: '19:40',
-        time: '14 мин 58 сек',
-    },
-    4:{
-        res: '2',
-        startTime: '19:40',
-        time: '0 мин 4 сек',
-    },
-    5:{
-        res: '5',
-        startTime: '19:40',
-        time: '0 мин 4 сек',
-    },
-    6:{
-        res: '6',
-        startTime: '19:40',
-        time: '14 мин 58 сек',
-    },
-    7:{
-        res: '2',
-        startTime: '19:40',
-        time: '0 мин 4 сек',
-    },
-    8:{
-        res: '5',
-        startTime: '19:40',
-        time: '0 мин 4 сек',
-    },
-    9:{
-        res: '6',
-        startTime: '19:40',
-        time: '14 мин 58 сек',
-    }
-}
 
 function fillResults(results) {
     Object.entries(results).forEach(function(result, index) {
