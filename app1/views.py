@@ -159,7 +159,6 @@ def sendExam(request):
                 count += 1
         for i in range(count):
             questions.remove("")
-        count = 0
 
         count = 0
         for i in answers:
@@ -167,7 +166,6 @@ def sendExam(request):
                 count += 1
         for i in range(count):
             answers.remove("")
-        count = 0
 
         textQuestions.append(questions)
         answersList.append(answers)
@@ -183,7 +181,8 @@ def sendExam(request):
         data_from_database[f'{id}'] = {'number': id, 'picture': "/static/" + row["photo"],
                                        'textQuestions': textQuestions[id - 1],
                                        'answersList': answersList[id - 1],
-                                       'pictureWorld': "/static/" + row["realObjectPhoto"]}
+                                       'pictureWorld': "/static/" + row["realObjectPhoto"],
+                                       'category': row['category'], 'complexity': row["complexity"]}
 
     keys = [*data_from_database]
     random.shuffle(keys)
@@ -196,13 +195,25 @@ def sendExam(request):
         new_data[count] = new_data[key]
         del new_data[key]
 
-        if count == 20:
-            break
+    categories = []
+    filtered_data = {}
 
-    for i in range(1, 21):
-        new_data[i]["number"] = i
+    for i in Category.objects.all().values("category"):
+        categories.append(i["category"])
 
-    return JsonResponse(new_data)
+    index = 1
+    for i in categories:
+        count = 1
+        for j in range(1, len(new_data)):
+            if i == new_data[j]["category"] and new_data[j]["complexity"] == str(count):
+                filtered_data[f'{index}'] = new_data[j]
+                filtered_data[str(index)]["number"] = str(index)
+                count += 1
+                index += 1
+            if count > 3:
+                break
+
+    return JsonResponse(filtered_data)
 
 
 def sendExamData(request):
