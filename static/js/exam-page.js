@@ -140,7 +140,7 @@ function startTest() {
 
 function createStartTime() {
     let date = new Date();
-    localStorage.startTime = `${date.getHours()}:${date.getMinutes()}`
+    localStorage.startTime = date.toLocaleDateString();
 }
 
 startTestButton.addEventListener('click', startTest);

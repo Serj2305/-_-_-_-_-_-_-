@@ -112,7 +112,16 @@
         border: 1px solid #D2D2D2;
     }
     .result-list-item .time-exam{
-        width: 30%; 
+        width: 30%;
+    }
+    .item-heading .start-time{
+        line-height: 30px;
+    }
+    .result-list-item .start-time{
+        width: 30%;
+    }
+    .result-list-item .number-exam{
+        width: 15%;
     }
     .item-heading{
         background-color: #E7B56B;
@@ -290,6 +299,12 @@
         background-color: #E7B56B;
         color: #FFFFFF;
     }
+    .result-list-item .start-time{
+        width: 35%;
+    }
+    .result-list-item .number-exam{
+        width: 10%;
+    }
     .buttons-container{
         margin-left: auto;
         width: 70%;
@@ -457,6 +472,18 @@
         width: 25%;
         text-align: center;
         border: 1px solid #D2D2D2;
+    }
+    .result-list-item .time-exam{
+        width: 30%;
+    }
+    .item-heading .start-time{
+        line-height: 15px;
+    }
+    .result-list-item .start-time{
+        width: 30%;
+    }
+    .result-list-item .number-exam{
+        width: 15%;
     }
     .item-heading{
         background-color: #E7B56B;

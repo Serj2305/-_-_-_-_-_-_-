@@ -89,6 +89,11 @@
         line-height: 35px;
         font-size: 14px;
     }
+    body > main > div > div.form-container > div > form > div > a{
+        color: #464646;
+        line-height: 35px;
+        font-size: 14px;
+    }
     .button-registr, .button-up{
         background-color: #E7B56B;
         color: #FFFFFF;
@@ -248,6 +253,11 @@
     }
 
     .buttons-container a, .buttons-container-login a{
+        color: #464646;
+        line-height: 35px;
+        font-size: 16px;
+    }
+    body > main > div > div.form-container > div > form > div > a{
         color: #464646;
         line-height: 35px;
         font-size: 16px;
