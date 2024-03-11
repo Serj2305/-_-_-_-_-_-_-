@@ -116,7 +116,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    "C:/Проект_по_созданию_обучающего_сайта_топографических_знаков/static"
+    os.path.dirname(os.path.realpath('static'))
 ]
 
 # Default primary key field type
