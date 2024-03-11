@@ -1,3 +1,10 @@
 /db.sqlite3
 /static/images
 /static/img
+/static/avatars
+/app1/
+/__pycache__/
+*.pyc
+*.pdf
+*.iml
+*.xml
