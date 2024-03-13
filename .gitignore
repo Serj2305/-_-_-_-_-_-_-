@@ -2,7 +2,7 @@
 /static/images
 /static/img
 /static/avatars
-/app1/
+/app1/migrations/
 /__pycache__/
 *.pyc
 *.pdf

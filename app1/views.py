@@ -48,7 +48,7 @@ def account_page(request):
     return render(request, 'personal-account-page.html')
 
 
-# отправляет словарь для списка знаков
+# формирует словарь знаков
 def send(request):
     data = Sign.objects.all().values("name", "description", "category", "photo", "realObjectPhoto")
     data_from_database = {}
@@ -62,7 +62,7 @@ def send(request):
     return JsonResponse(data_from_database)
 
 
-# отправляет словарь для теста
+# формирует тест
 def sendTest(request):
     data = Sign.objects.all().values("photo", "realObjectPhoto", "question1", "answer1", "question2", "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
@@ -132,6 +132,7 @@ def sendTest(request):
     return JsonResponse(new_data)
 
 
+# формирует экзамен
 def sendExam(request):
     data = Sign.objects.all().values("photo", "realObjectPhoto", "category", "complexity", "question1", "answer1",
                                      "question2", "answer2",
@@ -216,6 +217,7 @@ def sendExam(request):
     return JsonResponse(filtered_data)
 
 
+# отправляет информацию о результатах прохождени экзамена
 def sendExamData(request):
     if request.user.is_authenticated:
         data = {}
@@ -226,7 +228,7 @@ def sendExamData(request):
         return JsonResponse(data)
 
 
-# Функция регистрации
+# функция регистрации
 def registr(request):
     if request.user.is_authenticated:
         return render(request, 'index.html')
@@ -261,6 +263,7 @@ def registr(request):
             return render(request, 'registr.html', data)
 
 
+# функция входа в аккаунт
 def sign_in(request):
     if request.user.is_authenticated:
         logout(request)
@@ -289,6 +292,7 @@ def sign_in(request):
     return render(request, 'login.html', {'form': form})
 
 
+# отправляет информацию о категориях
 def send_categories(request):
     data = Category.objects.all().values("name", "description", "category")
     data_from_database = {}
@@ -300,7 +304,7 @@ def send_categories(request):
     return JsonResponse(data_from_database)
 
 
-# отправляет данные на сервер
+# отправляет данные об аккаунте на фронтенд
 def send_account_data(request):
     try:
         username = None
@@ -315,7 +319,7 @@ def send_account_data(request):
     return JsonResponse(data)
 
 
-# получает данные от сервера
+# получает данные об аккаунте с фронтенда
 @csrf_exempt
 def get_account_data(request):
     if request.user.is_authenticated:
@@ -333,6 +337,7 @@ def get_account_data(request):
     return JsonResponse({}, status=204)
 
 
+# сохраняет информацию о прохождении экзамена
 @csrf_exempt
 def get_exam_data(request):
     if request.user.is_authenticated:
@@ -350,6 +355,7 @@ def get_exam_data(request):
     return JsonResponse({}, status=204)
 
 
+# формирует pdf документ (ведомость) для суперпользователя
 @csrf_exempt
 def send_exam_data_pdf():
     data = [["ФИО/Группа", "Результат", "Время начала", "Заняло"]]
