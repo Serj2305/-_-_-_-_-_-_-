@@ -63,7 +63,7 @@ def send(request):
 
 
 # формирует тест
-def sendTest(request):
+def send_test(request):
     data = Sign.objects.all().values("photo", "realObjectPhoto", "question1", "answer1", "question2", "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
     questions = []
@@ -133,7 +133,7 @@ def sendTest(request):
 
 
 # формирует экзамен
-def sendExam(request):
+def send_exam(request):
     data = Sign.objects.all().values("photo", "realObjectPhoto", "category", "complexity", "question1", "answer1",
                                      "question2", "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
@@ -218,7 +218,7 @@ def sendExam(request):
 
 
 # отправляет информацию о результатах прохождени экзамена
-def sendExamData(request):
+def send_exam_data(request):
     if request.user.is_authenticated:
         data = {}
         count = 1
@@ -229,7 +229,7 @@ def sendExamData(request):
 
 
 # функция регистрации
-def registr(request):
+def sign_up(request):
     if request.user.is_authenticated:
         return render(request, 'index.html')
     else:

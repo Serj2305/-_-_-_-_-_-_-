@@ -23,22 +23,22 @@ from app1.views import project_page, signs_page, test_page, exam_page, account_p
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.registr, name='registr'),
+    path('', views.sign_up, name='registr'),
     path('project-page/', project_page, name='project'),
     path('signs-page/', signs_page, name='signs'),
     path('test-page/', test_page, name='test'),
     path('exam-page/', exam_page, name='exam'),
     path('account-page/', account_page, name='account'),
     path('signs-page/send', views.send, name='send'),
-    path('test-page/sendTest', views.sendTest, name='sendTest'),
-    path('exam-page/sendExam', views.sendExam, name='sendExam'),
+    path('test-page/sendTest', views.send_test, name='sendTest'),
+    path('exam-page/sendExam', views.send_exam, name='sendExam'),
     path('index/', views.index_page, name='index'),
     path('login/', views.sign_in, name='login'),
     path('signs-page/send_categories', views.send_categories, name='categories'),
     path('account-page/send_account_data', views.send_account_data, name='account_send'),
     path('account-page/get_account_data', views.get_account_data, name='account_get'),
     path('exam-page/get_exam_data', views.get_exam_data, name="exam_get"),
-    path('account-page/sendExamData', views.sendExamData, name="exam_send"),
+    path('account-page/sendExamData', views.send_exam_data, name="exam_send"),
 ]
 
 if settings.DEBUG:
