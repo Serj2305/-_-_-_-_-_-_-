@@ -383,4 +383,4 @@ def send_exam_data_pdf():
                          txt=item, border=1)
         pdf.ln(row_height * 2)
 
-    pdf.output(Path("static", "exam_results", "Ведомость.pdf"))
+    pdf.output(Path("static", "examresults", "Ведомость.pdf"))
