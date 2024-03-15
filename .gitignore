@@ -2,7 +2,8 @@
 /static/images
 /static/img
 /static/avatars
-/app1/migrations/
+app1/migrations/*
+!app1/migrations/__init__.py
 /app1/__pycache__/
 /__pycache__/
 *.pyc

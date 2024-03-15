@@ -20,18 +20,13 @@ def __str__(self):
 
 
 class Sign(models.Model):
-    data = []
-    for i in Category.objects.all().values("category"):
-        tuple = (i["category"], i["category"])
-        data.append(tuple)
-
     class Meta:
         verbose_name = "знак"
         verbose_name_plural = 'Добавить знак'
 
     name = models.CharField(max_length=500, verbose_name='Название знака')
     description = models.CharField(max_length=500, verbose_name='Описание знака', blank=True)
-    category = models.CharField(max_length=500, choices=data, verbose_name="Категория")
+    category = models.CharField(max_length=500, verbose_name="Категория")
     complexity = models.CharField(max_length=500, choices=[("1", 1), ("2", 2), ("3", 3)], verbose_name="Сложность")
 
     photo = models.ImageField(upload_to='images/', verbose_name='Изображение знака')
