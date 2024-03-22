@@ -63,7 +63,9 @@
         </div>
     </main>
     <footer>
-        <div class="footer-container"></div>
+        <div class="footer-container">
+            <button class="button-form">Дайте обратную связь</button>
+        </div>
     </footer>
     <template id="template-exam-result">
         <li class="result-list-item item-data">
@@ -73,6 +75,25 @@
             <div class="assessment">Оценка</div>           
         </li>
     </template>
+    <div id="popup" class="popup hidden">
+        <div class="popup-body">
+            <form id="form-feedback">
+                <h2>Напишите свой отзыв</h2>
+                <p class="name">Ваше имя:</p>
+                <input class="form-input" type="text" name="name" id="name" value="" placeholder="Введите имя" required autofocus>
+
+                <p class="email">Почта:</p>
+                <input class="form-input" type="email" name="email" id="email" value="" placeholder="Введите почту" required>
+
+                <p class="feedback">Ваш отзыв:</p>
+                <textarea class="form-feedback-text" aria-valuetext="" name="feedback" id="feedback" cols="30" rows="6" placeholder="Напишите ваш отзыв" required></textarea>
+                <div class="form-button-container">
+                    <button type="submit" class="form-button-submit">Отправить</button>
+                    <button type="button" class="form-button-back">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="{% static 'js/personal-account-page.js' %}"></script>
 </body>
 </html>

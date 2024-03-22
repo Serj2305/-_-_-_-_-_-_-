@@ -5,6 +5,12 @@ const inputAvatar = document.querySelector('.input-avatar');
 const resultsContainer = document.querySelector('.result-list');
 const resultTemplate = document.querySelector('#template-exam-result').content;
 const buttonDownload = document.querySelector('.button-download');
+const form = document.getElementById('form-feedback');
+const submitButton = document.querySelector('.form-button-submit');
+const formBackButton = document.querySelector('.form-button-back');
+const formButton = document.querySelector('.button-form');
+const popup = document.querySelector('#popup');
+
 
 editButton.addEventListener('click', edit_data);
 saveButton.addEventListener('click', save_data);
@@ -156,5 +162,31 @@ fetch('sendExamData')
         fillResults(data);
     })
     .catch(function (error) {
-        alert(error)
+        alert(error);
     });
+
+
+formButton.onclick = () => {
+    popup.style = 'display:block;';
+}
+
+formBackButton.onclick = () => {
+    popup.style = 'display:none';
+}
+
+form.onsubmit = (e) => {
+    e.preventDefault() 
+    fetch('', {
+        method: 'POST',
+        body: new FormData(form)
+    }).then((response) => {
+        if(!response.ok) {
+            return response.statusText
+        }
+        else {
+            popup.style = 'display:none';
+        }
+    }).catch((error)=>{
+        alert(error);
+    })
+}
