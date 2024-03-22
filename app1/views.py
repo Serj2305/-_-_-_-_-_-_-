@@ -43,8 +43,11 @@ def exam_page(request):
 
 @login_required
 def account_page(request):
-    if request.user.is_superuser:
-        send_exam_data_pdf()
+    try:
+        if request.user.is_superuser:
+                send_exam_data_pdf()
+    except:
+        pass
     return render(request, 'personal-account-page.html')
 
 
