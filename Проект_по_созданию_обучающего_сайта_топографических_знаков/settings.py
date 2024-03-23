@@ -126,3 +126,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/images/'
+
+# информация о почте
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST_USER = "studysigns.project@mail.ru"
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = "-"
+EMAIL_USE_SSL = False

@@ -39,6 +39,7 @@ urlpatterns = [
     path('account-page/get_account_data', views.get_account_data, name='account_get'),
     path('exam-page/get_exam_data', views.get_exam_data, name="exam_get"),
     path('account-page/sendExamData', views.send_exam_data, name="exam_send"),
+    path('account-page/send_to_email', views.send_to_email, name="send_to_email"),
 ]
 
 if settings.DEBUG:

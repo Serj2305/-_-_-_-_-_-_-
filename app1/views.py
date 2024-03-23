@@ -1,19 +1,20 @@
 import json
 
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
 from pathlib import Path
+from fpdf import FPDF
+from app1.models import AdditionalInfoUser, Sign, ExamInfo, Category
 
 import random
-
-from fpdf import FPDF
-
-from app1.models import AdditionalInfoUser, Sign, ExamInfo, Category
 
 
 @login_required
@@ -45,7 +46,7 @@ def exam_page(request):
 def account_page(request):
     try:
         if request.user.is_superuser:
-                send_exam_data_pdf()
+            send_exam_data_pdf()
     except:
         pass
     return render(request, 'personal-account-page.html')
@@ -296,7 +297,7 @@ def sign_in(request):
 
 
 # отправляет информацию о категориях
-def send_categories(request):
+def send_categories():
     data = Category.objects.all().values("name", "description", "category")
     data_from_database = {}
     id = 0
@@ -387,3 +388,18 @@ def send_exam_data_pdf():
         pdf.ln(row_height * 2)
 
     pdf.output(Path("static", "examresults", "Ведомость.pdf"))
+
+
+# берет данные из формы обратной связи и отправляет на почту
+@csrf_exempt
+def send_to_email(request):
+    if request.user.is_authenticated:
+        name = request.POST.dict()['name']
+        email = request.POST.dict()['email']
+        feedback = request.POST.dict()['feedback']
+        try:
+            send_mail(name + "(" + email + ")", feedback, settings.EMAIL_HOST_USER, ['studysigns.project@mail.ru'])
+        except:
+            pass
+
+    return JsonResponse({}, status=204)

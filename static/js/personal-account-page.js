@@ -176,7 +176,7 @@ formBackButton.onclick = () => {
 
 form.onsubmit = (e) => {
     e.preventDefault() 
-    fetch('', {
+    fetch('send_to_email', {
         method: 'POST',
         body: new FormData(form)
     }).then((response) => {
