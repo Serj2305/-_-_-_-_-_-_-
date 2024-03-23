@@ -297,7 +297,7 @@ def sign_in(request):
 
 
 # отправляет информацию о категориях
-def send_categories():
+def send_categories(request):
     data = Category.objects.all().values("name", "description", "category")
     data_from_database = {}
     id = 0
