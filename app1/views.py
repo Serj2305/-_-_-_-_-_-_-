@@ -226,7 +226,7 @@ def send_exam_data(request):
     if request.user.is_authenticated:
         data = {}
         count = 1
-        for i in ExamInfo.objects.filter(login=request.user).values("res", "startTime", "time"):
+        for i in ExamInfo.objects.filter(login=request.user).values("res", "startTime", "time").order_by('-id')[:10][::-1]:
             data[count] = i
             count += 1
         return JsonResponse(data)
