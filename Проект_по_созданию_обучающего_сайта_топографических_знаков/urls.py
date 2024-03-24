@@ -19,16 +19,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from app1 import views
-from app1.views import project_page, signs_page, test_page, exam_page, account_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.sign_up, name='registr'),
-    path('project-page/', project_page, name='project'),
-    path('signs-page/', signs_page, name='signs'),
-    path('test-page/', test_page, name='test'),
-    path('exam-page/', exam_page, name='exam'),
-    path('account-page/', account_page, name='account'),
+    path('project-page/', views.project_page, name='project'),
+    path('signs-page/', views.signs_page, name='signs'),
+    path('test-page/', views.test_page, name='test'),
+    path('exam-page/', views.exam_page, name='exam'),
+    path('account-page/', views.account_page, name='account'),
     path('signs-page/send', views.send, name='send'),
     path('test-page/sendTest', views.send_test, name='sendTest'),
     path('exam-page/send_exam', views.send_exam, name='send_exam'),
