@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from app1.views import send_exam_data_pdf
+from app1.views import send_exam_data_xlsx
 
 
 @login_required
@@ -33,7 +33,7 @@ def exam_page(request):
 def account_page(request):
     try:
         if request.user.is_superuser:
-            send_exam_data_pdf()
+            send_exam_data_xlsx()
     except:
         pass
     return render(request, 'personal-account-page.html')
