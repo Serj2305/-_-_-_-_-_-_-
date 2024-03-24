@@ -1,84 +1,379 @@
-body{
-    margin:0;
-    padding: 0;
-    width: 100%;
-    font-family: 'Comfortaa';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 40px;
-    color:#464646;
-}
-/*стилизуем шапку*/
-.header-container{
-    margin: 0;
-    padding: 0;
-    background: #6D886D;
-    margin-bottom: 60px;
-}
-.main-nav{
-    padding-right: 3%;
-    padding-left: 5%;
-}
-.main-nav-list{
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    justify-content: space-between;
-}
-.main-nav-list .nav-cont{
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding:0;
-    list-style-type: none;
-}
-.main-nav-list-item{
-    padding-top: 5px;
-}
-.main-nav-list-item a{
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 26px;
-}
-.main-nav-list-item img{
-    margin-top: 5px;
-}
-.main-nav-list-item a:hover {
-    opacity: 0.7;
+@media only screen and (max-width : 2000px) {
+    body{
+        margin:0;
+        padding: 0;
+        width: 100%;
+        font-family: 'Comfortaa';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 40px;
+        color:#464646;
+    }
+    /*стилизуем шапку*/
+    .header-container{
+        margin: 0;
+        padding: 0;
+        background: #6D886D;
+        margin-bottom: 60px;
+    }
+    .main-nav{
+        padding-right: 3%;
+        padding-left: 5%;
+    }
+    .main-nav-list{
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        justify-content: space-between;
+    }
+    .main-nav-list .nav-cont{
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding:0;
+        list-style-type: none;
+    }
+    .main-nav-list-item{
+        padding-top: 5px;
+    }
+    .main-nav-list-item a{
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 26px;
+    }
+    .main-nav-list-item img{
+        margin-top: 5px;
+    }
+    .main-nav-list-item a:hover {
+        opacity: 0.7;
+    }
+
+    /*стилизуем основной контент*/
+    .main-container{
+        margin-bottom: 60px;
+    }
+
+    .main-content{
+        padding: 0 55px 0;
+    }
+
+    .name-page{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .project-description{
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .members-team, .curators-project{
+        font-weight: 400;
+        font-size: 22px;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .member-team-card-container, .curator-project-card-container{
+        display: flex;
+        gap: 5%;
+        justify-content: center;
+    }
+    .member-team-card, .curator-project-card{
+        text-align: center;
+    }
+
+    .member-team-card p, .curator-project-card p{
+        margin: 0 auto 5px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 25px;
+        width: 70%;
+    }
+
+    .member-team-role{
+        opacity: 0.7;
+    }
+    .member-team-img, .curator-project-img{
+        border-radius: 80px;
+        margin-bottom: 5px;
+    }
+
+    .member-team, .curator-project{
+        color:#464646;
+    }
+
+    .member-team:hover, .curator-project:hover{
+        color:black;
+    }
+
+    /*стилизуем подвал*/
+
+    .footer-container{
+        padding: 30px;
+        background-color: #F5F5F5;
+    }
 }
 
-/*стилизуем основной контент*/
-.main-container{
-    margin-bottom: 60px;
+@media only screen and (max-width : 769px) {
+     body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-family: 'Comfortaa';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        color: #464646;
+    }
+
+    /*стилизуем шапку*/
+    .header-container {
+        margin: 0;
+        padding: 0;
+        background: #6D886D;
+        margin-bottom: 80px;
+    }
+
+    .main-nav {
+        padding-right: 3%;
+        padding-left: 5%;
+    }
+
+    .main-nav-list {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        justify-content: space-between;
+    }
+
+    .main-nav-list .nav-cont {
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .main-nav-list-item {
+        padding-top: 5px;
+    }
+
+    .main-nav-list-item a {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 26px;
+    }
+
+    .main-nav-list-item img {
+        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .main-nav-list-item a:hover {
+        opacity: 0.7;
+    }
+     /*стилизуем основной контент*/
+    .main-container{
+        margin-bottom: 60px;
+    }
+
+    .main-content{
+        padding: 0 55px 0;
+    }
+
+    .name-page{
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .project-description{
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .members-team, .curators-project{
+        font-weight: 400;
+        font-size: 22px;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .member-team-card-container, .curator-project-card-container{
+        display: flex;
+        gap: 5%;
+        justify-content: center;
+    }
+    .member-team-card, .curator-project-card{
+        text-align: center;
+    }
+
+    .member-team-card p, .curator-project-card p{
+        margin: 0 auto 10px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+        line-height: 25px;
+        width: 70%;
+    }
+
+    .member-team-role{
+        opacity: 0.7;
+    }
+    .member-team-img, .curator-project-img{
+        border-radius: 80px;
+        margin-bottom: 5px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .member-team, .curator-project{
+        color:#464646;
+    }
+
+    .member-team:hover, .curator-project:hover{
+        color:black;
+    }
+
+    /*стилизуем подвал*/
+
+    .footer-container{
+        padding: 30px;
+        background-color: #F5F5F5;
+    }
 }
 
-.main-content{
-    width: 70%;
-    margin-left: 5%;
-}
+@media only screen and (max-width : 426px) {
+    body{
+        margin:0;
+        padding: 0;
+        width: 100%;
+        font-family: 'Comfortaa';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 20px;
+        color:#464646;
+    }
+     /*стилизуем шапку*/
+    .header-container{
+        margin: 0;
+        padding: 0;
+        background: #6D886D;
+        margin-bottom: 30px;
+    }
+    .main-nav{
+        padding-right: 3%;
+        padding-left: 5%;
+    }
+    .main-nav-list{
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        justify-content: space-between;
+    }
+    .main-nav-list .nav-cont{
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding:0;
+        list-style-type: none;
+    }
+    .main-nav-list-item{
+        padding-top: 5px;
+    }
+    .main-nav-list-item a{
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 15px;
+        line-height: 30px;
+    }
+    .main-nav-list-item img{
+        margin-top: 5px;
+        width: 20px;
+        height: 20px;
+    }
+    .main-nav-list-item a:hover {
+        opacity: 0.7;
+    }
+     /*стилизуем основной контент*/
+    .main-container{
+        margin-bottom: 60px;
+    }
 
-.name-page{
-    text-align: center;
-    margin-bottom: 30px;
-}
+    .main-content{
+        padding: 0 15px 0;
+    }
 
-p{
-    margin-bottom: 15px;
-}
+    .name-page{
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
 
-.member-team{
-    color:#464646;
-}
+    .project-description{
+        margin-bottom: 15px;
+        text-align: center;
+    }
 
-.member-team:hover{
-    color:black;
-}
+    .members-team, .curators-project{
+        font-weight: 400;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
 
-/*стилизуем подвал*/
+    .member-team-card-container, .curator-project-card-container{
+        display: flex;
+        gap: 5%;
+        justify-content: center;
+    }
+    .member-team-card, .curator-project-card{
+        text-align: center;
+    }
 
-.footer-container{
-    padding: 30px;
-    background-color: #F5F5F5;
+    .member-team-card p, .curator-project-card p{
+        margin: 0 auto 5px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 10px;
+        line-height: 15px;
+        width: 70%;
+    }
+
+    .member-team-role{
+        opacity: 0.7;
+    }
+    .member-team-img, .curator-project-img{
+        border-radius: 80px;
+        margin-bottom: 5px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .member-team, .curator-project{
+        color:#464646;
+    }
+
+    .member-team:hover, .curator-project:hover{
+        color:black;
+    }
+
+    /*стилизуем подвал*/
+
+    .footer-container{
+        padding: 30px;
+        background-color: #F5F5F5;
+    }
+
 }

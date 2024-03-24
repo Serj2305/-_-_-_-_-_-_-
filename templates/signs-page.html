@@ -20,7 +20,7 @@
                     <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
                     <div class="nav-cont">
                         <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="#"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
+                        <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                     </div>
                 </div>
             </nav>
@@ -30,10 +30,10 @@
         <div class="main-container">
             <div class="name-container">
                 <h1 class="name-page">Топографические условные знаки</h1>
-                <div class="signs-filter"><span>Категории</span> <img src="{% static 'img/sign-filter.svg' %}" alt="стрелочка" width="25" height="25"></div>
+                <div class="signs-filter"><span>Категории</span> <img src="{% static 'img/sign-filter.svg' %}" alt="стрелочка"></div>
                 <div class="filter-list hidden">
                     <ul class="filters">
-                        <li class="filter-list-item all-signs" data-category="all-signs">Все знаки</li>
+                       <!--  <li class="filter-list-item all-signs" data-category="all-signs">Все знаки</li>
                         <li class="filter-list-item geodetic-points" data-category="geodetic-points">Геодезические пункты</li>
                         <li class="filter-list-item localities" data-category="localities">Населенные пункты</li>
                         <li class="filter-list-item objects" data-category="objects">Промышленные, сельскохозяйственные и социально-культурные объекты</li>
@@ -41,7 +41,7 @@
                         <li class="filter-list-item structures" data-category="structures">Гидрография и гидротехнические сооружения</li>
                         <li class="filter-list-item vegetation-cover-and-soils" data-category="vegetation-cover-and-soils">Растительный покров и грунты</li>
                         <li class="filter-list-item borders" data-category="borders">Границы</li>
-                        <li class="filter-list-item list-of-abbreviations" data-category="list-of-abbreviations">Перечень условных сокращений</li>
+                        <li class="filter-list-item list-of-abbreviations" data-category="list-of-abbreviations">Перечень условных сокращений</li> -->
                     </ul>
                 </div>
                <!-- <select title="фильтр знаков" name="signs-filter" id="signs-filter" class="signs-filter">
@@ -56,18 +56,16 @@
                     <option value="list-of-abbreviations">Перечень условных сокращений</option>
                 </select> -->
             </div>
+            <p class="description-category"></p>
             <div class="signs-container">
 
             </div>
             <div class="button-wrapper">
                 <div class="button-shou-more">Показать больше</div>
+                <div class="button-download-file hidden"><a href="https://docs.google.com/document/d/1pK9cYlzECySkSDDaXaO5mGXGnP8Sy0Wv/edit?usp=sharing&ouid=116044559135717823771&rtpof=true&sd=true" target="_blank" download>Открыть файл с сокращениями</a></div>
             </div>
-
         </div>
     </main>
-    <footer>
-        <div class="footer-container"></div>
-    </footer>
     <template id="sign">
         <div class="sign-container hidden-card">
             <div class="img-container">
@@ -85,12 +83,29 @@
                 <img class="popup-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25" width="25">
                 <div class="popup-img-container">
                     <div><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака" class="picture-sign" ></div>
-                    <div><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака в реальной жизни" class="world-sign" ></div>
+                    <div class="world-picture-container"><img src="{% static 'img/Rectangle 5.svg' %}" alt="Фотография знака в реальной жизни" class="world-sign" ></div>
+                    <div class="test-picture-container"><img src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака из теста" width="70" height="70"></div>
                 </div>
                 <div class="popup-text-container">
-                    <div><h2 class="popup-name-sign">Тут должно быть название</h2>
-                    <p class="popup-description-sign">А тут описание</p></div>
+                    <div class="popup-text-container-content">
+                        <div>
+                            <h2 class="popup-name-sign">Тут должно быть название</h2>
+                            <p class="popup-description-sign">А тут описание</p>
+                        </div>
+                        <div class="test-question-container">
+                            <p class="question">Какой-то вопрос про знак?</p>
+                            <p class="answer">Ответ: какой-то ответ </p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-enlarged-img hidden">
+        <div class="popup-enlarged-img-body">
+            <div class="popup-enlarged-img-content">
+                <img class="popup-img-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25" width="25">
+                <img class="popup-img-enlarged-img" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
             </div>
         </div>
     </div>

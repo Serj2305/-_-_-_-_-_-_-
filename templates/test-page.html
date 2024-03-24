@@ -20,7 +20,7 @@
                     <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
                     <div class="nav-cont">
                         <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="#"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
+                        <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                     </div>
                 </div>
             </nav>
@@ -39,7 +39,9 @@
             <div class="test-card-question">
                 <span class="question-number test-number">1/120</span>
                 <div class="question-container">
-                    <img src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="250" height="250">
+                    <div class="question-picture-container">
+                        <img class="question-picture" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
+                    </div>
                     <div class="description-and-answer">
 
                     </div>
@@ -53,13 +55,15 @@
                 <span class="question-number test-number">1/120</span>
                 <div class="answer-container">
                     <div class="pictures-container">
-                        <img class="picture-sign" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="150" height="150">
-                        <img class="picture-world" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" width="150" height="150">
+                        <div class="picture-container">
+                            <img class="picture-sign" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" >
+                        </div>
+                        <div class="picture-container picture-world-container">
+                            <img class="picture-world" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" >
+                        </div>
                     </div>
                     <div class="description-and-answer">
-                        <div class="result">Верно</div>
-                        <p class="name-sign">Тут должно быть название</p>
-                        <p class="description-sign">тут должны быть описание и характеристика знака</p>
+
                     </div>
                 </div>
                 <div class="buttons-wrapper">
@@ -72,6 +76,14 @@
     <footer>
         <div class="footer-container"></div>
     </footer>
+     <div class="popup-enlarged-img hidden">
+        <div class="popup-enlarged-img-body">
+            <div class="popup-enlarged-img-content">
+                <img class="popup-img-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25" width="25">
+                <img class="popup-img-enlarged-img" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
+            </div>
+        </div>
+    </div>
 <script src="{% static 'js/test-page.js' %}"></script>
 </body>
 </html>
