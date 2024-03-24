@@ -151,7 +151,7 @@ function fillResults(results) {
     })
 }
 
-fetch('sendExamData')
+fetch('send_exam_data')
     .then((response) => {
         if(response.ok) {
             return response.json();

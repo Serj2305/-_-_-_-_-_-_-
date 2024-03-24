@@ -25,7 +25,7 @@ else{
 }
 
 function getDataExam() {
-    fetch('sendExam')
+    fetch('send_exam')
     .then((response) => {
       if(response.ok) {
         return response.json();

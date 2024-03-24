@@ -243,6 +243,7 @@ def sign_up(request):
         if request.method == 'POST':
             # Создаём форму
             form = UserCreationForm(request.POST)
+            form = UserCreationForm(request.POST)
             x = form.fields['username']
             x.label = "Почта"
             x.help_text = "Почта должна быть выдана организацией УрФУ"
