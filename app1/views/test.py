@@ -5,8 +5,10 @@ from django.http import JsonResponse
 from app1.models import Sign
 
 
-# формирует тест
 def send_test(request):
+    """
+    Данная функция берет из базы данных информацию о всех знаках и отправляет на фронтенд
+    """
     data = Sign.objects.all().values("photo", "realObjectPhoto", "question1", "answer1", "question2", "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
     questions = []

@@ -5,8 +5,10 @@ from django.shortcuts import render, redirect
 from app1.models import AdditionalInfoUser
 
 
-# функция регистрации
 def sign_up(request):
+    """
+    Данная функция реализует функционал регистрации на сайте
+    """
     if request.user.is_authenticated:
         return render(request, 'index.html')
     else:
@@ -15,7 +17,6 @@ def sign_up(request):
         # Проверка что есть запрос POST
         if request.method == 'POST':
             # Создаём форму
-            form = UserCreationForm(request.POST)
             form = UserCreationForm(request.POST)
             x = form.fields['username']
             x.label = "Почта"
@@ -41,8 +42,10 @@ def sign_up(request):
             return render(request, 'registr.html', data)
 
 
-# функция входа в аккаунт
 def sign_in(request):
+    """
+    Данная функция реализует функционал входа на сайт
+    """
     if request.user.is_authenticated:
         logout(request)
     form = AuthenticationForm()

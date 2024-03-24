@@ -5,9 +5,11 @@ from django.views.decorators.csrf import csrf_exempt
 from Проект_по_созданию_обучающего_сайта_топографических_знаков import settings
 
 
-# берет данные из формы обратной связи и отправляет на почту
 @csrf_exempt
 def send_to_email(request):
+    """
+    Данная функция берет данные из формы обратной связи (имя, почта, сообщение) и отправляет нам на почту
+    """
     if request.user.is_authenticated:
         name = request.POST.dict()['name']
         email = request.POST.dict()['email']

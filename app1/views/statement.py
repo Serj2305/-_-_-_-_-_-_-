@@ -6,9 +6,12 @@ from app1.models import AdditionalInfoUser, ExamInfo
 import pandas as pd
 
 
-# формирует excel документ (ведомость) для суперпользователя
 @csrf_exempt
 def send_exam_data_xlsx():
+    """
+    Данная функция берет информацию о прохождении экзамена для всех пользователей,формирует .xlsx файл (ведомость)
+    и сохраняет его в папку exam_results
+    """
     data = []
     for j in AdditionalInfoUser.objects.all().values("login", "name", "group"):
         for i in ExamInfo.objects.filter(login=j["login"]).values("login", "res", "startTime", "time"):

@@ -7,8 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 from app1.models import Sign, Category, ExamInfo
 
 
-# формирует экзамен
 def send_exam(request):
+    """
+    Данная функция берет из базы данных информацию о всех знаках, выбирает из них часть и отправляет на фронтенд
+    """
     data = Sign.objects.all().values("photo", "realObjectPhoto", "category", "complexity", "question1", "answer1",
                                      "question2", "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
@@ -95,6 +97,10 @@ def send_exam(request):
 # сохраняет информацию о прохождении экзамена
 @csrf_exempt
 def get_exam_data(request):
+    """
+    Данная функция берет информацию о прохождении экзамена (результат, время начала, время прохождения)
+    и сохраняет ее в базе данных
+    """
     if request.user.is_authenticated:
         username = request.user.username
         t = ExamInfo.objects.create(
