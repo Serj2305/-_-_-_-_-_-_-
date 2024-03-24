@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from app1.models import Sign, Category
 
 
-def send(request):
+def send_signs(request):
     """
     Данная функция берет информацию о знаках из базы данных и отправляет на фронтенд (страница "Смотреть")
     """

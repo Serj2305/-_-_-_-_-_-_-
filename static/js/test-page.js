@@ -10,7 +10,7 @@ const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
 const popupImgButtonClose = document.querySelector('.popup-img-button-close');
 
 let QUESTIONS = {};
-fetch('sendTest')
+fetch('send_test')
     .then((response) => {
       if(response.ok) {
         return  response.json();

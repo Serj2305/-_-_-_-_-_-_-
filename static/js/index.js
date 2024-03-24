@@ -197,7 +197,7 @@ fetch('send_categories')
   });
 
 
-fetch('send')
+fetch('send_signs')
     .then((response) => {
       if(response.ok) {
         return response.json();
