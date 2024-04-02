@@ -16,7 +16,7 @@ def send_to_email(request):
         feedback = request.POST.dict()['feedback']
         try:
             send_mail(name + "(" + email + ")", feedback, settings.EMAIL_HOST_USER, ['studysigns.project@mail.ru'])
-        except:
+        except Exception:
             pass
 
     return JsonResponse({}, status=204)

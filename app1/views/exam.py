@@ -4,15 +4,14 @@ import random
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from app1.models import Sign, Category, ExamInfo
+from app1.models import Sign, Category, ExamInfo, Exam
 
 
 def send_exam(request):
     """
     Данная функция берет из базы данных информацию о всех знаках, выбирает из них часть и отправляет на фронтенд
     """
-    data = Sign.objects.all().values("photo", "realObjectPhoto", "category", "complexity", "question1", "answer1",
-                                     "question2", "answer2",
+    data = Exam.objects.all().values("photo", "realObjectPhoto", "question1", "answer1", "question2", "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
     questions = []
     answers = []
@@ -59,8 +58,7 @@ def send_exam(request):
         data_from_database[f'{id}'] = {'number': id, 'picture': "/static/" + row["photo"],
                                        'textQuestions': textQuestions[id - 1],
                                        'answersList': answersList[id - 1],
-                                       'pictureWorld': "/static/" + row["realObjectPhoto"],
-                                       'category': row['category'], 'complexity': row["complexity"]}
+                                       'pictureWorld': "/static/" + row["realObjectPhoto"]}
 
     keys = [*data_from_database]
     random.shuffle(keys)
@@ -73,25 +71,10 @@ def send_exam(request):
         new_data[count] = new_data[key]
         del new_data[key]
 
-    categories = []
-    filtered_data = {}
+    for i in range(1, len(new_data)):
+        new_data[i]["number"] = i
 
-    for i in Category.objects.all().values("category"):
-        categories.append(i["category"])
-
-    index = 1
-    for i in categories:
-        count = 1
-        for j in range(1, len(new_data)):
-            if i == new_data[j]["category"] and new_data[j]["complexity"] == str(count):
-                filtered_data[f'{index}'] = new_data[j]
-                filtered_data[str(index)]["number"] = str(index)
-                count += 1
-                index += 1
-            if count > 3:
-                break
-
-    return JsonResponse(filtered_data)
+    return JsonResponse(new_data)
 
 
 # сохраняет информацию о прохождении экзамена

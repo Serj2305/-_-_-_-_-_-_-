@@ -133,5 +133,5 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_HOST_USER = "studysigns.project@mail.ru"
 EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "-"
+EMAIL_HOST_PASSWORD = "mkAcR05LjSSbiVYHxtsS"
 EMAIL_USE_SSL = False
