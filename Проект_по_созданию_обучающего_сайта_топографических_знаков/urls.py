@@ -19,16 +19,26 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from app1 import views
-from app1.views import index_page, project_page, signs_page, test_page, exam_page, send
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page, name='index'),
-    path('project-page/', project_page, name='project'),
-    path('signs-page/', signs_page, name='signs'),
-    path('test-page/', test_page, name='test'),
-    path('exam-page/', exam_page, name='exam'),
-    path('signs-page/send', views.send, name='send')
+    path('', views.sign_up, name='registr'),
+    path('project-page/', views.project_page, name='project'),
+    path('signs-page/', views.signs_page, name='signs'),
+    path('test-page/', views.test_page, name='test'),
+    path('exam-page/', views.exam_page, name='exam'),
+    path('account-page/', views.account_page, name='account'),
+    path('signs-page/send_signs', views.send_signs, name='send_signs'),
+    path('test-page/send_test', views.send_test, name='send_test'),
+    path('exam-page/send_exam', views.send_exam, name='send_exam'),
+    path('index/', views.index_page, name='index'),
+    path('login/', views.sign_in, name='login'),
+    path('signs-page/send_categories', views.send_categories, name='send_categories'),
+    path('account-page/send_account_data', views.send_account_data, name='send_account_send'),
+    path('account-page/get_account_data', views.get_account_data, name='get_account_data'),
+    path('exam-page/get_exam_data', views.get_exam_data, name="get_exam_data"),
+    path('account-page/send_exam_data', views.send_exam_data, name="send_exam_send"),
+    path('account-page/send_to_email', views.send_to_email, name="send_to_email"),
 ]
 
 if settings.DEBUG:
