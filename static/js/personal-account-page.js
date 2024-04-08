@@ -133,6 +133,7 @@ fetch('send_account_data')
         throw new Error(`${response.status} ${response.statusText}`);
     })
     .then((data) => {
+        console.log(data)
         fillAccount(data);
     })
     .catch(function (error) {
@@ -172,6 +173,13 @@ formButton.onclick = () => {
 
 formBackButton.onclick = () => {
     popup.style = 'display:none';
+    form.reset()
+}
+
+function clear() {
+    form.getElementById('name').value = '';
+    form.getElementById('email').value = '';
+    form.getElementById('feedback').value = '';
 }
 
 form.onsubmit = (e) => {
@@ -189,4 +197,6 @@ form.onsubmit = (e) => {
     }).catch((error)=>{
         alert(error);
     })
+    popup.style = 'display:none';
+    form.reset()
 }

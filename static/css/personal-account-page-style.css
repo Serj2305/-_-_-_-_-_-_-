@@ -10,6 +10,9 @@
         line-height: 40px;
         color:#464646;
     }
+    .content{
+        min-height: calc(100vh - 50px);
+    }
     /*стилизуем шапку*/
     .header-container{
         margin: 0;

@@ -196,7 +196,7 @@ function shouAnswer() {
                       popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = imgAnswer.src;
                       popupEnlargedImg.classList.remove('hidden');
                   });
-    if(QUESTIONS[`${testCardQuestion.id}`].pictureWorld === '/images/') {
+    if(QUESTIONS[`${testCardQuestion.id}`].pictureWorld === '/static/') {
         testCardAnswer.querySelector('.picture-world-container').style.display = 'none';
     }
     else {

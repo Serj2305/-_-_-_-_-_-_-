@@ -13,55 +13,57 @@
     <title>Личный кабинет</title>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <nav class="main-nav">
-                <div class="main-nav-list">
-                    <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
-                    <div class="nav-cont">
-                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="{% url 'login' %}">Выход</a></div>
+    <div class="content">
+        <header>
+            <div class="header-container">
+                <nav class="main-nav">
+                    <div class="main-nav-list">
+                        <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+                        <div class="nav-cont">
+                            <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+                            <div class ="main-nav-list-item"><a href="{% url 'login' %}">Выход</a></div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="main-container">
+                <div class="personal-information">
+                    <div class="photo-and-name">
+                        <label class="label-avatar" for="fileAvatar">
+                            <div class="img-container">
+                                <img class = 'avatar' src="{% static 'img/personal-img.png' %}" alt="ваш аватар">
+                            </div>
+                        </label>
+                        <span class="name-account">Фамилия Имя Отчество</span>
+                    </div>
+                    <input class="input-avatar" type="file" id="" />
+                    <p class="study-group"><b>Группа: </b><i class = 'group'>Ваша группа</i></p>
+                    <p class="email"><b>Электронная почта:</b> Ваша почта</p>
+                    <div class="buttons-container">
+                        <div class="button-edit ">Изменить</div>
+                        <div class="button-save hidden-button">Сохранить</div>
+                        <div class="button-back hidden-button">Отмена</div>
+                    </div>
+                    <div class="button-download"><a href="/static/exam_results/Ведомость.xlsx" download="ведомость">Cкачать ведомость</a></div>
+                </div>
+                <div class="result-exam-information">
+                    <p class="name-table">Результаты экзаменов:</p>
+                    <div class="result-list-container">
+                        <ul class="result-list">
+                            <li class="result-list-item item-heading">
+                                <div class="number-exam">№</div>
+                                <div class="start-time">Дата прохождения</div>
+                                <div class="time-exam">Время(мин)</div>
+                                <div class="assessment">Оценка</div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="main-container">
-            <div class="personal-information">
-                <div class="photo-and-name">
-                    <label class="label-avatar" for="fileAvatar">
-                        <div class="img-container">
-                            <img class = 'avatar' src="{% static 'img/personal-img.png' %}" alt="ваш аватар">
-                        </div>
-                    </label>
-                    <span class="name-account">Фамилия Имя Отчество</span>
-                </div>
-                <input class="input-avatar" type="file" id="" />
-                <p class="study-group"><b>Группа: </b><i class = 'group'>Ваша группа</i></p>
-                <p class="email"><b>Электронная почта:</b> Ваша почта</p>
-                <div class="buttons-container">
-                    <div class="button-edit ">Изменить</div>
-                    <div class="button-save hidden-button">Сохранить</div>
-                    <div class="button-back hidden-button">Отмена</div>
-                </div>
-                <div class="button-download"><a href="/static/exam_results/Ведомость.xlsx" download="ведомость">Cкачать ведомость</a></div>
             </div>
-            <div class="result-exam-information">
-                <p class="name-table">Результаты экзаменов:</p>
-                <div class="result-list-container">
-                    <ul class="result-list">
-                        <li class="result-list-item item-heading">
-                            <div class="number-exam">№</div>
-                            <div class="start-time">Дата прохождения</div>
-                            <div class="time-exam">Время(мин)</div>
-                            <div class="assessment">Оценка</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
     <footer>
         <div class="footer-container">
             <button class="button-form">Дайте обратную связь</button>
