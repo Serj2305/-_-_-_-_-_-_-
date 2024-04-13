@@ -16,17 +16,17 @@ def send_test(request):
     textQuestions = []
     answersList = []
     for row in data:
-        questions.append(row["question1"])
-        questions.append(row["question2"])
-        questions.append(row["question3"])
-        questions.append(row["question4"])
-        questions.append(row["question5"])
+        questions.append(row["question1"].lower())
+        questions.append(row["question2"].lower())
+        questions.append(row["question3"].lower())
+        questions.append(row["question4"].lower())
+        questions.append(row["question5"].lower())
 
-        answers.append(row["answer1"])
-        answers.append(row["answer2"])
-        answers.append(row["answer3"])
-        answers.append(row["answer4"])
-        answers.append(row["answer5"])
+        answers.append(row["answer1"].lower())
+        answers.append(row["answer2"].lower())
+        answers.append(row["answer3"].lower())
+        answers.append(row["answer4"].lower())
+        answers.append(row["answer5"].lower())
 
         count = 0
         for i in questions:
