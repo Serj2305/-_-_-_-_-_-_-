@@ -38,9 +38,9 @@ def send_account_data(request):
 
         info = AdditionalInfoUser.objects.get(login=username)
         data = {'avatar': '/static/' + f'{info.avatar}', 'name': f'{info.name}', 'group': f'{info.group}',
-                'is_superuser': f'{info.is_superuser}'}
+                'is_superuser': f'{info.is_superuser}', 'email': f'{username}'}
     except:
-        data = {'avatar': '-', 'name': '-', 'group': '-', 'is_superuser': '-'}
+        data = {'avatar': '-', 'name': '-', 'group': '-', 'is_superuser': '-', 'email': '-'}
 
     return JsonResponse(data)
 
