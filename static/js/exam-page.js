@@ -33,7 +33,6 @@ function getDataExam() {
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
       QUESTIONS = data;
-      console.log(data)
       localStorage.QUESTIONS = JSON.stringify(data);
       document.querySelector('.start-test .question-number').textContent = testCardQuestion.querySelector('.test-number').textContent = `0/${Object.keys(QUESTIONS).length}`;
   }).catch(function (error) {
