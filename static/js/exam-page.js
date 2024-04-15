@@ -28,12 +28,12 @@ function getDataExam() {
     fetch('send_exam')
     .then((response) => {
       if(response.ok) {
-        console.log(response)
         return response.json();
       }
       throw new Error(`${response.status} ${response.statusText}`);
   }).then((data) => {
       QUESTIONS = data;
+      console.log(data)
       localStorage.QUESTIONS = JSON.stringify(data);
       document.querySelector('.start-test .question-number').textContent = testCardQuestion.querySelector('.test-number').textContent = `0/${Object.keys(QUESTIONS).length}`;
   }).catch(function (error) {
@@ -154,7 +154,7 @@ function shouNextQuestion() {
     let flag = true;
     const responses = []
     response.forEach((resp,index) => {
-        if (resp.value !== trueResponse[index]) {
+        if (resp.value.toLowerCase() !== trueResponse[index]) {
             flag = false;
         }
         responses[index] = resp.value;
@@ -189,7 +189,7 @@ function shouNextQuestion() {
             buttonEnd.style.display = 'none'
         }
         testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-        testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
+        testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
         const fragment = document.createDocumentFragment();
         QUESTIONS[cardId].textQuestions.forEach((question, index) => {
             const elem = document.createElement('p');
@@ -241,7 +241,7 @@ function showPreviousQuestion() {
             buttonEnd.style.display = 'none'
         }
         testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-        testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
+        testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
         const fragment = document.createDocumentFragment();
         QUESTIONS[cardId].textQuestions.forEach((question, index) => {
             const elem = document.createElement('p');
@@ -269,7 +269,7 @@ function finishTest() {
     let flag = true;
     const responses = []
     response.forEach((resp,index) => {
-        if (resp.value !== trueResponse[index]) {
+        if (resp.value.toLowerCase() !== trueResponse[index]) {
             flag = false;
         }
         responses[index] = resp.value;

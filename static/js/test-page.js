@@ -136,7 +136,7 @@ function startTest() {
                       popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = questionImg.src;
                       popupEnlargedImg.classList.remove('hidden');
                   });
-    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS["1"].number}/${Object.keys(QUESTIONS).length}`;
+    testCardQuestion.querySelector('.test-number').textContent = `${1}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS["1"].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
@@ -175,7 +175,7 @@ function shouAnswer() {
         result.classList.add('result');
         answer.readOnly = true;
         answer.parentElement.appendChild(result);
-        if(answer.value !== trueAnswers[index]) {
+        if(answer.value.toLowerCase() !== trueAnswers[index]) {
             answer.style.background = '#F4D0D0';
             answer.style.border = '#E18686';
             result.textContent = `верный ответ - ${trueAnswers[index]}`;
@@ -183,13 +183,13 @@ function shouAnswer() {
         else {
             answer.style.background = '#E1F0E1';
             answer.style.border = '#9FCB9F';
-            result.textContent = `верный ответ - ${answer.value}`;
+            result.textContent = `верный ответ - ${trueAnswers[index]}`;
         }
         testCardAnswer.querySelector('.description-and-answer').appendChild(answer.parentElement);
     });
 
 
-    testCardAnswer.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
+    testCardAnswer.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
     const imgAnswer = testCardAnswer.querySelector('.picture-sign');
     imgAnswer.src = QUESTIONS[`${testCardQuestion.id}`].picture;
     imgAnswer.addEventListener('click', () => {
@@ -235,7 +235,7 @@ function shouNextQuestion() {
                       popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = questionImg.src;
                       popupEnlargedImg.classList.remove('hidden');
                   });
-    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[cardId].number}/${Object.keys(QUESTIONS).length}`;
+    testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
@@ -274,7 +274,7 @@ function showPreviousQuestion() {
         buttonResume.style.display = 'block'
     }
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
+    testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {
         const elem = document.createElement('p');
@@ -311,7 +311,7 @@ function shouPreviousAnswer() {
     }
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
-    testCardQuestion.querySelector('.test-number').textContent = `${QUESTIONS[testCardQuestion.id].number}/${Object.keys(QUESTIONS).length}`;
+    testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
     QUESTIONS[cardId].textQuestions.forEach((question) => {
         const elem = document.createElement('p');

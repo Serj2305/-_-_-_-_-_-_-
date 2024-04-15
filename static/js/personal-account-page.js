@@ -92,7 +92,6 @@ function save_data() {
     editGroup1.innerHTML = textGroup1.value;
     document.querySelector('.avatar').classList.remove('edit');
     backButton.removeEventListener('click', back_data)
-    console.log(currentAvatar)
     const formData = new FormData();
     const dataAccount = {
         name: textName1.value,
@@ -118,6 +117,7 @@ function fillAccount(account) {
     document.querySelector('.name-account').textContent = account.name;
     document.querySelector('.group').textContent = account.group;
     document.querySelector('.avatar').src = account.avatar;
+    document.querySelector('.your-email').textContent = account.email;
     if (account.is_superuser !== 'True') {
         buttonDownload.remove()
     }
@@ -133,7 +133,6 @@ fetch('send_account_data')
         throw new Error(`${response.status} ${response.statusText}`);
     })
     .then((data) => {
-        console.log(data)
         fillAccount(data);
     })
     .catch(function (error) {
@@ -169,6 +168,8 @@ fetch('send_exam_data')
 
 formButton.onclick = () => {
     popup.style = 'display:block;';
+    form.querySelector('#email').value = document.querySelector('.your-email').textContent;
+    form.querySelector('#name').value = document.querySelector('.name-account').textContent;
 }
 
 formBackButton.onclick = () => {
