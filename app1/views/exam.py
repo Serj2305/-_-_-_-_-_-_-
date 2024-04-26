@@ -11,7 +11,8 @@ def send_exam(request):
     """
     Данная функция берет из базы данных информацию о всех знаках, выбирает из них часть и отправляет на фронтенд
     """
-    data = Exam.objects.all().values("photo", "realObjectPhoto", "question1", "answer1", "question2", "answer2",
+    data = Exam.objects.all().values("complexity", "photo", "realObjectPhoto", "question1", "answer1", "question2",
+                                     "answer2",
                                      "question3", "answer3", "question4", "answer4", "question5", "answer5")
     questions = []
     answers = []
@@ -55,7 +56,8 @@ def send_exam(request):
     id = 0
     for row in data:
         id += 1
-        data_from_database[f'{id}'] = {'number': id, 'picture': "/static/" + row["photo"],
+        data_from_database[f'{id}'] = {'number': id, 'complexity': row['complexity'],
+                                       'picture': "/static/" + row["photo"],
                                        'textQuestions': textQuestions[id - 1],
                                        'answersList': answersList[id - 1],
                                        'pictureWorld': "/static/" + row["realObjectPhoto"]}
