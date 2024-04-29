@@ -31,13 +31,17 @@
             <div class="start-test">
                 <span class="question-number">0/120</span>
                 <h1 class="name-page">Тест</h1>
-                <p class="test-info">Тест по знакам без учета времени, после ответа на вопрос вы можете сразу посмотреть результат ответа, а также то как выглядит знак в реальной жизни. Всего ... вопросов, критерии оценки: неправильный хоть 1 из пунктов => 0 баллов, всё правильно => 1. Желаем удачи!</p>
+                <p class="test-info">Тест по знакам без учета времени,
+                     после ответа на вопрос вы можете сразу посмотреть результат ответа,
+                      а также то как выглядит знак в реальности. Всего <span class="total-questions">...</span> <span class="word-question">вопросов</span>,
+                         критерии оценки: неправильный ответ => 0 баллов, правильный => 1 балл. Желаем удачи!</p>
                 <div class="button-wrapper">
                     <div class="start-test-button">Начать</div>
                 </div>
             </div>
             <div class="test-card-question">
                 <span class="question-number test-number">1/120</span>
+                <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
                 <div class="question-container">
                     <div class="question-picture-container">
                         <img class="question-picture" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
@@ -53,6 +57,7 @@
             </div>
             <div class="test-card-answer">
                 <span class="question-number test-number">1/120</span>
+                <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
                 <div class="answer-container">
                     <div class="pictures-container">
                         <div class="picture-container">
