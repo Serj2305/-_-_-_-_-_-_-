@@ -74,4 +74,17 @@ def send_test(request):
     for i in range(1, len(new_data)):
         new_data[i]["number"] = i
 
-    return JsonResponse(new_data)
+    json_data = {}
+    index = 0
+    for i in new_data:
+        if new_data.get(i)['complexity'] == 'A' and len(json_data) < 4:
+            index += 1
+            json_data[index] = new_data.get(i)
+        elif new_data.get(i)['complexity'] == 'B' and 4 <= len(json_data) < 7:
+            index += 1
+            json_data[index] = new_data.get(i)
+        elif new_data.get(i)['complexity'] == 'C' and 7 <= len(json_data) < 10:
+            index += 1
+            json_data[index] = new_data.get(i)
+
+    return JsonResponse(json_data)
