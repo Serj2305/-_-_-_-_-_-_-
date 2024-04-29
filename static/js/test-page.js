@@ -8,7 +8,10 @@ const buttonBackAnswer = document.querySelector('.back-answer');
 const buttonBackCard = document.querySelector('.back-card');
 const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
 const popupImgButtonClose = document.querySelector('.popup-img-button-close');
-
+const totalQuestions = document.querySelector('.total-questions');
+const wordQuetstion = document.querySelector('.word-question');
+const complexity = document.querySelectorAll('.complexity');
+const complexityColor = document.querySelectorAll('.complexity-color');
 let QUESTIONS = {};
 fetch('send_test')
     .then((response) => {
@@ -19,9 +22,32 @@ fetch('send_test')
   }).then((data) => {
       QUESTIONS = data;
       document.querySelector('.start-test .question-number').textContent = testCardQuestion.querySelector('.test-number').textContent = `0/${Object.keys(QUESTIONS).length}`;
+      totalQuestions.textContent = Object.keys(QUESTIONS).length;
+      if(Object.keys(QUESTIONS).length % 100 >= 10 && Object.keys(QUESTIONS).length % 100<=20) {
+        wordQuetstion.textContent = 'вопросов'
+      }
+      else{
+        if(Object.keys(QUESTIONS).length % 10 == 1) {
+            wordQuetstion.textContent = 'вопрос'
+        }
+
+        else if(Object.keys(QUESTIONS).length % 10 > 1 && Object.keys(QUESTIONS).length % 10 < 5) {
+            wordQuetstion.textContent = 'вопроса'
+        }
+
+        else{
+            wordQuetstion.textContent = 'вопросов'
+        }
+      }
   }).catch(function (error) {
       alert(error)
   });
+
+  const COMPLEXITY = {
+    A: '#9FCB9F',
+    B: '#F1D385',
+    C: '#F38686'
+  }
 //const QUESTIONS = {
   //  1:{
     //    number: '1/120',
@@ -121,6 +147,7 @@ const ANSWERS = {
         descriptionSign: 'а тут должно быть описание или характеристика знака'
     }
 }
+
 popupImgButtonClose.onclick = function () {
     popupEnlargedImg.classList.add('hidden');
 }
@@ -130,6 +157,12 @@ function startTest() {
     testCardQuestion.id = '1';
     buttonBackCard.style.display = 'none';
     buttonBackAnswer.style.display = 'none';
+    complexity.forEach((item) => {
+        item.textContent = QUESTIONS["1"].complexity; 
+    })
+    complexityColor.forEach((item) => {
+        item.style.backgroundColor = COMPLEXITY[QUESTIONS["1"].complexity]
+    }) 
     const questionImg = testCardQuestion.querySelector('img');
     questionImg.src = QUESTIONS["1"].picture;
     questionImg.addEventListener('click', () => {
@@ -228,7 +261,12 @@ function shouNextQuestion() {
     else {
         buttonResume.style.display = 'block'
     }
-
+    complexity.forEach((item) => {
+        item.textContent = QUESTIONS[cardId].complexity; 
+    })
+    complexityColor.forEach((item) => {
+        item.style.backgroundColor = COMPLEXITY[QUESTIONS[cardId].complexity]
+    })
     const questionImg = testCardQuestion.querySelector('img');
     questionImg.src = QUESTIONS[cardId].picture;
     questionImg.addEventListener('click', () => {
@@ -273,6 +311,12 @@ function showPreviousQuestion() {
     else {
         buttonResume.style.display = 'block'
     }
+    complexity.forEach((item) => {
+        item.textContent = QUESTIONS[cardId].complexity; 
+    })
+    complexityColor.forEach((item) => {
+        item.style.backgroundColor = COMPLEXITY[QUESTIONS[cardId].complexity]
+    })
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
     const fragment = document.createDocumentFragment();
@@ -309,6 +353,12 @@ function shouPreviousAnswer() {
     else {
         buttonResume.style.display = 'block'
     }
+    complexity.forEach((item) => {
+        item.textContent = QUESTIONS[cardId].complexity; 
+    })
+    complexityColor.forEach((item) => {
+        item.style.backgroundColor = COMPLEXITY[QUESTIONS[cardId].complexity]
+    })
     testCardQuestion.id = cardId;
     testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
     testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;

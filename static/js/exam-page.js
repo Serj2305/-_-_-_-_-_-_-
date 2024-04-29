@@ -11,6 +11,14 @@ const popupImgButtonClose = document.querySelector('.popup-img-button-close');
 const timerContainer = document.querySelector('.timer');
 const score = document.querySelector('.score');
 const time = document.querySelector('.time');
+const complexity = document.querySelectorAll('.complexity');
+const complexityColor = document.querySelectorAll('.complexity-color');
+
+const COMPLEXITY = {
+    A: '#9FCB9F',
+    B: '#F1D385',
+    C: '#F38686'
+  }
 
 let QUESTIONS = {};
 let userResposes = [];
@@ -110,6 +118,12 @@ function startTest() {
         buttonAnswer.style.display = 'block'
         buttonEnd.style.display = 'none'
     }
+    complexity.forEach((item) => {
+        item.textContent = QUESTIONS[testCardQuestion.id].complexity; 
+    })
+    complexityColor.forEach((item) => {
+        item.style.backgroundColor = COMPLEXITY[QUESTIONS[testCardQuestion.id].complexity]
+    })
     const questionImg = testCardQuestion.querySelector('img');
     questionImg.src = QUESTIONS[testCardQuestion.id].picture;
     questionImg.addEventListener('click', () => {
@@ -187,6 +201,12 @@ function shouNextQuestion() {
             buttonAnswer.style.display = 'block'
             buttonEnd.style.display = 'none'
         }
+        complexity.forEach((item) => {
+            item.textContent = QUESTIONS[testCardQuestion.id].complexity; 
+        })
+        complexityColor.forEach((item) => {
+            item.style.backgroundColor = COMPLEXITY[QUESTIONS[testCardQuestion.id].complexity]
+        })
         testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
         testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
         const fragment = document.createDocumentFragment();
@@ -239,6 +259,12 @@ function showPreviousQuestion() {
             buttonAnswer.style.display = 'block'
             buttonEnd.style.display = 'none'
         }
+        complexity.forEach((item) => {
+            item.textContent = QUESTIONS[testCardQuestion.id].complexity; 
+        })
+        complexityColor.forEach((item) => {
+            item.style.backgroundColor = COMPLEXITY[QUESTIONS[testCardQuestion.id].complexity]
+        })
         testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
         testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
         const fragment = document.createDocumentFragment();
