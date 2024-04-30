@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  django:
+    image: cr.yandex/crpmjska9n0qt5225lcl/studysignsproject
+    build: .
+    ports:
+      - "80:80"

@@ -427,3 +427,9 @@ ___
 
 [К оглавлению](#0) ⬆️
 ___
+
+Заметки для себя
+
+docker ps -a
+netstat -ntlp
+sudo docker run --net=host image
