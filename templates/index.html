@@ -12,44 +12,46 @@
     <title>Главная страница</title>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <nav class="main-nav">
-                <div class="main-nav-list">
-                    <div class="main-nav-list-item"><a href="{% url 'index' %}"></a></div>
-                    <div class="nav-cont">
-                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт"></a></div>
+    <div class="content">
+        <header>
+            <div class="header-container">
+                <nav class="main-nav">
+                    <div class="main-nav-list">
+                        <div class="main-nav-list-item"><a href="{% url 'index' %}"></a></div>
+                        <div class="nav-cont">
+                            <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+                            <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт"></a></div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="main-container">
+                <h1 class="name-page">Главная</h1>
+                <p class="description-page">
+                    <b>Топографические (картографические) условные знаки</b> — символические штриховые и фоновые условные обозначения объектов местности,
+                    применяемые для их изображения на топографических картах.
+                    Для топографических условных знаков предусмотрена общность обозначений (по начертанию и цвету) однородных групп объектов,
+                    при этом основные знаки для топографических карт разных стран не имеют между собой особых различий.
+                </p>
+                <div class="cards">
+                    <div class="card-container">
+                        <div class="card"><a href="{% url 'test' %}">Учить</a></div>
+                        <p class="card-description">А здесь можете пройти тренировочный тест по знакам без учета времени</p>
+                    </div>
+                    <div class="card-container">
+                        <div class="card"><a href="{% url 'signs' %}">Смотреть</a></div>
+                        <p class="card-description">На данной странице вы можете ознакомиться со знаками, разделёнными по категориям</p>
+                    </div>
+                    <div class="card-container">
+                        <div class="card"><a href="{% url 'exam' %}">Экзамен</a></div>
+                        <p class="card-description">Максимально приближенный к реальному режим прохождения теста по знакам с учётом времени</p>
                     </div>
                 </div>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="main-container">
-            <h1 class="name-page">Главная</h1>
-            <p class="description-page">
-                <b>Топографические (картографические) условные знаки</b> — символические штриховые и фоновые условные обозначения объектов местности,
-                применяемые для их изображения на топографических картах.
-                Для топографических условных знаков предусмотрена общность обозначений (по начертанию и цвету) однородных групп объектов,
-                при этом основные знаки для топографических карт разных стран не имеют между собой особых различий.
-            </p>
-            <div class="cards">
-                <div class="card-container">
-                    <div class="card"><a href="{% url 'test' %}">Учить</a></div>
-                    <p class="card-description">А здесь можете пройти тренировочный тест по знакам без учета времени</p>
-                </div>
-                <div class="card-container">
-                    <div class="card"><a href="{% url 'signs' %}">Смотреть</a></div>
-                    <p class="card-description">На данной странице вы можете ознакомиться со знаками, разделёнными по категориям</p>
-                </div>
-                <div class="card-container">
-                    <div class="card"><a href="{% url 'exam' %}">Экзамен</a></div>
-                    <p class="card-description">Максимально приближенный к реальному режим прохождения теста по знакам с учётом времени</p>
-                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
     <footer>
         <div class="footer-container"></div>
     </footer>

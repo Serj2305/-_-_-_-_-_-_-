@@ -10,6 +10,9 @@
         line-height: 40px;
         color:#464646;
     }
+    .content{
+        min-height: calc(100vh - 50px);
+    }
     /*стилизуем шапку*/
     .header-container{
         margin: 0;
@@ -145,7 +148,7 @@
         width: 30%;
         margin-bottom: 80px;
     }
-    .start-test-button:hover, .button-back:hover, .button-answer:hover, .button-resume:hover, .button-back:hover{
+    .start-test-button:hover, .button-back:hover, .button-answer:hover, .button-resume:hover, .button-back:hover, .button-again:hover{
         opacity: 0.7;
     }
 
@@ -219,7 +222,7 @@
         width: 20%;
         margin-bottom: 30px;
     }
-    .button-answer, .button-resume{
+    .button-answer, .button-resume, .button-again{
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
         padding:1px 0 1px;
@@ -262,6 +265,8 @@
     .footer-container{
         padding: 30px;
         background-color: #F5F5F5;
+        display: flex;
+        justify-content: flex-end;
     }
     /*попап*/
     .hidden{
@@ -309,7 +314,7 @@
     }
 }
 
-@media only screen and (max-width : 769px) {
+@media only screen and (max-width : 830px) {
      body{
         margin:0;
         padding: 0;
@@ -512,7 +517,7 @@
         width: 25%;
         margin-bottom: 30px;
     }
-    .button-answer, .button-resume{
+    .button-answer, .button-resume, .button-again{
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
         padding:1px 0 1px;
@@ -737,6 +742,11 @@
     .test-number{
         margin-bottom: 10px;
     }
+
+    .complexity-container{
+        left: 25px;
+        top: 18px;
+    }
     .question-container, .answer-container{
         display: flex;
         flex-direction: column;
@@ -810,7 +820,7 @@
         font-size: 14px;
         margin-bottom: 15px;
     }
-    .button-answer, .button-resume{
+    .button-answer, .button-resume, .button-again{
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
         padding:10px 3px 10px;

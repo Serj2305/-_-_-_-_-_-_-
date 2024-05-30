@@ -6,6 +6,7 @@ const testCardAnswer = document.querySelector('.test-card-answer');
 const buttonResume = document.querySelector('.button-resume');
 const buttonBackAnswer = document.querySelector('.back-answer');
 const buttonBackCard = document.querySelector('.back-card');
+const buttonAgain = document.querySelector('.button-again');
 const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
 const popupImgButtonClose = document.querySelector('.popup-img-button-close');
 const totalQuestions = document.querySelector('.total-questions');
@@ -13,7 +14,10 @@ const wordQuetstion = document.querySelector('.word-question');
 const complexity = document.querySelectorAll('.complexity');
 const complexityColor = document.querySelectorAll('.complexity-color');
 let QUESTIONS = {};
-fetch('send_test')
+
+getDataTest()
+function getDataTest() {
+    fetch('send_test')
     .then((response) => {
       if(response.ok) {
         return  response.json();
@@ -42,6 +46,7 @@ fetch('send_test')
   }).catch(function (error) {
       alert(error)
   });
+}
 
   const COMPLEXITY = {
     A: '#9FCB9F',
@@ -155,8 +160,10 @@ popupImgButtonClose.onclick = function () {
 function startTest() {
     startTestCard.classList.add('back');
     testCardQuestion.id = '1';
+    buttonAgain.style.display = 'none'
     buttonBackCard.style.display = 'none';
     buttonBackAnswer.style.display = 'none';
+    buttonResume.style.display = 'block'
     complexity.forEach((item) => {
         item.textContent = QUESTIONS["1"].complexity; 
     })
@@ -257,9 +264,11 @@ function shouNextQuestion() {
     }
     if(cardId === `${Object.keys(QUESTIONS).length}`) {
         buttonResume.style.display = 'none';
+        buttonAgain.style.display = 'block'
     }
     else {
         buttonResume.style.display = 'block'
+        buttonAgain.style.display = 'none'
     }
     complexity.forEach((item) => {
         item.textContent = QUESTIONS[cardId].complexity; 
@@ -310,6 +319,7 @@ function showPreviousQuestion() {
     }
     else {
         buttonResume.style.display = 'block'
+        buttonAgain.style.display = 'none'
     }
     complexity.forEach((item) => {
         item.textContent = QUESTIONS[cardId].complexity; 
@@ -352,6 +362,7 @@ function shouPreviousAnswer() {
     }
     else {
         buttonResume.style.display = 'block'
+        buttonAgain.style.display = 'none'
     }
     complexity.forEach((item) => {
         item.textContent = QUESTIONS[cardId].complexity; 
@@ -381,4 +392,38 @@ function shouPreviousAnswer() {
 };
 
 buttonBackAnswer.addEventListener('click', shouPreviousAnswer)
+buttonAgain.addEventListener('click', function() {
+    testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
+    testCardAnswer.classList.remove('front');
+    fetch('send_test')
+    .then((response) => {
+      if(response.ok) {
+        return  response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+  }).then((data) => {
+      QUESTIONS = data;
+      document.querySelector('.start-test .question-number').textContent = testCardQuestion.querySelector('.test-number').textContent = `0/${Object.keys(QUESTIONS).length}`;
+      totalQuestions.textContent = Object.keys(QUESTIONS).length;
+      if(Object.keys(QUESTIONS).length % 100 >= 10 && Object.keys(QUESTIONS).length % 100<=20) {
+        wordQuetstion.textContent = 'вопросов'
+      }
+      else{
+        if(Object.keys(QUESTIONS).length % 10 == 1) {
+            wordQuetstion.textContent = 'вопрос'
+        }
 
+        else if(Object.keys(QUESTIONS).length % 10 > 1 && Object.keys(QUESTIONS).length % 10 < 5) {
+            wordQuetstion.textContent = 'вопроса'
+        }
+
+        else{
+            wordQuetstion.textContent = 'вопросов'
+        }
+      }
+  }).then(()=>{
+    startTest()
+  }).catch(function (error) {
+      alert(error)
+  });
+});
