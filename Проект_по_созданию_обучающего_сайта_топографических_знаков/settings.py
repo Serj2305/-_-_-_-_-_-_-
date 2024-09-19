@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import environ
+<<<<<<< HEAD
+=======
+import dj_database_url
+>>>>>>> master
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, [])
@@ -20,7 +24,11 @@ env = environ.Env(
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+<<<<<<< HEAD
 environ.Env.read_env(os.path.join(BASE_DIR, '.env.dev'))
+=======
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+>>>>>>> master
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +43,10 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+<<<<<<< HEAD
 print(env('ALLOWED_HOSTS'))
+=======
+>>>>>>> master
 
 # Application definition
 
@@ -93,14 +104,25 @@ WSGI_APPLICATION = 'Проект_по_созданию_обучающего_са
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db',
         'USER': 'user',
         'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5433',
+=======
+        'ENGINE': env('POSTGRES_ENGINE'),
+        'NAME': env('POSTGRES_NAME_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT'),
+>>>>>>> master
     }
 }
+
+# DATABASES['default'] = dj_database_url.config(default=env('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -150,9 +172,9 @@ MEDIA_URL = '/images/'
 
 # информация о почте
 
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_HOST_USER = "studysigns.project@mail.ru"
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "mkAcR05LjSSbiVYHxtsS"
-EMAIL_USE_SSL = False
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
