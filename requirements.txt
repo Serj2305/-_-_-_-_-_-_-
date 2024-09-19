@@ -3,3 +3,5 @@ django-cleanup
 pandas~=2.2.1
 Pillow
 python-environ
+psycopg2
+dj_database_url
