@@ -9,8 +9,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+RUN apt-get update && apt-get install -y postgresql postgresql-contrib gcc python3-dev musl-dev
+
 COPY . . 
 
 EXPOSE 80
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
