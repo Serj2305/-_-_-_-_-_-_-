@@ -9,7 +9,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-RUN apt-get update && apt-get install -y postgresql postgresql-contrib gcc python3-dev musl-dev
+RUN rm db.sqlite3
 
 COPY . . 
 
