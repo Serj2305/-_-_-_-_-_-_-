@@ -1,2 +1,2 @@
-all:
+docker:
 	bash docker-build.sh

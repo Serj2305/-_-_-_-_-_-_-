@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, [])
@@ -32,7 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = eval(env('DEBUG'))
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
@@ -90,7 +93,7 @@ if DEBUG:
            'NAME': BASE_DIR / 'db.sqlite3',
        }
     }
-else:
+elif DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': env('POSTGRES_ENGINE'),
@@ -153,6 +156,6 @@ MEDIA_URL = '/images/'
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_USE_TLS = eval(env('EMAIL_USE_TLS'))
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_USE_SSL = env('EMAIL_USE_SSL')
+EMAIL_USE_SSL = eval(env('EMAIL_USE_SSL'))
