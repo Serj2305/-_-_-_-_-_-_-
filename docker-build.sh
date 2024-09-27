@@ -1,8 +1,9 @@
 export $(cat ./.env | grep -v ^# | xargs) > /dev/null
 
-sudo docker stop $(sudo docker ps -qa)
-sudo docker rm $(sudo docker ps -ql)
-sudo docker rmi -f $(sudo docker images -qa)
+sudo docker kill $(sudo docker ps -q)
+sudo docker rm $(sudo docker ps -a -q)
+sudo docker rmi $(sudo docker images -q -f dangling=true)
+sudo docker rmi $(sudo docker images -q)
 
 sudo docker system prune
 sudo docker system prune -a

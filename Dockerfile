@@ -9,7 +9,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-RUN rm db.sqlite3
+RUN rm db.sqlite3; exit 0
 
 COPY . . 
 
