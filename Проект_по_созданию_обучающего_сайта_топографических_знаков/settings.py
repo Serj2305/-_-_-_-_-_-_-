@@ -22,6 +22,8 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, [])
 )
 
+SESSION_COOKIE_DOMAIN = 'localhost'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -36,7 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = eval(env('DEBUG'))
+DEBUG = os.environ['DEBUG'].lower() in ['true', '1']
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
@@ -138,19 +140,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    os.path.dirname(os.path.realpath('static'))
-]
+if DEBUG:
+    STATIC_URL = 'static/'
+    STATICFILES_DIRS = [
+        os.path.dirname(os.path.realpath('static'))
+    ]
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/signs/'
 
 # информация о почте
 

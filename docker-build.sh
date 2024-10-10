@@ -8,6 +8,9 @@ sudo docker rmi $(sudo docker images -q)
 sudo docker system prune
 sudo docker system prune -a
 
-sudo docker-compose up --build
-sudo docker tag studysignsproject-django cr.yandex/${ID_OF_THE_DOCKER_REGISTRY}/studysignsproject-django:latest
-sudo docker push cr.yandex/${ID_OF_THE_DOCKER_REGISTRY}/studysignsproject-django:latest
+if [ ! -f db.sqlite3 ]; then rm db.sqlite3; fi
+
+sudo docker-compose down --rmi all -v --remove-orphans
+sudo docker-compose up --build -d
+#sudo docker tag studysignsproject-django cr.yandex/${ID_OF_THE_DOCKER_REGISTRY}/studysignsproject-django
+#sudo docker push cr.yandex/${ID_OF_THE_DOCKER_REGISTRY}/studysignsproject-django
