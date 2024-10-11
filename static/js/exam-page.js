@@ -4,13 +4,22 @@ const testCardQuestion = document.querySelector('.test-card-question');
 const endTestCard = document.querySelector('.end-test')
 const buttonAnswer = document.querySelector('.button-answer');
 const buttonBackCard = document.querySelector('.back-card');
-const buttonEnd = document.querySelector('.button-end')
-const buttonAgain = document.querySelector('.again-button')
+const buttonEnd = document.querySelector('.button-end');
+const buttonAgain = document.querySelector('.again-button');
+const buttonResumeReview = document.querySelector('.button-resume-review');
+const buttonBackReview = document.querySelector('.button-back-review');
+const buttonEndReview = document.querySelector('.button-end-review');
+const buttonReview = document.querySelector('.review-button');
 const popupEnlargedImg = document.querySelector('.popup-enlarged-img');
 const popupImgButtonClose = document.querySelector('.popup-img-button-close');
 const timerContainer = document.querySelector('.timer');
 const score = document.querySelector('.score');
 const time = document.querySelector('.time');
+const mistakes = document.querySelector('.mistakes');
+const mistakesWord = document.querySelector('.mistakes-word');
+const mistakesScore = document.querySelector('.mistakes-score')
+const timeResult = document.querySelector('.time-result');
+const timeScore = document.querySelector('.time-score');
 const complexity = document.querySelectorAll('.complexity');
 const complexityColor = document.querySelectorAll('.complexity-color');
 
@@ -103,6 +112,9 @@ function startTest() {
     });
 
     startTestCard.classList.add('back');
+    buttonBackReview.style.display = 'none';
+    buttonEndReview.style.display = 'none';
+    buttonResumeReview.style.display = 'none';
     testCardQuestion.id = localStorage.cardId || '1';
     if(testCardQuestion.id === '1'){
         buttonBackCard.style.display = 'none';
@@ -310,11 +322,54 @@ function finishTest() {
     let result = questionsResult.reduce(function(a,b){
         return a+b;
     },0);
-    score.textContent = `${result}/${Object.entries(QUESTIONS).length}`
+    score.textContent = `${result}/${Object.entries(QUESTIONS).length}`;
+    let mistakesRes = Object.entries(QUESTIONS).length - result;
+    mistakes.textContent = `${mistakesRes}`;
+    if(mistakesRes.length % 100 >= 10 && mistakesRes.length % 100<=20) {
+        mistakesWord.textContent = 'ошибок'
+      }
+      else{
+        if(mistakesRes.length % 10 == 1) {
+            mistakesWord.textContent = 'ошибка'
+        }
+
+        else if(mistakesRes.length % 10 > 1 && mistakesRes.length % 10 < 5) {
+            mistakesWord.textContent = 'ошибки'
+        }
+
+        else{
+            mistakesWord.textContent = 'ошибок'
+        }
+    }
+
+    if(mistakesRes <= 1) {
+        mistakesScore.textContent = '"хорошо"'
+    }
+    else if(mistakesRes === 2) {
+        mistakesScore.textContent = '"удовлетворительно"'
+    }
+    else {
+        mistakesScore.textContent = '"неудовлетварительно"'
+    }
     const timePassed = 600 - (+localStorage.min * 60 + +localStorage.sec)
     const minPassed = Math.floor(timePassed / 60)
     const secPassed = timePassed - minPassed * 60;
     time.textContent = `${minPassed} мин ${secPassed} сек`
+    if(timePassed <= 260) {
+        timeScore.textContent = '"отлично"'
+        timeResult.textContent = '4:20'
+    }
+    else if(timePassed <= 270) {
+        timeScore.textContent = '"хорошо"'
+        timeResult.textContent = '4:30'
+    }
+    else if(timePassed <= 300) {
+        timeScore.textContent = '"удовлетворительно"'
+        timeResult.textContent = '5:00'
+    } else{
+        timeScore.textContent = '"неудовлетворительно"'
+        timeResult.textContent = 'до 10:00'
+    }
     fetch('get_exam_data', {
         method: 'POST',
         body: JSON.stringify({
@@ -344,6 +399,105 @@ buttonAgain.addEventListener('click', function() {
     testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
     questionsResult.length = 0;
     userResposes.length = 0;
-    getDataExam()
-    startTest();
+    fetch('send_exam')
+    .then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error(`${response.status} ${response.statusText}`);
+  }).then((data) => {
+      QUESTIONS = data;
+      localStorage.QUESTIONS = JSON.stringify(data);
+      document.querySelector('.start-test .question-number').textContent = testCardQuestion.querySelector('.test-number').textContent = `0/${Object.keys(QUESTIONS).length}`;
+  }).then(() => {
+      startTest();
+  }).catch(function (error) {
+      alert(error)
+  });
+});
+
+function reviewTest(direction) {
+    testCardQuestion.classList.remove('front');
+    endTestCard.classList.remove('front');
+    buttonAnswer.style.display = 'none';
+    buttonBackCard.style.display = 'none';
+    buttonEnd.style.display = 'none';
+    let cardId;
+
+    setTimeout(()=>{
+        testCardQuestion.querySelector('.description-and-answer').innerHTML = '';
+        if(direction === 'start') {
+            cardId = '1';
+        }
+        else if(direction === 'resume') {
+            cardId = `${Number(testCardQuestion.id) + 1}`;
+        }
+        else if(direction === 'back') {
+            cardId = `${Number(testCardQuestion.id) - 1}`;
+        }
+
+        testCardQuestion.id = cardId;
+        
+        if(cardId === '1'){
+            buttonBackReview.style.display = 'none';
+        }
+        else {
+            buttonBackReview.style.display = 'block';
+        }
+        if(cardId === `${Object.keys(QUESTIONS).length}`) {
+            buttonResumeReview.style.display = 'none';
+            buttonEndReview.style.display = 'block'; 
+        } else {
+            buttonResumeReview.style.display = 'block';
+            buttonEndReview.style.display = 'none';
+        }
+        const trueAnswers = QUESTIONS[cardId].answersList;
+        const responses = userResposes[cardId-1];
+        const fragment = document.createDocumentFragment();
+        QUESTIONS[cardId].textQuestions.forEach((question, index) => {
+            const elem = document.createElement('p');
+            elem.classList.add('text-question')
+            elem.textContent = question;
+            const inputAnswer = document.createElement('input');
+            inputAnswer.value = responses[index];
+            inputAnswer.readOnly = true;
+            const container = document.createElement('div');
+            container.classList.add('question-answer-container');
+            container.appendChild(elem);
+            container.appendChild(inputAnswer);
+            const result = document.createElement('span');
+            result.classList.add('result');
+            container.appendChild(result);
+            if(responses[index].toLowerCase() !== trueAnswers[index]) {
+                inputAnswer.style.background = '#F4D0D0';
+                inputAnswer.style.border = '#E18686';
+                result.textContent = `верный ответ - ${trueAnswers[index]}`;
+            }
+            else {
+                inputAnswer.style.background = '#E1F0E1';
+                inputAnswer.style.border = '#9FCB9F';
+                result.textContent = `верный ответ - ${trueAnswers[index]}`;
+            }
+            fragment.appendChild(container);
+        });
+        testCardQuestion.querySelector('.description-and-answer').appendChild(fragment);
+
+        complexity.forEach((item) => {
+            item.textContent = QUESTIONS[testCardQuestion.id].complexity; 
+        })
+        complexityColor.forEach((item) => {
+            item.style.backgroundColor = COMPLEXITY[QUESTIONS[testCardQuestion.id].complexity]
+        })
+        testCardQuestion.querySelector('img').src = QUESTIONS[cardId].picture;
+        testCardQuestion.querySelector('.test-number').textContent = `${cardId}/${Object.keys(QUESTIONS).length}`;
+        testCardQuestion.classList.add('front');
+    }, 300);
+}
+
+buttonReview.addEventListener('click', () => reviewTest('start'));
+buttonResumeReview.addEventListener('click', () => reviewTest('resume'));
+buttonBackReview.addEventListener('click', () => reviewTest('back'));
+buttonEndReview.addEventListener('click', function() {
+    testCardQuestion.classList.remove('front');
+    endTestCard.classList.add('front')
 });

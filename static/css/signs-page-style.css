@@ -388,7 +388,7 @@
     }
 }
 
-@media only screen and (max-width : 769px) {
+@media only screen and (max-width : 830px) {
     body {
         margin: 0;
         padding: 0;
@@ -630,11 +630,16 @@
         width: 50%;
     }
     .name-sign{
-        padding: 0;
-        margin: 0;
-        margin-bottom: 10px;
         line-height: 14px;
         font-size: 12px;
+        height: 130px;
+        display: flex;
+        padding: 5px 0 5px 0;
+        font-weight: bold;
+        margin: 7px;
+        align-items: center;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     .description-sign{
         font-size: 10px;
@@ -790,7 +795,7 @@
     }
 }
 
-@media only screen and (max-width : 426px) {
+@media only screen and (max-width : 435px) {
     body{
         margin:0;
         padding: 0;
@@ -1026,11 +1031,17 @@
         width: 50%;
     }
     .name-sign{
-        padding: 0;
-        margin: 0;
         margin-bottom: 10px;
         line-height: 14px;
         font-size: 10px;
+        height: 86px;
+        display: flex;
+        padding: 5px 0 5px 0;
+        font-weight: bold;
+        margin: 7px;
+        align-items: center;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     .description-sign{
         font-size: 14px;
@@ -1073,7 +1084,7 @@
     .popup-content{
         display: flex;
         gap: 20px;
-        width: 250px;
+        width: 290px;
         min-height: 200px;
         padding: 10px 10px 5px;
         position: relative;

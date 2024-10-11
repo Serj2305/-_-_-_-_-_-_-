@@ -13,71 +13,74 @@
     <title>Тест</title>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <nav class="main-nav">
-                <div class="main-nav-list">
-                    <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
-                    <div class="nav-cont">
-                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="main-container">
-            <div class="start-test">
-                <span class="question-number">0/120</span>
-                <h1 class="name-page">Тест</h1>
-                <p class="test-info">Тест по знакам без учета времени,
-                     после ответа на вопрос вы можете сразу посмотреть результат ответа,
-                      а также то как выглядит знак в реальности. Всего <span class="total-questions">...</span> <span class="word-question">вопросов</span>,
-                         критерии оценки: неправильный ответ => 0 баллов, правильный => 1 балл. Желаем удачи!</p>
-                <div class="button-wrapper">
-                    <div class="start-test-button">Начать</div>
-                </div>
-            </div>
-            <div class="test-card-question">
-                <span class="question-number test-number">1/120</span>
-                <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
-                <div class="question-container">
-                    <div class="question-picture-container">
-                        <img class="question-picture" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
-                    </div>
-                    <div class="description-and-answer">
-
-                    </div>
-                </div>
-                <div class="buttons-wrapper">
-                    <div class="button-back back-card">Назад</div>
-                    <div class="button-answer">Ответить</div>
-                </div>
-            </div>
-            <div class="test-card-answer">
-                <span class="question-number test-number">1/120</span>
-                <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
-                <div class="answer-container">
-                    <div class="pictures-container">
-                        <div class="picture-container">
-                            <img class="picture-sign" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" >
-                        </div>
-                        <div class="picture-container picture-world-container">
-                            <img class="picture-world" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" >
+    <div class="content">
+        <header>
+            <div class="header-container">
+                <nav class="main-nav">
+                    <div class="main-nav-list">
+                        <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+                        <div class="nav-cont">
+                            <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+                            <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                         </div>
                     </div>
-                    <div class="description-and-answer">
-
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="main-container">
+                <div class="start-test">
+                    <span class="question-number">0/120</span>
+                    <h1 class="name-page">Тест</h1>
+                    <p class="test-info">Тест по знакам без учета времени,
+                         после ответа на вопрос вы можете сразу посмотреть результат ответа,
+                          а также то как выглядит знак в реальности. Всего <span class="total-questions">...</span> <span class="word-question">вопросов</span>,
+                             критерии оценки: неправильный ответ => 0 баллов, правильный => 1 балл. Желаем удачи!</p>
+                    <div class="button-wrapper">
+                        <div class="start-test-button">Начать</div>
                     </div>
                 </div>
-                <div class="buttons-wrapper">
-                    <div class="button-back back-answer">Назад</div>
-                    <div class="button-resume">Продолжить</div>
+                <div class="test-card-question">
+                    <span class="question-number test-number">1/120</span>
+                    <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
+                    <div class="question-container">
+                        <div class="question-picture-container">
+                            <img class="question-picture" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
+                        </div>
+                        <div class="description-and-answer">
+    
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+                        <div class="button-back back-card">Назад</div>
+                        <div class="button-answer">Ответить</div>
+                    </div>
+                </div>
+                <div class="test-card-answer">
+                    <span class="question-number test-number">1/120</span>
+                    <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
+                    <div class="answer-container">
+                        <div class="pictures-container">
+                            <div class="picture-container">
+                                <img class="picture-sign" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" >
+                            </div>
+                            <div class="picture-container picture-world-container">
+                                <img class="picture-world" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака" >
+                            </div>
+                        </div>
+                        <div class="description-and-answer">
+    
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+                        <div class="button-back back-answer">Назад</div>
+                        <div class="button-resume">Продолжить</div>
+                        <div class="button-again">Новый тест</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
     <footer>
         <div class="footer-container"></div>
     </footer>
