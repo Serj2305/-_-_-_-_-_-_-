@@ -22,8 +22,6 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, [])
 )
 
-SESSION_COOKIE_DOMAIN = 'localhost'
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -143,20 +141,22 @@ USE_TZ = True
 if DEBUG:
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
-        os.path.dirname(os.path.realpath('static'))
+        BASE_DIR / "static",
+        "./static"
     ]
+    MEDIA_ROOT = os.path.join(BASE_DIR, '/static/')
+    MEDIA_URL = '/images/'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/images/')
+    MEDIA_URL = '/images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_URL = '/signs/'
 
 # информация о почте
 

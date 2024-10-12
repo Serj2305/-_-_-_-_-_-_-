@@ -18,9 +18,9 @@ services:
     expose:
       - "5000"
     command: >
-      sh -c " if [ ! -f db.sqlite3 ]; then rm db.sqlite3; fi &&
-              chmod 777 .env &&
+      sh -c " chmod 777 .env &&
               sed -i 's/^DEBUG=.*/DEBUG=False/' .env &&
+              sed -i 's/^ALLOWED_HOSTS=.*/ALLOWED_HOSTS=localhost/' .env &&
               python manage.py makemigrations &&
               python manage.py migrate &&
               python manage.py collectstatic --noinput &&
