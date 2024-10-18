@@ -62,16 +62,33 @@
     }
     .personal-information{
         width: 50%;
+        display: flex;
+        flex-direction: column;
     }
     .photo-and-name{
         display: flex;
         gap:40px;
         line-height: 120px;
     }
+    .name-and-role{
+        position: relative;
+        display: flex;
+    }
     .name-account{
         line-height: 30px;
         display: flex;
         align-items: center;
+    }
+    .role-container{
+        position: absolute;
+        font-weight: 300;
+        font-size: 14px;
+        top: 30px;
+    }
+
+    .role-icon{
+        width: 10px;
+        height: 10px;
     }
     .img-container{
         display: flex;
@@ -92,11 +109,18 @@
     }
     .result-exam-information{
         width: 50%;
-        padding: 0 5% 10% 0;
+        padding: 0 5% 5% 0;
     }
     .name-table{
-        line-height: 80px;
+        margin-top: 40px;
+        line-height: 40px;
         margin-bottom: 0;
+        display: inline-block;
+        background-color: #f4f4f4;
+        padding-left: 10px;
+        padding-right: 20px;
+        border-top-right-radius: 50px;
+        border-top-left-radius: 10px;
     }
     .result-list-container{
         width: 100%;
@@ -112,7 +136,6 @@
     .result-list-item div{
         width: 25%;
         text-align: center;
-        border: 1px solid #D2D2D2;
     }
     .result-list-item .time-exam{
         width: 30%;
@@ -127,30 +150,48 @@
         width: 15%;
     }
     .item-heading{
-        background-color: #E7B56B;
-        color: #FFFFFF;
+        background-color: #f4f4f4;
+        border-top-right-radius: 10px;
     }
     .buttons-container{
+        margin-top: 15px;
         width: 70%;
         display: flex;
         justify-content: space-between;
     }
     .button-edit, .button-save, .button-back, .button-download{
-        color: #FFFFFF;
+        background: #464646;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        background: #E7B56B;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35) inset;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35) ;
         border-radius: 22px;
         padding:5px 0 5px;
+        line-height: 24px;
         text-align: center;
         width: 40%;
         margin-bottom: 30px;
     }
+    .button-download{
+        margin-top: auto;
+        width: 60%;
+    }
+
     .button-download a{
         color: inherit;
         text-decoration: none;
+        display: block;
+    }
+
+    .icon-download{
+        line-height: 30px;
+        margin-left: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
     }
     .hidden-button{
         display: none;
@@ -234,7 +275,7 @@
         margin-bottom: 10px;
     }
 
-    .name, .email, .feedback{
+    .name, .email, .feedback, .rating{
         font-size: 16px;
         color: #464646;
         margin: 0;
@@ -253,6 +294,33 @@
         font-style: normal;
         font-weight: 400;
         color:#464646;
+    }
+
+    .circles{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .circle{
+        border: 1px solid #0F1C3F;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+    }
+    .circle:hover{
+        cursor: pointer;
+    }
+
+    .red{
+        background-color: #E18686;
+    }
+    .orange{
+        background-color: #E7C06E;
+    }
+    .green{
+        background-color: #9FCB9F;
     }
 
     .form-feedback-text{
@@ -383,6 +451,7 @@
         line-height: 120px;
         margin-bottom: 30px;
     }
+
     .img-container{
         display: flex;
         align-items: center;
@@ -405,7 +474,7 @@
         padding: 0 5% 10% 0;
     }
     .name-table{
-        line-height: 80px;
+        line-height: 40px;
         margin-bottom: 0;
     }
     .result-list-container{
@@ -422,11 +491,6 @@
     .result-list-item div{
         width: 25%;
         text-align: center;
-        border: 1px solid #D2D2D2;
-    }
-    .item-heading{
-        background-color: #E7B56B;
-        color: #FFFFFF;
     }
     .result-list-item .start-time{
         width: 35%;
@@ -442,11 +506,9 @@
         margin-bottom: 15px;
     }
     .button-edit, .button-save, .button-back, .button-download{
-        color: #FFFFFF;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        background: #E7B56B;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
         padding:5px 0 5px;
@@ -454,9 +516,13 @@
         width: 40%;
         margin-bottom: 30px;
     }
+    .button-download{
+        width: 60%;
+    }
     .button-download a{
         color: inherit;
         text-decoration: none;
+        display: block;
     }
     .hidden-button{
         display: none;
@@ -685,6 +751,18 @@
         line-height: 90px;
         margin-bottom: 20px;
     }
+
+    .role-container{
+        position: absolute;
+        font-weight: 300;
+        font-size: 10px;
+        top: 20px;
+    }
+
+    .role-icon{
+        width: 10px;
+        height: 10px;
+    }
     .img-container{
         display: flex;
         align-items: center;
@@ -709,7 +787,7 @@
         padding: 0 5% 10% 0;
     }
     .name-table{
-        line-height: 50px;
+        line-height: 30px;
         margin-bottom: 0;
     }
     .result-list-container{
@@ -726,7 +804,6 @@
     .result-list-item div{
         width: 25%;
         text-align: center;
-        border: 1px solid #D2D2D2;
     }
     .result-list-item .time-exam{
         width: 30%;
@@ -740,10 +817,6 @@
     .result-list-item .number-exam{
         width: 15%;
     }
-    .item-heading{
-        background-color: #E7B56B;
-        color: #FFFFFF;
-    }
     .buttons-container{
         margin-left: auto;
         width: 70%;
@@ -752,11 +825,9 @@
         margin-bottom: 15px;
     }
     .button-edit, .button-save, .button-back, .button-download{
-        color: #FFFFFF;
-        font-size: 12px;
+        font-size: 10px;
         font-style: normal;
         font-weight: 400;
-        background: #E7B56B;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
         border-radius: 22px;
         padding:5px 0 5px;
@@ -764,9 +835,17 @@
         width: 40%;
         margin-bottom: 30px;
     }
+    .button-download{
+        width: 60%;
+    }
     .button-download a{
         color: inherit;
         text-decoration: none;
+    }
+    .icon-download{
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
     }
     .hidden-button{
         display: none;

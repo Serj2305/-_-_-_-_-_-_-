@@ -10,6 +10,8 @@ const submitButton = document.querySelector('.form-button-submit');
 const formBackButton = document.querySelector('.form-button-back');
 const formButton = document.querySelector('.button-form');
 const popup = document.querySelector('#popup');
+const circles = document.querySelectorAll('.circle');
+const inputRating = document.querySelector('.rating-input')
 
 
 editButton.addEventListener('click', edit_data);
@@ -119,7 +121,8 @@ function fillAccount(account) {
     document.querySelector('.avatar').src = account.avatar;
     document.querySelector('.your-email').textContent = account.email;
     if (account.is_superuser !== 'True') {
-        buttonDownload.remove()
+        buttonDownload.remove();
+        document.querySelector('.role').textContent = 'Студент';
     }
 }
 
@@ -147,6 +150,12 @@ function fillResults(results) {
         currentResult.querySelector('.start-time').textContent = result[1].startTime;
         currentResult.querySelector('.time-exam').textContent = result[1].time;
         currentResult.querySelector('.assessment').textContent = result[1].res;
+        if (index % 2 !== 0) {
+            currentResult.querySelector('.result-list-item').style = 'background-color: #f5f5f5';
+        }
+        if(index === 9) {
+            currentResult.querySelector('.result-list-item').style = 'border-radius: 0 0 10px 10px; background-color: #f5f5f5; '
+        }
         resultsContainer.appendChild(currentResult);
     })
 }
@@ -170,6 +179,21 @@ formButton.onclick = () => {
     popup.style = 'display:block;';
     form.querySelector('#email').value = document.querySelector('.your-email').textContent;
     form.querySelector('#name').value = document.querySelector('.name-account').textContent;
+}
+
+circles.forEach((circle) => circle.addEventListener('click', () => changeRating(+circle.dataset.value)))
+
+function changeRating(numb) {
+    let color;
+    if (numb < 3) color = 'red';
+    else if (numb < 7 ) color = 'orange';
+    else color = 'green';
+    circles.forEach(circle => circle.className = 'circle')
+
+    for (let i = 0; i < numb; i++) {
+        circles[i].className = 'circle ' + color;
+    }
+    inputRating.value = numb;
 }
 
 formBackButton.onclick = () => {
