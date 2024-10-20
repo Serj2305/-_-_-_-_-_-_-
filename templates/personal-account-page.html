@@ -1,101 +1,130 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/personal-account-page-style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-    <title>Личный кабинет</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/personal-account-page-style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap"
+    rel="stylesheet">
+  <title>Личный кабинет</title>
 </head>
+
 <body>
-    <div class="content">
-        <header>
-            <div class="header-container">
-                <nav class="main-nav">
-                    <div class="main-nav-list">
-                        <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
-                        <div class="nav-cont">
-                            <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                            <div class ="main-nav-list-item"><a href="{% url 'login' %}">Выход</a></div>
-                        </div>
-                    </div>
-                </nav>
+  <div class="content">
+    <header>
+      <div class="header-container">
+        <nav class="main-nav">
+          <div class="main-nav-list">
+            <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+            <div class="nav-cont">
+              <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+              <div class="main-nav-list-item"><a href="{% url 'login' %}">Выход</a></div>
             </div>
-        </header>
-        <main>
-            <div class="main-container">
-                <div class="personal-information">
-                    <div class="photo-and-name">
-                        <label class="label-avatar" for="fileAvatar">
-                            <div class="img-container">
-                                <img class = 'avatar' src="{% static 'img/personal-img.png' %}" alt="ваш аватар">
-                            </div>
-                        </label>
-                        <span class="name-account">Фамилия Имя Отчество</span>
-                    </div>
-                    <input class="input-avatar" type="file" id="" />
-                    <p class="study-group"><b>Группа: </b><i class = 'group'>Ваша группа</i></p>
-                    <p class="email"><b>Электронная почта:</b> <i class="your-email">Ваша почта</i></p>
-                    <div class="buttons-container">
-                        <div class="button-edit ">Изменить</div>
-                        <div class="button-save hidden-button">Сохранить</div>
-                        <div class="button-back hidden-button">Отмена</div>
-                    </div>
-                    <div class="button-download"><a href="/static/exam_results/Ведомость.xlsx" download="ведомость">Cкачать ведомость</a></div>
-                </div>
-                <div class="result-exam-information">
-                    <p class="name-table">Результаты экзаменов:</p>
-                    <div class="result-list-container">
-                        <ul class="result-list">
-                            <li class="result-list-item item-heading">
-                                <div class="number-exam">№</div>
-                                <div class="start-time">Дата прохождения</div>
-                                <div class="time-exam">Время(мин)</div>
-                                <div class="assessment">Оценка</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="main-container">
+        <div class="personal-information">
+          <div class="photo-and-name">
+            <label class="label-avatar" for="fileAvatar">
+              <div class="img-container">
+                <img class='avatar' src="{% static 'img/personal-img.png' %}" alt="ваш аватар">
+              </div>
+            </label>
+            <div class="name-and-role">
+              <span class="name-account">Фамилия Имя Отчество</span>
+              <div class="role-container">
+                <img src="{% static 'img/role-icon.png' %}" class="role-icon" alt="иконка роли">
+                <span class="role">Преподаватель</span>
+              </div>
             </div>
-        </main>
-    </div>
-    <footer>
-        <div class="footer-container">
-            <button class="button-form">Дайте обратную связь</button>
+          </div>
+          <input class="input-avatar" type="file" id="" />
+          <p class="study-group"><b>Группа: </b><i class='group'>Ваша группа</i></p>
+          <p class="email"><b>Электронная почта:</b> <i class="your-email">Ваша почта</i></p>
+          <div class="buttons-container">
+            <div class="button-edit ">Изменить</div>
+            <div class="button-save hidden-button">Сохранить</div>
+            <div class="button-back hidden-button">Отмена</div>
+          </div>
+          <div class="button-download"><a href="/static/exam_results/Ведомость.xlsx" download="ведомость">Cкачать
+              ведомость группы <img src="{% static 'img/icon-download.png' %}" class="icon-download"
+                alt="иконка загрузки"></a></div>
         </div>
-    </footer>
-    <template id="template-exam-result">
-        <li class="result-list-item item-data">
-            <div class="number-exam">№</div>
-            <div class="start-time">Начало</div>
-            <div class="time-exam">Время(мин)</div>
-            <div class="assessment">Оценка</div>           
-        </li>
-    </template>
-    <div id="popup" class="popup hidden">
-        <div class="popup-body">
-            <form id="form-feedback">
-                <h2>Напишите свой отзыв</h2>
-                <p class="name">Ваше имя:</p>
-                <input class="form-input" type="text" name="name" id="name" value="" placeholder="Введите имя" required autofocus>
-
-                <p class="email">Почта:</p>
-                <input class="form-input" type="email" name="email" id="email" value="" placeholder="Введите почту" required>
-
-                <p class="feedback">Ваш отзыв:</p>
-                <textarea class="form-feedback-text" aria-valuetext="" name="feedback" id="feedback" cols="30" rows="6" placeholder="Напишите ваш отзыв" required></textarea>
-                <div class="form-button-container">
-                    <button type="submit" class="form-button-submit">Отправить</button>
-                    <button type="button" class="form-button-back">Отмена</button>
-                </div>
-            </form>
+        <div class="result-exam-information">
+          <p class="name-table">Результаты экзаменов:</p>
+          <div class="result-list-container">
+            <ul class="result-list">
+              <li class="result-list-item item-heading">
+                <div class="number-exam">№</div>
+                <div class="start-time">Дата</div>
+                <div class="time-exam">Время(мин)</div>
+                <div class="assessment">Оценка</div>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <button class="button-form">Дайте обратную связь</button>
     </div>
-    <script src="{% static 'js/personal-account-page.js' %}"></script>
+  </footer>
+  <template id="template-exam-result">
+    <li class="result-list-item item-data">
+      <div class="number-exam">№</div>
+      <div class="start-time">Начало</div>
+      <div class="time-exam">Время(мин)</div>
+      <div class="assessment">Оценка</div>
+    </li>
+  </template>
+  <div id="popup" class="popup hidden">
+    <div class="popup-body">
+      <form id="form-feedback">
+        <h2>Напишите свой отзыв</h2>
+        <p class="name">Ваше имя:</p>
+        <input class="form-input" type="text" name="name" id="name" value="" placeholder="Введите имя" required
+          autofocus>
+
+        <p class="email">Почта:</p>
+        <input class="form-input" type="email" name="email" id="email" value="" placeholder="Введите почту" required>
+
+        <p class="rating">Пожалуйста, оцените сайт</p>
+        <input type="number" class="rating-input hidden" name="rating" id="rating" value="" required>
+        <div class="circles">
+          <div class="circle" data-value="1"></div>
+          <div class="circle" data-value="2"></div>
+          <div class="circle" data-value="3"></div>
+          <div class="circle" data-value="4"></div>
+          <div class="circle" data-value="5"></div>
+          <div class="circle" data-value="6"></div>
+          <div class="circle" data-value="7"></div>
+          <div class="circle" data-value="8"></div>
+          <div class="circle" data-value="9"></div>
+          <div class="circle" data-value="10"></div>
+        </div>
+
+        <p class="feedback">Ваш отзыв:</p>
+        <textarea class="form-feedback-text" aria-valuetext="" name="feedback" id="feedback" cols="30" rows="6"
+          placeholder="Напишите ваш отзыв" required></textarea>
+        <div class="form-button-container">
+          <button type="submit" class="form-button-submit">Отправить</button>
+          <button type="button" class="form-button-back">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'js/personal-account-page.js' %}"></script>
 </body>
+
 </html>

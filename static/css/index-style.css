@@ -1,345 +1,532 @@
 @media only screen and (max-width : 2000px) {
-    body{
-        margin:0;
-        padding: 0;
-        width: 100%;
-        font-family: 'Comfortaa';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 40px;
-        color:#464646;
-    }
-    .content{
-        min-height: calc(100vh - 50px);
-    }
-    /*стилизуем шапку*/
-    .header-container{
-        margin: 0;
-        padding: 0;
-        background: #6D886D;
-        margin-bottom: 80px;
-    }
-    .main-nav{
-        padding-right: 3%;
-        padding-left: 5%;
-    }
-    .main-nav-list{
-        display: flex;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        justify-content: space-between;
-    }
-    .main-nav-list .nav-cont{
-        display: flex;
-        gap: 30px;
-        margin: 0;
-        padding:0;
-        list-style-type: none;
-    }
-    .main-nav-list-item{
-        padding-top: 5px;
-    }
-    .main-nav-list-item a{
-        text-decoration: none;
-        color: #FFFFFF;
-        font-size: 26px;
-    }
-    .main-nav-list-item img{
-        margin-top: 5px;
-        width: 30px;
-        height: 30px;
-    }
-    .main-nav-list-item a:hover {
-        opacity: 0.7;
-    }
-    /*стилизуем основной контент*/
-    main{
-        margin-bottom: 80px;
-    }
-    .main-container{
-        padding: 0 10% 0;
-    }
-    .name-page{
-        font-size: 35px;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-    .description-page{
-        margin: 10px 0 10px;
-        padding: 0 5% 0;
-        text-align: center;
-    }
-    .cards{
-        margin-top: 70px;
-        display: flex;
-        justify-content: space-between;
-    }
-    .card-container{
-        width: 30%;
-    }
-    .card{
-        background-color: #E7B56B;
-        width: 100%;
-        height: 130px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 22px;
-        margin: 0 auto;
-    }
-    .card a{
-        font-size: 35px;
-        text-decoration: none;
-        color: black;
-        display: block;
-        text-align: center;
-        margin-top: auto;
-        height:130px;
-        line-height:130px;
-        color:#FFFFFF;
-    }
-    .card:hover {
-        opacity: 0.7;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+    color: #464646;
+  }
 
-    .card-description{
-        text-align: center;
-        width: 100%;
-        line-height: 1.2;
-    }
-    /*стилизуем подвал*/
-    .footer-container{
-        padding: 30px;
-        background-color: #F5F5F5;
-    }
+  .content {
+    min-height: calc(100vh - 50px);
+  }
+
+  /*стилизуем шапку*/
+  .header-container {
+    margin: 0;
+    padding: 0;
+    background: #6D886D;
+    margin-bottom: 80px;
+  }
+
+  .main-nav {
+    padding-right: 3%;
+    padding-left: 5%;
+  }
+
+  .main-nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: space-between;
+  }
+
+  .theme {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+  }
+
+  #toggle_checkbox
+{
+    display: none;
+}
+
+.toggle-checkbox-label
+{
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    left: 0;
+    width: 70px;
+    height: 28px;
+    margin: 0 auto;
+    background-color: #8ab2e0;
+    border-radius: 56px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: 0.3s ease background-color;
+    overflow: hidden;
+}
+
+#star
+{
+    position: absolute;
+    top: 6px;
+    left: 13px;
+    width: 13px;
+    height: 13px;
+    background-color: #fafd0f;
+    transform: scale(1);
+    border-radius: 50%;
+    transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+    z-index: 1;
+}
+
+#star-1
+{
+    position: relative;
+}
+
+#star-2
+{
+    position: absolute;
+    transform: rotateZ(36deg);
+}
+
+.star
+{
+    top: 0;
+    left: -7px;
+    font-size: 30px;
+    line-height: 16px;
+    color: #fafd0f;
+    transition: 0.3s ease color;
+}
+
+#moon
+{
+    position: absolute;
+    bottom: -52px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s ease bottom;
+}
+
+#moon:before
+{
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -25px;
+    width: 20px;
+    height: 20px;
+    background-color:#03a9f4;
+    border-radius: 50%;
+    transition: 0.3s ease background-color;
+}
+
+#toggle_checkbox:checked + .toggle-checkbox-label
+{
+    background-color: #000;
+}
+
+#toggle_checkbox:checked + .toggle-checkbox-label #star
+{
+    top: 25%;
+    left: 46px;
+    transform: scale(0.5);
+    background-color: yellow;
+}
+
+#toggle_checkbox:checked + .toggle-checkbox-label .star
+{
+    color: yellow;
+}
+
+#toggle_checkbox:checked + .toggle-checkbox-label #moon
+{
+    bottom: 4px;
+}
+
+#toggle_checkbox:checked + .toggle-checkbox-label #moon:before
+{
+    background-color: #000;
+}
+
+  .main-nav-list .nav-cont {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .main-nav-list-item {
+    padding-top: 5px;
+  }
+
+  .main-nav-list-item a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 26px;
+  }
+
+  .main-nav-list-item img {
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .main-nav-list-item a:hover {
+    opacity: 0.7;
+  }
+
+  /*стилизуем основной контент*/
+  main {
+    margin-bottom: 80px;
+  }
+
+  .main-container {
+    padding: 0 10% 0;
+  }
+
+  .name-page {
+    font-size: 35px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .description-page {
+    margin: 10px 0 10px;
+    padding: 0 5% 0;
+    text-align: center;
+  }
+
+  .cards {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-container {
+    width: 30%;
+  }
+
+  .card {
+    background-color: #E7B56B;
+    width: 100%;
+    height: 130px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 22px;
+    margin: 0 auto;
+  }
+
+  .card a {
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    margin-top: auto;
+    height: 130px;
+    line-height: 130px;
+    color: #FFFFFF;
+  }
+
+  .card:hover {
+    opacity: 0.7;
+  }
+
+  .card-description {
+    text-align: center;
+    width: 100%;
+    line-height: 1.2;
+  }
+
+  /*стилизуем подвал*/
+  .footer-container {
+    padding: 30px;
+    background-color: #F5F5F5;
+  }
 }
 
 @media only screen and (max-width : 830px) {
-    body{
-        margin:0;
-        padding: 0;
-        width: 100%;
-        font-family: 'Comfortaa';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 40px;
-        color:#464646;
-    }
-    /*стилизуем шапку*/
-    .header-container{
-        margin: 0;
-        padding: 0;
-        background: #6D886D;
-        margin-bottom: 80px;
-    }
-    .main-nav{
-        padding-right: 3%;
-        padding-left: 5%;
-    }
-    .main-nav-list{
-        display: flex;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        justify-content: space-between;
-    }
-    .main-nav-list .nav-cont{
-        display: flex;
-        gap: 30px;
-        margin: 0;
-        padding:0;
-        list-style-type: none;
-    }
-    .main-nav-list-item{
-        padding-top: 5px;
-    }
-    .main-nav-list-item a{
-        text-decoration: none;
-        color: #FFFFFF;
-        font-size: 26px;
-    }
-    .main-nav-list-item img{
-        margin-top: 5px;
-        width: 30px;
-        height: 30px;
-    }
-    .main-nav-list-item a:hover {
-        opacity: 0.7;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 40px;
+    color: #464646;
+  }
 
-     /*стилизуем основной контент*/
-    main{
-        margin-bottom: 80px;
-    }
-    .main-container{
-        padding: 0 5% 0;
-    }
-    .name-page{
-        font-size: 32px;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-    .description-page{
-        margin: 10px 0 10px;
-        padding: 0 3% 0;
-        text-align: center;
-    }
-    .cards{
-        margin-top: 70px;
-        display: flex;
-        justify-content: space-between;
-    }
-    .card-container{
-        width: 30%;
-    }
-    .card{
-        background-color: #E7B56B;
-        width: 100%;
-        height: 100px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+  /*стилизуем шапку*/
+  .header-container {
+    margin: 0;
+    padding: 0;
+    background: #6D886D;
+    margin-bottom: 80px;
+  }
+
+  .main-nav {
+    padding-right: 3%;
+    padding-left: 5%;
+  }
+
+  .main-nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: space-between;
+  }
+
+  .main-nav-list .nav-cont {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .main-nav-list-item {
+    padding-top: 5px;
+  }
+
+  .main-nav-list-item a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 26px;
+  }
+
+  .main-nav-list-item img {
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .main-nav-list-item a:hover {
+    opacity: 0.7;
+  }
+
+  /*стилизуем основной контент*/
+  main {
+    margin-bottom: 80px;
+  }
+
+  .main-container {
+    padding: 0 5% 0;
+  }
+
+  .name-page {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .description-page {
+    margin: 10px 0 10px;
+    padding: 0 3% 0;
+    text-align: center;
+  }
+
+  .cards {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-container {
+    width: 30%;
+  }
+
+  .card {
+    background-color: #E7B56B;
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
-        margin: 0 auto;
-    }
-    .card a{
-        font-size: 26px;
-        text-decoration: none;
-        color: black;
-        display: block;
-        text-align: center;
-        margin-top: auto;
-        height:100px;
-        line-height:100px;
-        color:#FFFFFF;
-    }
-    .card:hover {
-        opacity: 0.7;
-    }
+    margin: 0 auto;
+  }
 
-    .card-description{
-        text-align: center;
-        width: 100%;
-        line-height: 1.2;
-    }
-    /*стилизуем подвал*/
-    .footer-container{
-        padding: 30px;
-        background-color: #F5F5F5;
-    }
+  .card a {
+    font-size: 26px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    margin-top: auto;
+    height: 100px;
+    line-height: 100px;
+    color: #FFFFFF;
+  }
+
+  .card:hover {
+    opacity: 0.7;
+  }
+
+  .card-description {
+    text-align: center;
+    width: 100%;
+    line-height: 1.2;
+  }
+
+  /*стилизуем подвал*/
+  .footer-container {
+    padding: 30px;
+    background-color: #F5F5F5;
+  }
 }
 
 @media only screen and (max-width : 426px) {
-    body{
-        margin:0;
-        padding: 0;
-        width: 100%;
-        font-family: 'Comfortaa';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 20px;
-        color:#464646;
-    }
-     /*стилизуем шапку*/
-    .header-container{
-        margin: 0;
-        padding: 0;
-        background: #6D886D;
-        margin-bottom: 30px;
-    }
-    .main-nav{
-        padding-right: 3%;
-        padding-left: 5%;
-    }
-    .main-nav-list{
-        display: flex;
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        justify-content: space-between;
-    }
-    .main-nav-list .nav-cont{
-        display: flex;
-        gap: 30px;
-        margin: 0;
-        padding:0;
-        list-style-type: none;
-    }
-    .main-nav-list-item{
-        padding-top: 5px;
-    }
-    .main-nav-list-item a{
-        text-decoration: none;
-        color: #FFFFFF;
-        font-size: 15px;
-        line-height: 30px;
-    }
-    .main-nav-list-item img{
-        margin-top: 5px;
-        width: 20px;
-        height: 20px;
-    }
-    .main-nav-list-item a:hover {
-        opacity: 0.7;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 20px;
+    color: #464646;
+  }
 
-     /*стилизуем основной контент*/
-    main{
-        margin-bottom: 30px;
-    }
-    .main-container{
-        padding: 0 5% 0;
-    }
-    .name-page{
-        font-size: 16px;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-    .description-page{
-        margin: 10px 0 10px;
-        padding: 0 5% 0;
-        text-align: center;
-    }
-    .cards{
-        margin-top: 20px;
-        display: flex;
-        gap: 10px;
-        flex-direction: column;
-    }
-    .card-container{
-        width: 70%;
-        margin: 0 auto;
-    }
-    .card{
-        background-color: #E7B56B;
-        width: 80%;
-        height: 40px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+  /*стилизуем шапку*/
+  .header-container {
+    margin: 0;
+    padding: 0;
+    background: #6D886D;
+    margin-bottom: 30px;
+  }
+
+  .main-nav {
+    padding-right: 3%;
+    padding-left: 5%;
+  }
+
+  .main-nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: space-between;
+  }
+
+  .main-nav-list .nav-cont {
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .main-nav-list-item {
+    padding-top: 5px;
+  }
+
+  .main-nav-list-item a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  .main-nav-list-item img {
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .main-nav-list-item a:hover {
+    opacity: 0.7;
+  }
+
+  /*стилизуем основной контент*/
+  main {
+    margin-bottom: 30px;
+  }
+
+  .main-container {
+    padding: 0 5% 0;
+  }
+
+  .name-page {
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .description-page {
+    margin: 10px 0 10px;
+    padding: 0 5% 0;
+    text-align: center;
+  }
+
+  .cards {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .card-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .card {
+    background-color: #E7B56B;
+    width: 80%;
+    height: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
-        margin: 0 auto;
-    }
-    .card a{
-        font-size: 18px;
-        text-decoration: none;
-        color: black;
-        display: block;
-        text-align: center;
-        margin-top: auto;
-        height:40px;
-        line-height:40px;
-        color:#FFFFFF;
-    }
-    .card:hover {
-        opacity: 0.7;
-    }
+    margin: 0 auto;
+  }
 
-    .card-description{
-        text-align: center;
-        width: 100%;
-        line-height: 1.2;
-    }
+  .card a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-align: center;
+    margin-top: auto;
+    height: 40px;
+    line-height: 40px;
+    color: #FFFFFF;
+  }
+
+  .card:hover {
+    opacity: 0.7;
+  }
+
+  .card-description {
+    text-align: center;
+    width: 100%;
+    line-height: 1.2;
+  }
+}
+
+.dark-theme {
+  background-color: #151515;
+  color: #E6E6E6;
+
+  .header-container, .footer-container {
+    background-color: #1C1C1C;
+  }
+
+  a {
+     color: #E6E6E6;
+  }
+
+  .card {
+    background-color: #282828;
+    
+  }
 }
 
