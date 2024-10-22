@@ -2,6 +2,7 @@
 /static/images
 /media/images
 /static/avatars
+/media_backups/*
 /media/avatars
 app1/migrations/*
 !app1/migrations/__init__.py
