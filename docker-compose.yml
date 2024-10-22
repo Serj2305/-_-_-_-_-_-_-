@@ -20,11 +20,11 @@ services:
     command: >
       sh -c " chmod 777 .env &&
               sed -i 's/^DEBUG=.*/DEBUG=False/' .env &&
-              sed -i 's/^ALLOWED_HOSTS=.*/ALLOWED_HOSTS=localhost/' .env &&
+              sed -i 's/^ALLOWED_HOSTS=.*/ALLOWED_HOSTS=0.0.0.0,studysignsproject.ru/' .env &&
               python manage.py makemigrations &&
               python manage.py migrate &&
               python manage.py collectstatic --noinput &&
-          gunicorn Проект_по_созданию_обучающего_сайта_топографических_знаков.wsgi:application --bind 0.0.0.0:5000"
+              gunicorn Проект_по_созданию_обучающего_сайта_топографических_знаков.wsgi:application --bind 0.0.0.0:5000"
     volumes:
      - static_volume:/app/staticfiles
 

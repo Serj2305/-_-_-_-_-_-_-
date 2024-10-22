@@ -10,5 +10,6 @@ sudo docker system prune -a
 
 sudo docker-compose down --rmi all -v --remove-orphans
 sudo docker-compose up --build -d
-#sudo docker tag studysignsproject-django cr.yandex/${ID_OF_THE_DOCKER_REGISTRY}/studysignsproject-django
-#sudo docker push cr.yandex/${ID_OF_THE_DOCKER_REGISTRY}/studysignsproject-django
+
+#aws s3 rm s3://studysignsproject/studysignsproject/ --recursive
+#aws s3 cp --recursive $(pwd) s3://studysignsproject/studysignsproject/
