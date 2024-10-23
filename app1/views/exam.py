@@ -57,10 +57,10 @@ def send_exam(request):
     for row in data:
         id += 1
         data_from_database[f'{id}'] = {'number': id, 'complexity': row['complexity'],
-                                       'picture': "/static/" + row["photo"],
+                                       'picture': "/media/" + row["photo"],
                                        'textQuestions': textQuestions[id - 1],
                                        'answersList': answersList[id - 1],
-                                       'pictureWorld': "/static/" + row["realObjectPhoto"]}
+                                       'pictureWorld': "/media/" + row["realObjectPhoto"]}
 
     keys = [*data_from_database]
     random.shuffle(keys)

@@ -7,9 +7,9 @@ class Category(models.Model):
         verbose_name = 'категорию знака'
         verbose_name_plural = 'Категория'
 
-    name = models.CharField(max_length=500, verbose_name='Название')
-    description = models.CharField(max_length=500, verbose_name='Описание', blank=True)
-    category = models.CharField(max_length=500, verbose_name='Категория')
+    name = models.CharField(max_length=5000, verbose_name='Название')
+    description = models.CharField(max_length=5000, verbose_name='Описание', blank=True)
+    category = models.CharField(max_length=5000, verbose_name='Категория')
 
     def __str__(self):
         return f"{self.name}, {self.description}, {self.category}"

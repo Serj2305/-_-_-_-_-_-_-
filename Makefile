@@ -1,2 +1,2 @@
-all:
-	docker-compose up --build
+docker:
+	bash docker-build.sh

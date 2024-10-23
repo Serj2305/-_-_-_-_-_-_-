@@ -23,4 +23,4 @@ def send_exam_data_xlsx():
                        'Дата': [i['startTime'] for i in data],
                        'Время': [i['time'] for i in data]})
 
-    df.to_excel(Path("static", "exam_results", "Ведомость.xlsx"), index=False)
+    df.to_excel(Path("media", "exam_results", "Ведомость.xlsx"), index=False)

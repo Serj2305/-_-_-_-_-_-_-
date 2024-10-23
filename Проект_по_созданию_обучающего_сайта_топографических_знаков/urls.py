@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 
 from app1 import views
 
@@ -39,8 +40,4 @@ urlpatterns = [
     path('exam-page/get_exam_data', views.get_exam_data, name="get_exam_data"),
     path('account-page/send_exam_data', views.send_exam_data, name="send_exam_send"),
     path('account-page/send_to_email', views.send_to_email, name="send_to_email"),
-]
-
-if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,
-                              document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
