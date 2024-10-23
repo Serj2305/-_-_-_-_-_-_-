@@ -73,6 +73,8 @@
     .name-and-role{
         position: relative;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .name-account{
         line-height: 30px;
@@ -80,10 +82,11 @@
         align-items: center;
     }
     .role-container{
-        position: absolute;
+        
         font-weight: 300;
         font-size: 14px;
-        top: 30px;
+        line-height: 20px;
+        
     }
 
     .role-icon{
@@ -753,10 +756,8 @@
     }
 
     .role-container{
-        position: absolute;
         font-weight: 300;
         font-size: 10px;
-        top: 20px;
     }
 
     .role-icon{
