@@ -236,18 +236,7 @@ function shouAnswer() {
                       popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = imgAnswer.src;
                       popupEnlargedImg.classList.remove('hidden');
                   });
-    if(QUESTIONS[`${testCardQuestion.id}`].pictureWorld === '/static/') {
-        testCardAnswer.querySelector('.picture-world-container').style.display = 'none';
-    }
-    else {
-        testCardAnswer.querySelector('.picture-world-container').style.display = 'flex';
-        const imgWorldAnswer = testCardAnswer.querySelector('.picture-world');
-        imgWorldAnswer.src = QUESTIONS[`${testCardQuestion.id}`].pictureWorld;
-        imgWorldAnswer.addEventListener('click', () => {
-                      popupEnlargedImg.querySelector('.popup-img-enlarged-img').src = imgWorldAnswer.src;
-                      popupEnlargedImg.classList.remove('hidden');
-                  });
-    }
+    
     testCardAnswer.classList.add('front');
 };
 buttonAnswer.addEventListener('click', shouAnswer);

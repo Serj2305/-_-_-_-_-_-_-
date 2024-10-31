@@ -3,6 +3,7 @@
 /static/avatars
 /media_backups/*
 /media/avatars
+/media/images
 app1/migrations/*
 !app1/migrations/__init__.py
 app1/Проект_по_созданию_обучающего_сайта_топографических_знаков/__pycache__

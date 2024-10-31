@@ -14,8 +14,8 @@ def send_signs(request):
         id += 1
         data_from_database[f'{id}'] = {'name': row['name'], 'description': row['description'],
                                        'category': row['category'],
-                                       'picture': "/images/" + row['photo'],
-                                       'pictureWorld': "/images/" + row['realObjectPhoto']}
+                                       'picture': "/media/" + row['photo'],
+                                       'pictureWorld': "/media/" + row['realObjectPhoto']}
     return JsonResponse(data_from_database)
 
 
