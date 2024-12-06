@@ -28,6 +28,11 @@
         list-style-type: none;
         justify-content: space-between;
     }
+    .theme {
+        margin-top: auto;
+        margin-bottom: auto;
+        line-height: 20px;
+      }
     .main-nav-list .nav-cont{
         display: flex;
         gap: 30px;
@@ -377,3 +382,17 @@
     }
 
 }
+
+
+.dark-theme {
+    background-color: #151515;
+    color: #E6E6E6;
+  
+    .header-container, .footer-container {
+      background-color: #1C1C1C;
+    }
+  
+    a {
+       color: #E6E6E6;
+    }
+  }

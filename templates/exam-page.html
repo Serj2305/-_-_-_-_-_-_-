@@ -19,6 +19,9 @@
                 <div class="main-nav-list">
                     <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
                     <div class="nav-cont">
+                        <div class="theme">
+                            <img class="theme-icon" id="toggle_checkbox" src="{% static 'img/dark-icon.svg'%}" alt="" width="25" height="25">
+                        </div>
                         <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
                         <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
                     </div>
@@ -79,6 +82,7 @@
         </div>
     </div>
 <script src="{% static 'easytimer.js/dist/easytimer.min.js' %}"></script>
-<script type="module" src="{% static 'js/exam-page.js' %}"></script>
+<script type="module" src="{% static 'js/pages/exam/index.js' %}"></script>
+<script type="module" src="{% static 'js/theme.js' %}"></script>
 </body>
 </html>

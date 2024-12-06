@@ -100,7 +100,7 @@
         <input class="form-input" type="email" name="email" id="email" value="" placeholder="Введите почту" required>
 
         <p class="rating">Пожалуйста, оцените сайт</p>
-        <input type="number" class="rating-input hidden" name="rating" id="rating" value="" required>
+        <input type="number" class="rating-input hidden" name="rating" id="rating" value="">
         <div class="circles">
           <div class="circle" data-value="1"></div>
           <div class="circle" data-value="2"></div>
@@ -124,7 +124,7 @@
       </form>
     </div>
   </div>
-  <script src="{% static 'js/personal-account-page.js' %}"></script>
+  <script type="module" src="{% static 'js/pages/profile/index.js' %}"></script>
 </body>
 
 </html>
