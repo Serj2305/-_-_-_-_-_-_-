@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/index-style.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Главная страница</title>
 </head>
 
@@ -20,15 +19,15 @@
       <div class="header-container">
         <nav class="main-nav">
           <div class="main-nav-list">
+            <div class="urfu-logo-container">
+              <img class="urfu-logo" src="{% static 'img/urfu-logo.png' %}">
+            </div>
             <div class="theme">
               <img class="theme-icon" id="toggle_checkbox" src="{% static 'img/dark-icon.svg'%}" alt="" width="25" height="25">
-          </div>
+            </div>
             <div class="main-nav-list-item"><a href="{% url 'index' %}"></a></div>
             <div class="nav-cont">
               <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-              <div class="main-nav-list-item"><a href="{% url 'account' %}"><img
-                    src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт"></a>
-              </div>
             </div>
           </div>
         </nav>
@@ -66,7 +65,7 @@
     </main>
   </div>
   <footer>
-    <div class="footer-container"></div>
+    <div class="footer-container">© ФГАОУ ВО «УрФУ имени первого Президента России Б.Н. Ельцина» 2020-2024</div>
   </footer>
 <script type="module" src="{% static 'js/theme.js' %}"></script>
 </body>

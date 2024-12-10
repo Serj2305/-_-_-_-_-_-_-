@@ -3,19 +3,23 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 40px;
-    color: #464646;
+    color: #000000;
+  }
+
+  .content {
+    min-height: calc(100vh - 50px);
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
+    background: #1E4391;
     margin-bottom: 80px;
   }
 
@@ -33,14 +37,15 @@
   }
 
   .theme {
+    margin-left: auto;
     margin-top: auto;
     margin-bottom: auto;
-    line-height: 20px;
+    margin-right: 20px;
+    line-height: 10px;
   }
 
   .main-nav-list .nav-cont {
     display: flex;
-    gap: 30px;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -48,6 +53,7 @@
 
   .main-nav-list-item {
     padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .main-nav-list-item a {
@@ -66,7 +72,7 @@
 
   /*стилизуем основной контент*/
   .main-container {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     padding-bottom: 60px;
   }
 
@@ -141,6 +147,8 @@
   }
 
   .name-page {
+    font-weight: 700;
+    color: #1E4391;
     font-size: 30px;
     text-align: center;
     padding: 0;
@@ -167,8 +175,7 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    background: #E7B56B;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    background: #1E4391;
     border-radius: 22px;
     padding: 10px 0 10px;
     text-align: center;
@@ -266,7 +273,7 @@
 
   .button-back,
   .button-back-review {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border: solid 1px #D3D3D3;
     border-radius: 22px;
     padding: 1px 0 1px;
     text-align: center;
@@ -282,13 +289,12 @@
   .button-end,
   .button-end-review,
   .button-resume-review {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     padding: 1px 0 1px;
     text-align: center;
     width: 20%;
     margin-bottom: 30px;
-    background: #9FCB9F;
+    background: #1E4391;
     color: #FFFFFF;
   }
 
@@ -303,7 +309,6 @@
 
   .button-end {
     display: none;
-    background-color: #E7B56B;
   }
 
   .pictures-container {
@@ -368,6 +373,31 @@
     font-weight: bold;
   }
 
+   /*стилизуем подвал*/
+   .button-form{
+    display: flex;
+    width: 10%;
+    position:fixed;
+    right: 30px;
+    bottom: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 18px;
+    padding: 5px 10px;
+    justify-content: center;
+    background-color: #1E4391;
+  }
+  .button-form:hover{
+    cursor: pointer;
+  }
+   .footer-container {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #A7A7A7;
+    font-size: 13px;
+    text-align: center;
+  }
+
   /*попап*/
   .hidden {
     opacity: 0;
@@ -417,6 +447,146 @@
     opacity: 0.7;
     cursor: pointer;
   }
+
+  .popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    transition: opacity 1s, visibility 0s;
+    display: none;
+  }
+
+  .popup-body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #form-feedback {
+    height: 70%;
+    width: 40%;
+    background-color: #FFFFFF;
+    border-radius: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    padding: 15px 50px;
+  }
+
+  form h2 {
+    color: #1E4391;
+    font-weight: 600;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .name,
+  .email,
+  .feedback,
+  .rating {
+    font-size: 16px;
+    color: #000000;
+    margin: 0;
+    line-height: 30px;
+  }
+
+  form .form-input {
+    all: unset;
+    background-color: #F6F6F6;
+    border-radius: 20px;
+    height: 30px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 90%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  .circles {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .circle {
+    border: 1px solid #0F1C3F;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+  }
+
+  .circle:hover {
+    cursor: pointer;
+  }
+
+  .red {
+    background-color: #E18686;
+  }
+
+  .orange {
+    background-color: #E7C06E;
+  }
+
+  .green {
+    background-color: #9FCB9F;
+  }
+
+  .form-feedback-text {
+    background-color: #F6F6F6;
+    border-radius: 22px;
+    font-size: 16px;
+    padding: 10px 15px;
+    width: 90%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+    outline: none;
+    resize: none;
+    border: none;
+  }
+
+  .form-button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+    margin-bottom: 15px;
+  }
+
+  .form-button-submit,
+  .form-button-back {
+    outline: none;
+    background: none;
+    cursor: pointer;
+    border: none;
+    border: solid 1px #D3D3D3;
+    border-radius: 22px;
+    padding: 7px 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+  }
+
+  .form-button-submit:hover,
+  .form-button-back:hover {
+    opacity: 0.7;
+  }
+
+  .form-button-submit {
+    background-color: #1E4391;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: none;
+  }
 }
 
 @media only screen and (max-width : 830px) {
@@ -424,19 +594,16 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 40px;
-    color: #464646;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
     margin-bottom: 170px;
   }
 
@@ -481,7 +648,7 @@
 
   /*стилизуем основной контент*/
   .main-container {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     padding-bottom: 60px;
   }
 
@@ -562,8 +729,6 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    background: #E7B56B;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     padding: 10px 0 10px;
     text-align: center;
@@ -656,7 +821,7 @@
   }
 
   .button-back {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border: solid 1px #D3D3D3;
     border-radius: 22px;
     padding: 1px 0 1px;
     text-align: center;
@@ -670,13 +835,11 @@
   .again-button,
   .button-resume-review,
   .button-end-review {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     padding: 1px 0 1px;
     text-align: center;
     width: 20%;
     margin-bottom: 30px;
-    background: #9FCB9F;
     color: #FFFFFF;
   }
 
@@ -687,13 +850,11 @@
 
   .review-button,
   .again-button {
-    background-color: #E7B56B;
     width: 40%;
   }
 
   .button-end {
     display: none;
-    background-color: #E7B56B;
   }
 
   .pictures-container {
@@ -752,6 +913,13 @@
     line-height: 1.2;
   }
 
+  .button-form {
+    width: 20%;
+  }
+  /*стилизуем форму*/
+  #form-feedback {
+    width: 70%;
+  }
   /*попап*/
   .hidden {
     opacity: 0;
@@ -808,19 +976,16 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 20px;
-    color: #464646;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
     margin-bottom: 150px;
   }
 
@@ -868,7 +1033,7 @@
 
   /*стилизуем основной контент*/
   .main-container {
-    margin-bottom: 450px;
+    margin-bottom: 20px;
     padding-bottom: 60px;
   }
 
@@ -949,8 +1114,6 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    background: #E7B56B;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     padding: 10px 0 10px;
     text-align: center;
@@ -1050,7 +1213,7 @@
 
   .button-back,
   .button-back-review {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border: solid 1px #D3D3D3;
     border-radius: 22px;
     padding: 10px 3px 10px;
     text-align: center;
@@ -1066,25 +1229,18 @@
   .again-button,
   .button-resume-review,
   .button-end-review {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     padding: 10px 3px 10px;
     text-align: center;
     width: 45%;
     font-size: 14px;
     margin-bottom: 15px;
-    background: #9FCB9F;
     color: #FFFFFF;
   }
 
-  .review-button,
-  .again-button {
-    background-color: #E7B56B;
-  }
 
   .button-end {
     display: none;
-    background-color: #E7B56B;
   }
 
   .pictures-container {
@@ -1142,6 +1298,35 @@
     padding: 0 15% 0;
     text-align: center;
     line-height: 1.2;
+  }
+
+  /*стилизуем форму*/
+  #form-feedback {
+    height: 80%;
+    width: 70%;
+  }
+
+  form h2 {
+    font-size: 18px;
+  }
+
+  .name,
+  .email,
+  .feedback {
+    font-size: 14px;
+  }
+
+  form .form-input {
+    font-size: 14px;
+  }
+
+  .form-feedback-text {
+    font-size: 14px;
+  }
+
+  .form-button-submit,
+  .form-button-back {
+    font-size: 14px;
   }
 
   /*попап*/
@@ -1223,16 +1408,4 @@
     color: #FFFFFF
   }
 
-  .button-answer,
-  .button-resume-review, .button-end-review{
-    background-color: #60AC60;
-  }
-
-  .start-test-button, .again-button, .review-button, .button-end {
-    background-color: #DEA146;
-  }
-
-  .button-back-review, .button-back {
-    background-color: #3D3E41;
-  }
 }

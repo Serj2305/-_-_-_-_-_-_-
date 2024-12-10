@@ -15,7 +15,7 @@ export function openCard(card, index, data) {
           popupEnlargedImg.classList.remove('hidden');
         });
         popupNameSign.textContent = data[index].name;
-        if (data[index].pictureWorld === '/media/images/') {
+        if (data[index].pictureWorld === '/media/') {
           worldSignContainer.style.display = 'none';
         }
         else {

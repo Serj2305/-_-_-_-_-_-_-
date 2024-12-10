@@ -10,8 +10,7 @@
   <link rel="stylesheet" href="{% static 'css/signs-page-style.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Знаки</title>
 </head>
 
@@ -27,8 +26,6 @@
                 height="25">
             </div>
             <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-            <div class="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}"
-                  alt="логотип входа в аккаунт" width="30" height="30"></a></div>
           </div>
         </div>
       </nav>
@@ -65,7 +62,7 @@
                     <option value="list-of-abbreviations">Перечень условных сокращений</option>
                 </select> -->
       </div>
-      <p class="description-category"></p>
+      <p class="description-category">Здесь представлены все знаки</p>
       <div class="signs-container">
 
       </div>
@@ -77,6 +74,9 @@
       </div>
     </div>
   </main>
+  <footer>
+    <div class="footer-container">© ФГАОУ ВО «УрФУ имени первого Президента России Б.Н. Ельцина» 2020-2024</div>
+  </footer>
   <template id="sign">
     <div class="sign-container hidden-card">
       <div class="img-container">

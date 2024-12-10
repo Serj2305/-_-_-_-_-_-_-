@@ -2,7 +2,7 @@ import { edit_data } from "./editData.js";
 import { save_data } from "./saveData.js";
 import { fillAccount } from "./fillAccount.js";
 import { fillResults } from "./fillResults.js";
-import { changeRating } from "./changeRating.js";
+import { changeRating } from "../../changeRating.js";
 
 const editButton = document.querySelector('.button-edit');
 const saveButton = document.querySelector('.button-save');

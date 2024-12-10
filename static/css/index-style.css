@@ -3,12 +3,12 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 40px;
-    color: #464646;
+    color: #000000;
   }
 
   .content {
@@ -19,7 +19,7 @@
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
+    background: #1E4391;
     margin-bottom: 80px;
   }
 
@@ -40,8 +40,17 @@
     margin-left: auto;
     margin-top: auto;
     margin-bottom: auto;
-    margin-right: 30px;
-    line-height: 20px;
+    margin-right: 20px;
+    line-height: 10px;
+  }
+  .urfu-logo-container{
+    display: flex;
+    align-items: center;
+  }
+  .urfu-logo{
+    width: 110px;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .main-nav-list .nav-cont {
@@ -54,6 +63,7 @@
 
   .main-nav-list-item {
     padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .main-nav-list-item a {
@@ -82,6 +92,7 @@
   }
 
   .name-page {
+    color: #1E4391;
     font-size: 35px;
     text-align: center;
     margin: 0;
@@ -92,6 +103,9 @@
     margin: 10px 0 10px;
     padding: 0 5% 0;
     text-align: center;
+  }
+  .description-page b{
+    font-weight: 600;
   }
 
   .cards {
@@ -105,7 +119,8 @@
   }
 
   .card {
-    background-color: #E7B56B;
+    font-weight: 500;
+    background-color: #1E4391;
     width: 100%;
     height: 130px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -137,8 +152,11 @@
 
   /*стилизуем подвал*/
   .footer-container {
-    padding: 30px;
-    background-color: #F5F5F5;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #A7A7A7;
+    font-size: 13px;
+    text-align: center;
   }
 }
 
@@ -147,19 +165,17 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 40px;
-    color: #464646;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
     margin-bottom: 80px;
   }
 
@@ -174,6 +190,10 @@
     padding: 0;
     list-style-type: none;
     justify-content: space-between;
+  }
+
+  .urfu-logo{
+    width: 90px;
   }
 
   .main-nav-list .nav-cont {
@@ -225,6 +245,9 @@
     padding: 0 3% 0;
     text-align: center;
   }
+  .description-page b{
+    font-weight: 600;
+  }
 
   .cards {
     margin-top: 70px;
@@ -237,7 +260,7 @@
   }
 
   .card {
-    background-color: #E7B56B;
+    font-weight: 500;
     width: 100%;
     height: 100px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -269,8 +292,11 @@
 
   /*стилизуем подвал*/
   .footer-container {
-    padding: 30px;
-    background-color: #F5F5F5;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #A7A7A7;
+    font-size: 13px;
+    text-align: center;
   }
 }
 
@@ -279,19 +305,17 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 20px;
-    color: #464646;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
     margin-bottom: 30px;
   }
 
@@ -306,6 +330,10 @@
     padding: 0;
     list-style-type: none;
     justify-content: space-between;
+  }
+
+  .urfu-logo{
+    width: 70px;
   }
 
   .main-nav-list .nav-cont {
@@ -348,15 +376,20 @@
 
   .name-page {
     font-size: 16px;
+    font-weight: 700;
     text-align: center;
     margin: 0;
     padding: 0;
   }
 
   .description-page {
+    font-weight: 600;
     margin: 10px 0 10px;
     padding: 0 5% 0;
     text-align: center;
+  }
+  .description-page b{
+    font-weight: 600;
   }
 
   .cards {
@@ -372,7 +405,7 @@
   }
 
   .card {
-    background-color: #E7B56B;
+    font-weight: 500;
     width: 80%;
     height: 40px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);

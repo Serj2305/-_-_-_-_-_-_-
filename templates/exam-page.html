@@ -1,88 +1,143 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/exam-page-style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-    <title>Экзамен</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/exam-page-style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <title>Экзамен</title>
 </head>
+
 <body>
+  <div class="content">
     <header>
-        <div class="header-container">
-            <nav class="main-nav">
-                <div class="main-nav-list">
-                    <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
-                    <div class="nav-cont">
-                        <div class="theme">
-                            <img class="theme-icon" id="toggle_checkbox" src="{% static 'img/dark-icon.svg'%}" alt="" width="25" height="25">
-                        </div>
-                        <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
-                        <div class ="main-nav-list-item"><a href="{% url 'account' %}"><img src="{% static 'img/account-logo.svg' %}" alt="логотип входа в аккаунт" width="30" height="30"></a></div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+      <div class="header-container">
+        <nav class="main-nav">
+          <div class="main-nav-list">
+            <div class="main-nav-list-item"><a href="{% url 'index' %}">Главная</a></div>
+            <div class="nav-cont">
+              <div class="theme">
+                <img class="theme-icon" id="toggle_checkbox" src="{% static 'img/dark-icon.svg'%}" alt="" width="25"
+                  height="25">
+              </div>
+              <div class="main-nav-list-item"><a href="{% url 'project' %}">О нас</a></div>
+            </div>
+          </div>
+        </nav>
+      </div>
     </header>
     <main>
-        <div class="main-container">
-            <div class="start-test">
-                <span class="question-number">0/10</span>
-                <h1 class="name-page">Начать экзамен</h1>
-                <p class="test-info">Время на тест ограничено. Будет идти обратный отсчет времени с момента начала вашей попытки, и вы должны завершить попытку теста до окончания времени. Вы уверены, что хотите начать прямо сейчас?</p>
-                <div class="button-wrapper">
-                    <div class="start-test-button">Начать</div>
-                </div>
+      <div class="main-container">
+        <div class="start-test">
+          <span class="question-number">0/10</span>
+          <h1 class="name-page">Начать экзамен</h1>
+          <p class="test-info">Время на тест ограничено. Будет идти обратный отсчет времени с момента начала вашей
+            попытки, и вы должны завершить попытку теста до окончания времени. Вы уверены, что хотите начать прямо
+            сейчас?</p>
+          <div class="button-wrapper">
+            <div class="start-test-button">Начать</div>
+          </div>
+        </div>
+        <div class="test-card-question">
+          <div class="timer" id="timer"></div>
+          <span class="question-number test-number">1/10</span>
+          <div class="complexity-container">Сложность: <span class="complexity"></span>
+            <div class="complexity-color"></div>
+          </div>
+          <div class="question-container">
+            <div class="question-picture-container">
+              <img class="question-picture" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
             </div>
-            <div class="test-card-question">
-                <div class="timer" id="timer"></div>
-                <span class="question-number test-number">1/10</span>
-                <div class="complexity-container">Сложность: <span class="complexity"></span> <div class="complexity-color"></div></div>
-                <div class="question-container">
-                    <div class="question-picture-container">
-                        <img class="question-picture" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
-                    </div>
-                    <div class="description-and-answer">
+            <div class="description-and-answer">
 
-                    </div>
-                </div>
-                <div class="buttons-wrapper">
-                    <div class="button-back back-card">Назад</div>
-                    <div class="button-answer">Ответить</div>
-                    <div class="button-end">Завершить</div>
-                    <div class="button-back-review">Назад</div>
-                    <div class="button-resume-review">Продолжить</div>
-                    <div class="button-end-review">Завершить обзор</div>
-                </div>
             </div>
-            <div class="end-test">
-                <h1 class="name-page-end">Экзамен завершён</h1>
-                <p class="test-result">Набрано баллов: <span class="score"></span></p>
-                <p class="test-mistakes">Вы допустили <span class="mistakes"></span> <span class="mistakes-word"></span> - оценка <span class="mistakes-score">хорошо</span></p>
-                <p class="test-time">Затрачено времени: <span class="time"></span> </p>
-                <p class="test-time-result">Вы уложились в норматив <span class="time-result"></span> - оценка <span class="time-score"></span></p>
-                <div class="buttons-wrapper">
-                    <div class="review-button">Просмотр ошибок</div>
-                    <div class="again-button">Пройти ещё раз</div>
-                </div>
-            </div>
+          </div>
+          <div class="buttons-wrapper">
+            <div class="button-back back-card">Назад</div>
+            <div class="button-answer">Ответить</div>
+            <div class="button-end">Завершить</div>
+            <div class="button-back-review">Назад</div>
+            <div class="button-resume-review">Продолжить</div>
+            <div class="button-end-review">Завершить обзор</div>
+          </div>
         </div>
+        <div class="end-test">
+          <h1 class="name-page-end">Экзамен завершён</h1>
+          <p class="test-result">Набрано баллов: <span class="score"></span></p>
+          <p class="test-mistakes">Вы допустили <span class="mistakes"></span> <span class="mistakes-word"></span> -
+            оценка <span class="mistakes-score">хорошо</span></p>
+          <p class="test-time">Затрачено времени: <span class="time"></span> </p>
+          <p class="test-time-result">Вы уложились в норматив <span class="time-result"></span> - оценка <span
+              class="time-score"></span></p>
+          <div class="buttons-wrapper">
+            <div class="review-button">Просмотр ошибок</div>
+            <div class="again-button">Пройти ещё раз</div>
+          </div>
+        </div>
+      </div>
     </main>
-     <div class="popup-enlarged-img hidden">
-        <div class="popup-enlarged-img-body">
-            <div class="popup-enlarged-img-content">
-                <img class="popup-img-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25" width="25">
-                <img class="popup-img-enlarged-img" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
-            </div>
-        </div>
+  </div>
+  <footer>
+    <div class="footer-container">© ФГАОУ ВО «УрФУ имени первого Президента России Б.Н. Ельцина» 2020-2024</div>
+    <div class="button-form">Нашли ошибку?</div>
+  </footer>
+  <div class="popup-enlarged-img hidden">
+    <div class="popup-enlarged-img-body">
+      <div class="popup-enlarged-img-content">
+        <img class="popup-img-button-close" src="{% static 'img/button-close.png' %}" alt="Закрыть попап" height="25"
+          width="25">
+        <img class="popup-img-enlarged-img" src="{% static 'img/Rectangle 5.svg' %}" alt="фотография знака">
+      </div>
     </div>
-<script src="{% static 'easytimer.js/dist/easytimer.min.js' %}"></script>
-<script type="module" src="{% static 'js/pages/exam/index.js' %}"></script>
-<script type="module" src="{% static 'js/theme.js' %}"></script>
+  </div>
+  <div id="popup" class="popup">
+    <div class="popup-body">
+      <form id="form-feedback">
+        <h2>Напишите свой отзыв</h2>
+        <p class="name">Ваше имя:</p>
+        <input class="form-input" type="text" name="name" id="name" value="" placeholder="Введите имя" required
+          autofocus>
+
+        <p class="email">Почта:</p>
+        <input class="form-input" type="email" name="email" id="email" value="" placeholder="Введите почту" required>
+
+        <p class="rating">Пожалуйста, оцените сайт</p>
+        <input type="number" class="rating-input hidden" name="rating" id="rating" value="">
+        <div class="circles">
+          <div class="circle" data-value="1"></div>
+          <div class="circle" data-value="2"></div>
+          <div class="circle" data-value="3"></div>
+          <div class="circle" data-value="4"></div>
+          <div class="circle" data-value="5"></div>
+          <div class="circle" data-value="6"></div>
+          <div class="circle" data-value="7"></div>
+          <div class="circle" data-value="8"></div>
+          <div class="circle" data-value="9"></div>
+          <div class="circle" data-value="10"></div>
+        </div>
+
+        <p class="feedback">Ваш отзыв:</p>
+        <textarea class="form-feedback-text" aria-valuetext="" name="feedback" id="feedback" cols="30" rows="6"
+          placeholder="Напишите ваш отзыв" required></textarea>
+        <div class="form-button-container">
+          <button type="button" class="form-button-back">Отмена</button>
+          <button type="submit" class="form-button-submit">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'easytimer.js/dist/easytimer.min.js' %}"></script>
+  <script type="module" src="{% static 'js/pages/exam/index.js' %}"></script>
+  <script type="module" src="{% static 'js/theme.js' %}"></script>
+  <script type="module" src="{% static 'js/form.js' %}"></script>
 </body>
+
 </html>

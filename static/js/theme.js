@@ -1,7 +1,6 @@
 const checkboxTheme = document.getElementById('toggle_checkbox');
 
 let activeTheme = localStorage.getItem('theme');
-console.log(activeTheme)
 
 if (activeTheme === 'dark-theme') {
     document.body.className = 'dark-theme';

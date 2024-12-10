@@ -3,19 +3,19 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 40px;
-    color: #464646;
+    color: #000000;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
+    background: #1E4391;
     margin-bottom: 80px;
   }
 
@@ -33,14 +33,15 @@
   }
 
   .theme {
+    margin-left: auto;
     margin-top: auto;
     margin-bottom: auto;
-    line-height: 20px;
+    margin-right: 20px;
+    line-height: 10px;
   }
 
   .main-nav-list .nav-cont {
     display: flex;
-    gap: 30px;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -48,6 +49,7 @@
 
   .main-nav-list-item {
     padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .main-nav-list-item a {
@@ -73,6 +75,8 @@
   }
 
   .name-page {
+    font-weight: 700;
+    color: #1E4391;
     font-size: 30px;
     margin: 0;
     padding: 0;
@@ -82,20 +86,17 @@
   .signs-filter {
     display: flex;
     justify-content: space-between;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 700;
-    background: #E7B56B;
     height: 40px;
     font-size: 20px;
     padding: 5px 10px 5px;
     margin: 0;
-    border: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 22px;
+    border: solid 1px #A7A7A7;
+    border-radius: 19px;
     outline: 0;
     width: 20%;
-    color: #FFFFFF;
+    color: #000000;
     overflow: hidden;
   }
 
@@ -104,16 +105,14 @@
     display: flex;
     text-align: center;
     justify-content: space-between;
-    font-family: 'Comfortaa';
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 700;
-    background: #E7B56B;
+    background: #1E4391;
     line-height: 30px;
     font-size: 20px;
-    padding: 7px 10px;
+    padding: 10px 10px;
     margin: 0;
     border: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     outline: 0;
     width: 20%;
@@ -179,8 +178,7 @@
   .filter-list-item {
     padding: 0 5px 0;
     background: #FFFFFF;
-    border: 1px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border: solid 1px #A7A7A7;
   }
 
   .filter-list-item:hover {
@@ -204,10 +202,9 @@
 
   .description-category {
     text-align: center;
-    font-weight: bold;
     font-size: 20px;
-    border-top: 3px solid #6D886D;
-    border-bottom: 3px solid #6D886D;
+    border-top: 3px solid #1E4391;
+    border-bottom: 3px solid #1E4391;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -228,7 +225,7 @@
     height: 260px;
     border: 1px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
+    border-radius: 30px;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 
@@ -257,7 +254,6 @@
     width: 50%;
     display: flex;
     padding: 5px 0 5px 0;
-    font-weight: bold;
     margin: 7px;
     height: 238px;
     align-items: center;
@@ -284,11 +280,12 @@
   }
 
   /*стилизуем подвал*/
-  /*1 попап*/
   .footer-container {
-    padding: 30px;
-    background-color: #F5F5F5;
-    ;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #A7A7A7;
+    font-size: 13px;
+    text-align: center;
   }
 
   /*стилизуем попапы*/
@@ -338,6 +335,7 @@
   }
 
   .popup-name-sign {
+    font-weight: 600;
     margin: 0px 0 20px;
     font-size: 20px;
     line-height: 25px;
@@ -442,19 +440,16 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 40px;
-    color: #464646;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
     margin-bottom: 80px;
   }
 
@@ -515,21 +510,14 @@
   .signs-filter {
     display: flex;
     justify-content: space-between;
-    font-family: 'Comfortaa';
     font-style: normal;
-    font-weight: 700;
-    background: #E7B56B;
     height: 35px;
     line-height: 35px;
     font-size: 20px;
     padding: 3px 10px 3px;
     margin: 0;
-    border: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 22px;
     outline: 0;
     width: 35%;
-    color: #FFFFFF;
     margin-left: auto;
     overflow: hidden
   }
@@ -539,16 +527,12 @@
     display: flex;
     text-align: center;
     justify-content: space-between;
-    font-family: 'Comfortaa';
     font-style: normal;
-    font-weight: 700;
-    background: #E7B56B;
     line-height: 30px;
     font-size: 20px;
-    padding: 7px 10px;
+    padding: 10px 10px;
     margin: 0;
     border: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     outline: 0;
     width: 40%;
@@ -615,8 +599,6 @@
   .filter-list-item {
     padding: 0 5px 0;
     background: #FFFFFF;
-    border: 1px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
   }
 
   .filter-list-item:hover {
@@ -640,10 +622,7 @@
 
   .description-category {
     text-align: center;
-    font-weight: bold;
     font-size: 20px;
-    border-top: 3px solid #6D886D;
-    border-bottom: 3px solid #6D886D;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -665,7 +644,6 @@
     height: 150px;
     border: 1px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 
@@ -704,7 +682,6 @@
     height: 130px;
     display: flex;
     padding: 5px 0 5px 0;
-    font-weight: bold;
     margin: 7px;
     align-items: center;
     overflow-x: hidden;
@@ -727,13 +704,6 @@
     display: none;
   }
 
-  /*стилизуем подвал*/
-  /*1 попап*/
-  .footer-container {
-    padding: 30px;
-    background-color: #F5F5F5;
-    ;
-  }
 
   /*стилизуем попапы*/
   .popup {
@@ -886,19 +856,16 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Comfortaa';
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
     line-height: 20px;
-    color: #464646;
   }
 
   /*стилизуем шапку*/
   .header-container {
     margin: 0;
     padding: 0;
-    background: #6D886D;
     margin-bottom: 30px;
   }
 
@@ -960,21 +927,14 @@
   .signs-filter {
     display: flex;
     justify-content: space-between;
-    font-family: 'Comfortaa';
     font-style: normal;
-    font-weight: 700;
-    background: #E7B56B;
     height: 20px;
     line-height: 20px;
     font-size: 14px;
     padding: 3px 10px 3px;
     margin: 0;
-    border: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 22px;
     outline: 0;
     width: 40%;
-    color: #FFFFFF;
     margin-left: auto;
     overflow: hidden
   }
@@ -984,16 +944,12 @@
     display: flex;
     text-align: center;
     justify-content: space-between;
-    font-family: 'Comfortaa';
     font-style: normal;
-    font-weight: 700;
-    background: #E7B56B;
     line-height: 20px;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 8px 10px;
     margin: 0;
     border: 0;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
     border-radius: 22px;
     outline: 0;
     width: 50%;
@@ -1060,8 +1016,6 @@
   .filter-list-item {
     padding: 0 5px 0;
     background: #FFFFFF;
-    border: 1px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
   }
 
   .filter-list-item:hover {
@@ -1085,10 +1039,9 @@
 
   .description-category {
     text-align: center;
-    font-weight: bold;
     font-size: 10px;
-    border-top: 1.5px solid #6D886D;
-    border-bottom: 1.5px solid #6D886D;
+    border-top: 1.5px solid #1E4391;
+    border-bottom: 1.5px solid #1E4391;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -1111,7 +1064,6 @@
     height: 106px;
     border: 1px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), inset 0px 1px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 
@@ -1151,7 +1103,6 @@
     height: 86px;
     display: flex;
     padding: 5px 0 5px 0;
-    font-weight: bold;
     margin: 7px;
     align-items: center;
     overflow-x: hidden;
@@ -1174,13 +1125,6 @@
     display: none;
   }
 
-  /*стилизуем подвал*/
-  /*1 попап*/
-  .footer-container {
-    padding: 30px;
-    background-color: #F5F5F5;
-    ;
-  }
 
   /*стилизуем попапы*/
   .popup {
@@ -1341,14 +1285,14 @@
     color: #E6E6E6;
   }
 
-  .signs-filter, .button-shou-more{
-    background-color: #DEA146;
-  }
   .description-category{
-    border-color: #60AC60;
+    border-color: #FFFFFF;
   }
   .sign-container, .popup-content, .filter-list-item{
     background-color: #262628;
+  }
+  .signs-filter{
+    background-color: #ffffff;
   }
   .filter-list-item:hover{
     background-color:  #1C1C1C;

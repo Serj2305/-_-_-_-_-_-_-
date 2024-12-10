@@ -3,18 +3,18 @@
         margin:0;
         padding: 0;
         width: 100%;
-        font-family: 'Comfortaa';
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 40px;
-        color:#464646;
+        color:#000000;
     }
     /*стилизуем шапку*/
     .header-container{
+        background-color: #1E4391;
         margin: 0;
         padding: 0;
-        background: #6D886D;
         margin-bottom: 60px;
     }
     .main-nav{
@@ -29,19 +29,21 @@
         justify-content: space-between;
     }
     .theme {
+        margin-left: auto;
         margin-top: auto;
         margin-bottom: auto;
-        line-height: 20px;
+        margin-right: 20px;
+        line-height: 10px;
       }
     .main-nav-list .nav-cont{
         display: flex;
-        gap: 30px;
         margin: 0;
         padding:0;
         list-style-type: none;
     }
     .main-nav-list-item{
         padding-top: 5px;
+        padding-bottom: 5px;
     }
     .main-nav-list-item a{
         text-decoration: none;
@@ -65,6 +67,7 @@
     }
 
     .name-page{
+        color: #1E4391;
         text-align: center;
         margin-bottom: 30px;
     }
@@ -117,10 +120,13 @@
 
     /*стилизуем подвал*/
 
-    .footer-container{
-        padding: 30px;
-        background-color: #F5F5F5;
-    }
+    .footer-container {
+        padding-top: 30px;
+        padding-bottom: 10px;
+        color: #A7A7A7;
+        font-size: 13px;
+        text-align: center;
+      }
 }
 
 @media only screen and (max-width : 769px) {
@@ -128,19 +134,16 @@
         margin: 0;
         padding: 0;
         width: 100%;
-        font-family: 'Comfortaa';
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
         line-height: 40px;
-        color: #464646;
     }
 
     /*стилизуем шапку*/
     .header-container {
         margin: 0;
         padding: 0;
-        background: #6D886D;
         margin-bottom: 80px;
     }
 
@@ -250,10 +253,6 @@
 
     /*стилизуем подвал*/
 
-    .footer-container{
-        padding: 30px;
-        background-color: #F5F5F5;
-    }
 }
 
 @media only screen and (max-width : 426px) {
@@ -261,18 +260,15 @@
         margin:0;
         padding: 0;
         width: 100%;
-        font-family: 'Comfortaa';
         font-style: normal;
         font-weight: 400;
         font-size: 10px;
         line-height: 20px;
-        color:#464646;
     }
      /*стилизуем шапку*/
     .header-container{
         margin: 0;
         padding: 0;
-        background: #6D886D;
         margin-bottom: 30px;
     }
     .main-nav{
@@ -375,11 +371,6 @@
     }
 
     /*стилизуем подвал*/
-
-    .footer-container{
-        padding: 30px;
-        background-color: #F5F5F5;
-    }
 
 }
 
