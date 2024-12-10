@@ -1261,4 +1261,28 @@
     color: #FFFFFF
   }
 
+  #form-feedback{
+    background-color: #262628;
+  }
+
+  .name,
+  .email,
+  .feedback,
+  .rating{
+    color: #ffffff;
+  }
+  
+  form .form-input, .form-feedback-text{
+    background-color: #131315;
+    color: #ffffff
+  }
+
+  .form-button-back{
+    color: #ffffff;
+  }
+
+  .circle {
+    border: 1px solid #ffffff;
+  }
+
 }
