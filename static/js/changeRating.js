@@ -3,6 +3,9 @@ const inputRating = document.querySelector('.rating-input')
 
 export function changeRating(numb) {
     let color;
+    if (numb === 0) {
+      circles.forEach(circle => circle.className = 'circle')
+    }
     if (numb < 3) color = 'red';
     else if (numb < 7) color = 'orange';
     else color = 'green';

@@ -451,6 +451,9 @@
     font-weight: 400;
     color: #000000;
   }
+  .rating-input{
+    display: none;
+  }
 
   .circles {
     margin-top: 5px;

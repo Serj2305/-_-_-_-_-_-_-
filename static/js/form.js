@@ -15,6 +15,7 @@ circles.forEach((circle) => circle.addEventListener('click', () => changeRating(
 
 formBackButton.onclick = () => {
   popup.style = 'display:none';
+  changeRating(0)
   form.reset()
 }
 
@@ -34,5 +35,6 @@ form.onsubmit = (e) => {
     alert(error);
   })
   popup.style = 'display:none';
+  changeRating(0)
   form.reset()
 }

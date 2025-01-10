@@ -508,6 +508,10 @@
     color: #000000;
   }
 
+  .rating-input{
+    display:none;
+  }
+
   .circles {
     margin-top: 5px;
     margin-bottom: 5px;
